@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import {StyleSheet, TextInput} from 'react-native';
 
-const Input = props => {
-  // const [valid, setValid] = useState(true);
+const Input = (props) => {
   const [output, setOutput] = useState('');
 
   const regex = {
@@ -11,7 +10,7 @@ const Input = props => {
     phoneNumber: /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
   };
 
-  const checkValidation = value => {
+  const checkValidation = (value) => {
     switch (props.inputType) {
       case 'default': {
         if (value == '') {
@@ -43,10 +42,9 @@ const Input = props => {
       autoCapitalize="none"
       autoCorrect={false}
       style={[{...props.style}, styles.input]}
-      underlineColorAndroid={'transparent'}
       placeholder={props.textHolder}
       placeholderTextColor="#000"
-      onChangeText={value => {
+      onChangeText={(value) => {
         setOutput(value);
         props.onInputChange(value);
       }}
