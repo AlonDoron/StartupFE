@@ -1,11 +1,13 @@
 import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 
-import LandPageScreen from './src/screens/LandPageScreen';
-import PhoneNumberValidationTest from './src/screens/PhoneNumberValidationTest';
-import RegistrationScreen from './src/screens/RegistrationScreen';
-import LoginViaPhoneScreen from './src/screens/LoginViaPhoneScreen';
-import PhoneNumberValidation from './src/screens/PhoneNumberValidation';
+import {
+  LandPageScreen,
+  PhoneNumberValidationTest,
+  RegistrationScreen,
+  LoginViaPhoneScreen,
+  PhoneNumberValidation,
+} from './src/screens/index';
 
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
