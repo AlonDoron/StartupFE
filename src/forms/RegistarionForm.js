@@ -1,12 +1,14 @@
-import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import React, {useState} from 'react';
+import {StyleSheet, View, Text, Image} from 'react-native';
 import {Input, FormSubmitBtn} from './index';
 import {Picker} from '@react-native-community/picker';
 import countryCode from '../JsonData/countryCode.json';
 import Feather from 'react-native-vector-icons/Feather';
+
 const RegistrationForm = (props) => {
   const error = props.errorHandler;
   const [countryDial_Code, setCountryDial_Code] = useState('+972');
+
   return (
     <View style={styles.screen}>
       <View style={styles.logoContiner}>
@@ -24,7 +26,7 @@ const RegistrationForm = (props) => {
           placeholderTextColor="#fff"
           textHolder="First Name"
           onSubmitInput={(value) => {
-            props.inputHandler(value, 'firstname');
+            props.inputHandler(value, 'firstName');
           }}
         />
       </View>
@@ -63,7 +65,7 @@ const RegistrationForm = (props) => {
       <View
         style={[
           styles.inputContiner,
-          {borderColor: error.phonNumber ? '#ff0000' : '#c0c0c0'},
+          {borderColor: error.phoneNumber ? '#ff0000' : '#c0c0c0'},
         ]}>
         <Feather name="smartphone" size={25} style={styles.icon} />
         <View style={styles.phoneContiner}>
@@ -94,7 +96,7 @@ const RegistrationForm = (props) => {
           />
         </View>
       </View>
-      <FormSubmitBtn onSubmit={onSubmitForm} />
+      <FormSubmitBtn onSubmit={props.onSubmitForm} />
       <View style={styles.termNuse}>
         <Text style={{color: '#a8a8a8'}}>
           By pressing Submit you have agreed to our

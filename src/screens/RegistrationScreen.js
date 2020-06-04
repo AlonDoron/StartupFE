@@ -15,7 +15,7 @@ const RegistrationScreen = ({navigation}) => {
     firstName: false,
     lastName: false,
     email: false,
-    phonNumer: false,
+    phoneNumer: false,
   });
   const regex = {
     email: /^([a-zA-Z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/,
@@ -25,24 +25,36 @@ const RegistrationScreen = ({navigation}) => {
   const inputCheckValidation = (value, type) => {
     switch (type) {
       case 'firstName':
-        value !== ''
-          ? setUser({...user, firstName: value})
-          : setError({...error, firstName: true});
+        if (value !== '') {
+          setUser({...user, firstName: value});
+          setError({...error, firstName: false});
+        } else {
+          setError({...error, firstName: true});
+        }
         break;
       case 'lastName':
-        value !== ''
-          ? setUser({...user, lastName: value})
-          : setError({...error, lastName: true});
+        if (value !== '') {
+          setUser({...user, lastName: value});
+          setError({...error, lastName: false});
+        } else {
+          setError({...error, lastName: true});
+        }
         break;
       case 'email':
-        value !== '' && value.match(regex.email)
-          ? setUser({...user, email: value})
-          : setError({...error, email: true});
+        if (value !== '' && value.match(regex.email)) {
+          setUser({...user, email: value});
+          setError({...error, email: false});
+        } else {
+          setError({...error, email: true});
+        }
         break;
       case 'phoneNumber':
-        value !== '' && value.match(regex.phoneNumber)
-          ? setUser({...user, phoneNumber: value})
-          : setError({...error, phoneNumber: true});
+        if (value !== '' && value.match(regex.phoneNumber)) {
+          setUser({...user, phoneNumber: value});
+          setError({...error, phoneNumber: false});
+        } else {
+          setError({...error, phoneNumber: true});
+        }
         break;
     }
   };

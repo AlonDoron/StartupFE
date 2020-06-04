@@ -3,7 +3,7 @@ import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 
 const FormSubmitBtn = ({style, onSubmit}) => {
   return (
-    <View>
+    <View style={{width: '80%', height: '10%'}}>
       <TouchableOpacity style={[style, styles.submitBtn]} onPress={onSubmit}>
         <Text style={styles.submitBtnText}>Submit</Text>
       </TouchableOpacity>
@@ -13,6 +13,7 @@ const FormSubmitBtn = ({style, onSubmit}) => {
 
 const styles = StyleSheet.create({
   submitBtn: {
+    width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#484848',
