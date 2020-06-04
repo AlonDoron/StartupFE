@@ -8,7 +8,7 @@ const RegistrationScreen = ({navigation}) => {
     firstName: '',
     lastName: '',
     email: '',
-    phonNumber: '',
+    phoneNumber: '',
   });
 
   const [error, setError] = useState({
@@ -19,7 +19,7 @@ const RegistrationScreen = ({navigation}) => {
   });
   const regex = {
     email: /^([a-zA-Z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/,
-    phoneNumber: /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
+    phoneNumber: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{5,7}$/im,
   };
 
   const inputCheckValidation = (value, type) => {
@@ -64,18 +64,18 @@ const RegistrationScreen = ({navigation}) => {
       user.firstName === '' ||
       user.lastName === '' ||
       user.email === '' ||
-      user.phonNumber === '' ||
+      user.phoneNumber === '' ||
       error.firstName ||
       error.lastName ||
       error.email ||
-      error.phonNumber
+      error.phoneNumber
     ) {
       Alert.alert('Oops', 'Its seems  there is problem', [
         {text: 'Ok', style: 'cancel'},
       ]);
     } else {
       navigation.navigate('PhoneNumberValidationTest', {
-        phoneNumber: `${countryDial_Code}${user.phonNumber}`,
+        phoneNumber: `${user.phoneNumber}`,
       });
     }
   };
