@@ -1,5 +1,7 @@
-import {default as LandPageScreen} from './LandPageScreen';
-import {default as LoginViaPhoneScreen} from './LoginViaPhoneScreen';
-import {default as PhoneNumberValidation} from './PhoneNumberValidation';
-import {default as PhoneNumberValidationTest} from './PhoneNumberValidationTest';
-import {default as RegistrationScreenz} from './RegistrationScreen';
+export {default as LandPageScreen} from './LandPageScreen';
+export {default as LoginViaPhoneScreen} from './LoginViaPhoneScreen';
+export {default as PhoneNumberValidation} from './PhoneNumberValidation';
+export {
+  default as PhoneNumberValidationTest,
+} from './PhoneNumberValidationTest';
+export {default as RegistrationScreenz} from './RegistrationScreen';
