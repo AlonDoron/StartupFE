@@ -2,17 +2,19 @@ import React from "react";
 import { View, Text } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-const Auth = () => {
+const Auth = (props) => {
   return (
     <View>
       <View>
-        <Text>Login</Text>
-        {/* <TouchableOpacity onPress={props.navigation.navigate("Login")} /> */}
+        <TouchableOpacity onPress={() => props.navigation.navigate("Login")}>
+          <Text>Login</Text>
+        </TouchableOpacity>
       </View>
 
       <View>
-        <Text>Signup</Text>
-        {/* <TouchableOpacity onPress={props.navigation.navigate("Signup")} /> */}
+        <TouchableOpacity onPress={() => props.navigation.navigate("Signup")}>
+          <Text>Signup</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
