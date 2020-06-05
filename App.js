@@ -7,7 +7,7 @@ import {
   RegistrationScreen,
   LoginViaPhoneScreen,
   PhoneNumberValidation,
-} from './src/screens/index';
+} from './src/screens';
 
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
