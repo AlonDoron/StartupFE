@@ -1,28 +1,34 @@
-import React from "react";
-import {
-  ActivityIndicator,
-  AsyncStorage,
-  StatusBar,
-  View,
-  Text,
-} from "react-native";
+import React, { useEffect } from "react";
+import { ActivityIndicator, AsyncStorage, StatusBar, View } from "react-native";
+import { DeviceConfig, ApiConfig } from "../../config";
 
-const AuthLoading = () => {
-  /*componentDidMount() {
-    this._bootstrapAsync();
-  }*/
+const AuthLoading = (props) => {
+  useEffect(() => {
+    bootstrapAsync().then((token) =>
+      fetch(`${ApiConfig.SERVER_URL}/Identity`, {
+        headers: ApiConfig.HEADERS,
+        body: token,
+      })
+        .then((response) => response.json())
 
-  // _bootstrapAsync = async () => {
-  //   const userToken = await AsyncStorage.getItem("StartupToken");
-  //   this.props.navigation.navigate(userToken ? "App" : "Auth");
-  // };
+        .then((result) => {
+          props.navigation.navigate(result ? "App" : "Auth");
+        })
+    );
+  }, []);
+
+  const bootstrapAsync = async () => {
+    const userToken = await AsyncStorage.getItem(
+      DeviceConfig.DEVICE_TOKEN_NAME
+    );
+
+    return userToken;
+  };
+
   return (
     <View>
-      <Text>Hi</Text>
-      <Text>Hi</Text>
-      <Text>Hi</Text>
-      <Text>Hi</Text>
-      <Text>Hi</Text>
+      <ActivityIndicator />
+      <StatusBar barStyle="default" />
     </View>
   );
 };
