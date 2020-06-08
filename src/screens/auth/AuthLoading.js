@@ -5,14 +5,33 @@ import { DeviceConfig, ApiConfig } from "../../config";
 const AuthLoading = (props) => {
   useEffect(() => {
     bootstrapAsync().then((token) =>
-      fetch(`${ApiConfig.SERVER_URL}/Identity`, {
-        headers: ApiConfig.HEADERS,
-        body: token,
-      })
+      /*console.log(
+          `${ApiConfig.SERVER_URL}:${ApiConfig.IDENTITY_PORT}/api/Identity?userId=${token}`
+        )
+        */
+      /*
+        console.log({
+          ...ApiConfig.HEADERS,
+          ApiKey: "Token 97a74c03004e7d6b0658dfdfde34fd6aa4b14ddb",
+        })
+*/
+      fetch(
+        `${ApiConfig.SERVER_URL}:${ApiConfig.IDENTITY_PORT}/api/Identity?userId=${token}`,
+        {
+          headers: {
+            ...ApiConfig.HEADERS,
+            ApiKey: "97a74c03004e7d6b0658dfdfde34fd6aa4b14ddb",
+          },
+        }
+      )
         .then((response) => response.json())
 
         .then((result) => {
           props.navigation.navigate(result ? "App" : "Auth");
+        })
+        .catch((error) => {
+          // console.log(error);
+          props.navigation.navigate("Auth");
         })
     );
   }, []);
