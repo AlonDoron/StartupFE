@@ -1,14 +1,17 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { TextInput, Text } from "react-native-paper";
+import { Text, TextInput } from "react-native-paper";
 
 const Input = (props) => {
   return (
     <View style={styles.textInput}>
       <TextInput
+        value={props.value}
         label={props.label}
         mode="outlined"
         onChange={props.onChange}
+        name={props.name}
+        required={props.required}
       />
       <Text>{props.errors}</Text>
     </View>
