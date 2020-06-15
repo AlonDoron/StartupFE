@@ -1,7 +1,7 @@
-const SERVER_URL = "https://18.184.165.20";
-const IDENTITY_PORT = "447";
-const REGISTRATION_PORT = "444";
-const LOGIN_PORT = "443";
+const SERVER_URL = "http://cherriesme.info";
+const IDENTITY_PORT = "83";
+const REGISTRATION_PORT = "81";
+const LOGIN_PORT = "80";
 
 const HEADERS = {
   "Content-Type": "application/json",
