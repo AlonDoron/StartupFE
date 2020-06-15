@@ -1,21 +1,11 @@
 import React, { useEffect } from "react";
 import { View, Text, AsyncStorage, Alert } from "react-native";
+import LoginForm from "../../forms/LoginForm";
 
-const Login = () => {
-  /*useEffect(() => {
-    writeTokenToDevice();
-  }, []);
-
-  const writeTokenToDevice = async () => {
-    await AsyncStorage.setItem(
-      "UserToken",
-      "248c63a0-82d2-4ae3-8dc8-8165350907c"
-    ).then(Alert.alert("Done"));
-  };*/
-
+const Login = (props) => {
   return (
     <View>
-      <Text>Login</Text>
+      <LoginForm submitForm={(vals) => console.log(vals)} />
     </View>
   );
 };
