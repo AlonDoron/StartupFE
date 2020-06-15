@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import { ActivityIndicator, AsyncStorage, StatusBar, View } from "react-native";
+import { AsyncStorage, StatusBar, View } from "react-native";
+import { ActivityIndicator } from "react-native-paper";
 import { DeviceConfig, ApiConfig } from "../../config";
 import HttpClient from "../../api/HttpClient";
 
@@ -29,7 +30,7 @@ const AuthLoading = (props) => {
 
   return (
     <View>
-      <ActivityIndicator />
+      <ActivityIndicator size="large" />
       <StatusBar barStyle="default" />
     </View>
   );
