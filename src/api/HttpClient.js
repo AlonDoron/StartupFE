@@ -1,6 +1,6 @@
 import { ApiConfig } from "../config";
 
-const request = async (url, params, method = "GET") => {
+const request = async (port, route, params, method = "GET") => {
   const options = {
     method,
     headers: {
@@ -10,13 +10,15 @@ const request = async (url, params, method = "GET") => {
 
   if (params) {
     if (method === "GET") {
-      url += "?" + objectToQueryString(params);
+      route += "?" + objectToQueryString(params);
     } else {
       options.body = JSON.stringify(params);
     }
   }
 
-  const response = await fetch(`${ApiConfig.SERVER_URL}/${url}`, options);
+  const targetUrl = `${ApiConfig.SERVER_URL}:${port}/${route}`;
+
+  const response = await fetch(targetUrl, options);
 
   if (response.status !== 200) {
     return generateErrorResponse(
@@ -42,20 +44,20 @@ const generateErrorResponse = (message) => {
   };
 };
 
-const get = (url, params) => {
-  return request(url, params);
+const get = (port, route, params) => {
+  return request(port, route, params);
 };
 
-const create = (url, params) => {
-  return request(url, params, "POST");
+const create = (port, route, params) => {
+  return request(port, route, params, "POST");
 };
 
-const update = (url, params) => {
-  return request(url, params, "PUT");
+const update = (port, route, params) => {
+  return request(port, route, params, "PUT");
 };
 
-const remove = (url, params) => {
-  return request(url, params, "DELETE");
+const remove = (port, route, params) => {
+  return request(port, route, params, "DELETE");
 };
 
 export default {
