@@ -6,11 +6,12 @@ const Input = (props) => {
   return (
     <View style={styles.textInput}>
       <TextInput
+        name={props.name}
+        keyboardType={props.keyboardType}
         value={props.value}
         label={props.label}
         mode="outlined"
-        onChange={props.onChange}
-        name={props.name}
+        onChange={(newVal) => props.onChange(props.name, newVal)}
         required={props.required}
       />
       <Text>{props.errors}</Text>
