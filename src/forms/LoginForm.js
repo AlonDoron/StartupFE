@@ -1,5 +1,5 @@
 import React from "react";
-import { View, TextInput } from "react-native";
+import { View } from "react-native";
 import { Button } from "react-native-paper";
 import { useForm } from "../hooks";
 import { Input } from "../components/common";
@@ -14,12 +14,13 @@ const LoginForm = (props) => {
   return (
     <View>
       <Input
-        value={values.phoneNumber || ""}
-        onChange={handleChange}
         name="phoneNumber"
+        value={values.phoneNumber || ""}
+        onChange={(name, value) => handleChange(name, value)}
         label="Phone Number"
-        required
+        keyboardType="number-pad"
       />
+
       <Button mode="outlined" onPress={handleSubmit}>
         Login
       </Button>
