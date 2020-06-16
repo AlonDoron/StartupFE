@@ -8,9 +8,8 @@ let useForm = (submitCallback) => {
     submitCallback();
   };
 
-  const handleChange = (e) => {
-    e.persist();
-    setState((state) => ({ ...state, [e.target.name]: e.target.value }));
+  const handleChange = (name, { nativeEvent }) => {
+    setState((state) => ({ ...state, [name]: nativeEvent.text }));
   };
 
   return [state, handleChange, handleSubmit];
