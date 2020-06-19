@@ -4,7 +4,7 @@ import { Button } from "react-native-paper";
 import { useForm } from "../hooks";
 import { Input } from "../components/common";
 
-const LoginForm = (props) => {
+const VerifyLoginForm = (props) => {
   const handleFormSubmit = () => {
     props.submitForm(values);
   };
@@ -14,23 +14,18 @@ const LoginForm = (props) => {
   return (
     <View>
       <Input
-        name="phoneNumber"
-        value={values.phoneNumber || ""}
+        name="VerificationCode"
+        value={values.VerificationCode || ""}
         onChange={(name, value) => handleChange(name, value)}
-        label="Phone Number"
+        label="Verification Code"
         keyboardType="number-pad"
       />
 
-      <Button
-        mode="outlined"
-        onPress={handleSubmit}
-        loading={props.submitting}
-        disabled={props.submitting}
-      >
+      <Button mode="outlined" onPress={handleSubmit}>
         Login
       </Button>
     </View>
   );
 };
 
-export default LoginForm;
+export default VerifyLoginForm;

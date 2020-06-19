@@ -1,4 +1,4 @@
-const DEVICE_TOKEN_NAME = "UserToken";
+const DEVICE_TOKEN_NAME = "StartupToken";
 
 let deviceConfig = {
   DEVICE_TOKEN_NAME,

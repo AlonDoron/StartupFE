@@ -1,20 +1,28 @@
 import React from "react";
-import { View, Text } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { View } from "react-native";
+import { Button } from "react-native-paper";
 
 const Auth = (props) => {
   return (
     <View>
       <View>
-        <TouchableOpacity onPress={() => props.navigation.navigate("Login")}>
-          <Text>Login</Text>
-        </TouchableOpacity>
+        <Button
+          style={{ margin: "5%" }}
+          mode="contained"
+          onPress={() => props.navigation.navigate("Login")}
+        >
+          Login
+        </Button>
       </View>
 
       <View>
-        <TouchableOpacity onPress={() => props.navigation.navigate("Signup")}>
-          <Text>Signup</Text>
-        </TouchableOpacity>
+        <Button
+          style={{ margin: "5%" }}
+          mode="contained"
+          onPress={() => props.navigation.navigate("Signup")}
+        >
+          Signup
+        </Button>
       </View>
     </View>
   );
