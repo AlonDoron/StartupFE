@@ -1,22 +1,45 @@
-import React, { useEffect } from "react";
-import { View, Text, AsyncStorage, Alert } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View } from "react-native";
 import HttpClient from "../../api/HttpClient";
 import apiConfig from "../../config/apiConfig";
+import VerifyLoginForm from "../../forms/VerifyLoginForm";
 
 const VerifyLogin = (props) => {
+  const [userGUID, setUserGuid] = useState({});
+
+  useEffect(() => {
+    setUserGuid({
+      VerificationRequestKey: "51fa4392-f349-43b6-b029-88ab400f6792",
+    });
+  }, []);
+  // useEffect(() => {
+  //   HttpClient.create(
+  //     apiConfig.LOGIN_PORT,
+  //     "api/Login/CreateVerficationRequest",
+  //     props.navigation.state.params
+  //   )
+  //     .then((result) => {
+  //       setUserGuid({ VerificationRequestKey: result });
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
+
   const handleSubmitForm = (vals) => {
-    HttpClient.get(
+    let mergedState = { ...userGUID, ...vals };
+
+    HttpClient.create(
       apiConfig.LOGIN_PORT,
-      "api/Login/checkIfUserExists",
-      vals
+      "api/Login/VerifyCode",
+      mergedState
     ).then((result) => {
-      props.navigation.navigate(result ? "VerifyLogin" : "Signup");
+      console.log(result);
+      props.navigation.navigate(result ? "App" : "Login");
     });
   };
 
   return (
     <View>
-      <Text>VERIFY</Text>
+      <VerifyLoginForm submitForm={handleSubmitForm} />
     </View>
   );
 };
