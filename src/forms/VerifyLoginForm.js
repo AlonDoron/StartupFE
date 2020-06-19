@@ -14,10 +14,10 @@ const VerifyLoginForm = (props) => {
   return (
     <View>
       <Input
-        name="phoneNumber"
-        value={values.phoneNumber || ""}
+        name="VerificationCode"
+        value={values.VerificationCode || ""}
         onChange={(name, value) => handleChange(name, value)}
-        label="Phone Number"
+        label="Verification Code"
         keyboardType="number-pad"
       />
 
