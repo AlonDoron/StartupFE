@@ -8,14 +8,6 @@ import TokensHandler from "../../api/TokensHandler";
 const VerifyLogin = (props) => {
   const [userGUID, setUserGuid] = useState({});
 
-  // TEST:
-  // useEffect(() => {
-  //   setUserGuid({
-  //     VerificationRequestKey: "51fa4392-f349-43b6-b029-88ab400f6792",
-  //   });
-  // }, []);
-  // WE COMMENTED THAT SHIT BECAUSE IT COSTS MONEY FOR EACH SMS WE GET.
-  // SO WE USE HARDCODED VALID DATA.
   useEffect(() => {
     HttpClient.create(
       apiConfig.LOGIN_PORT,
