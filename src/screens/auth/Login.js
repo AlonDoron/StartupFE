@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { View, Text, AsyncStorage, Alert } from "react-native";
+import React from "react";
+import { View } from "react-native";
 import LoginForm from "../../forms/LoginForm";
 import HttpClient from "../../api/HttpClient";
 import apiConfig from "../../config/apiConfig";
@@ -11,7 +11,7 @@ const Login = (props) => {
       "api/Login/checkIfUserExists",
       vals
     ).then((result) => {
-      props.navigation.navigate(result ? "VerifyLogin" : "Signup");
+      props.navigation.navigate(result ? "VerifyLogin" : "Signup", { ...vals });
     });
   };
 
