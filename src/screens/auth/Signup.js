@@ -16,27 +16,10 @@ const Signup = (props) => {
       { phoneNumber: vals.phoneNumber }
     )
       .then((result) => {
-        if (!result) {
-          console.log("not exists");
-          HttpClient.create(
-            apiConfig.REGISTRATION_PORT,
-            "api/Registration/CreateVerficationRequest",
-            {
-              FirstName: vals.firstName,
-              LastName: vals.lastName,
-              Email: vals.email,
-              PhoneNumber: vals.phoneNumber,
-            }
-          )
-            .then((verificationKey) => {
-              setSubmitting(false);
-              props.navigation.navigate("VerifySignup", { verificationKey });
-            })
-            .catch((e) => console.log(e));
-        } else {
-          console.log("Exists");
-          props.navigation.navigate("Auth");
-        }
+        setSubmitting(false);
+        props.navigation.navigate(result ? "VerifySignup" : "Auth", {
+          ...vals,
+        });
       })
       .catch((e) => console.log(e));
   };
