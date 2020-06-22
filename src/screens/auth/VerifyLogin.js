@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 import HttpClient from "../../api/HttpClient";
 import apiConfig from "../../config/apiConfig";
-import VerifyLoginForm from "../../forms/VerifyLoginForm";
+import VerifyAuthForm from "../../forms/VerifyAuthForm";
 import TokensHandler from "../../api/TokensHandler";
 
 const VerifyLogin = (props) => {
@@ -39,7 +39,7 @@ const VerifyLogin = (props) => {
 
   return (
     <View>
-      <VerifyLoginForm submitForm={handleSubmitForm} />
+      <VerifyAuthForm pageName="Login" submitForm={handleSubmitForm} />
     </View>
   );
 };

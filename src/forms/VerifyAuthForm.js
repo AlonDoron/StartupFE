@@ -4,7 +4,7 @@ import { Button } from "react-native-paper";
 import { useForm } from "../hooks";
 import { Input } from "../components/common";
 
-const VerifySignupForm = (props) => {
+const VerifyAuthForm = (props) => {
   const handleFormSubmit = () => {
     props.submitForm(values);
   };
@@ -22,10 +22,10 @@ const VerifySignupForm = (props) => {
       />
 
       <Button mode="outlined" onPress={handleSubmit}>
-        Login
+        {props.pageName}
       </Button>
     </View>
   );
 };
 
-export default VerifySignupForm;
+export default VerifyAuthForm;
