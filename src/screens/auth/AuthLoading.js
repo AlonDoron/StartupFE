@@ -25,7 +25,7 @@ const AuthLoading = (props) => {
   };
 
   return (
-    <View>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <ActivityIndicator size="large" />
       <StatusBar barStyle="default" />
     </View>

@@ -1,5 +1,11 @@
 import { createStackNavigator } from "react-navigation-stack";
-import { Auth, Signup, Login, VerifyLogin } from "../../screens/auth";
+import {
+  Auth,
+  Signup,
+  Login,
+  VerifyLogin,
+  VerifySignup,
+} from "../../screens/auth";
 
 const AuthStack = createStackNavigator(
   {
@@ -14,6 +20,9 @@ const AuthStack = createStackNavigator(
     },
     VerifyLogin: {
       screen: VerifyLogin,
+    },
+    VerifySignup: {
+      screen: VerifySignup,
     },
   },
   { initialRouteName: "Auth" }

@@ -1,10 +1,36 @@
-import React from "react";
-import { View, Text } from "react-native";
+import React, { useState } from "react";
+import { View } from "react-native";
+import SignupForm from "../../forms/SignupForm";
+import HttpClient from "../../api/HttpClient";
+import apiConfig from "../../config/apiConfig";
 
-const Signup = () => {
+const Signup = (props) => {
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmitForm = (vals) => {
+    setSubmitting(true);
+
+    HttpClient.get(
+      apiConfig.REGISTRATION_PORT,
+      "api/Registration/checkIfUserExists",
+      { phoneNumber: vals.phoneNumber }
+    )
+      .then((result) => {
+        setSubmitting(false);
+        if (result) {
+          props.navigation.navigate("Auth");
+        } else {
+          props.navigation.navigate("VerifySignup", {
+            ...vals,
+          });
+        }
+      })
+      .catch((e) => console.log(e));
+  };
+
   return (
     <View>
-      <Text>Signup</Text>
+      <SignupForm submitForm={handleSubmitForm} submitting={submitting} />
     </View>
   );
 };
