@@ -18,7 +18,7 @@ const Login = (props) => {
       setSubmitting(false);
       props.navigation.navigate(result ? "VerifyAuth" : "Signup", {
         vals: vals,
-        sentFrom: "login",
+        sentFrom: "Login",
       });
     });
   };

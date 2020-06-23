@@ -22,7 +22,7 @@ const Signup = (props) => {
         } else {
           props.navigation.navigate("VerifyAuth", {
             vals: vals,
-            sentFrom: "Signup",
+            sentFrom: "Registration",
           });
         }
       })

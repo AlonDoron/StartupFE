@@ -10,18 +10,16 @@ const VerifyAuth = (props) => {
   const sentFrom = props.navigation.state.params.sentFrom;
   const values = props.navigation.state.params.vals;
 
+  const getPort = () => {
+    if (sentFrom === "Login") return apiConfig.LOGIN_PORT;
+    if (sentFrom === "Registration") return apiConfig.REGISTRATION_PORT;
+  };
+
   useEffect(() => {
-    (sentFrom === "login"
-      ? HttpClient.create(
-          apiConfig.LOGIN_PORT,
-          "api/Login/CreateVerficationRequest",
-          values
-        )
-      : HttpClient.create(
-          apiConfig.REGISTRATION_PORT,
-          "api/Registration/CreateVerficationRequest",
-          values
-        )
+    HttpClient.create(
+      getPort(),
+      `api/${sentFrom}/CreateVerficationRequest`,
+      values
     )
       .then((result) => {
         setUserGuid({ VerificationRequestKey: result });
@@ -32,17 +30,10 @@ const VerifyAuth = (props) => {
   const handleSubmitForm = (vals) => {
     let mergedState = { ...userGUID, ...vals };
 
-    (sentFrom === "login"
-      ? HttpClient.create(
-          apiConfig.LOGIN_PORT,
-          "api/Login/VerifyCode",
-          mergedState
-        )
-      : HttpClient.create(
-          apiConfig.REGISTRATION_PORT,
-          "api/Registration/VerifyCode",
-          mergedState
-        )
+    HttpClient.create(
+      getPort(),
+      `api/${sentFrom}/VerifyCode`,
+      mergedState
     ).then((result) => {
       TokensHandler.writeTokenToDevice(result)
         .then(() => {
