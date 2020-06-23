@@ -48,7 +48,7 @@ const VerifyAuth = (props) => {
         .then(() => {
           result ? props.navigation.navigate("App") : props.navigation.goBack();
         })
-        //Check the above line
+
         .catch((err) => {
           console.log(err);
           props.navigation.navigate("Auth");
