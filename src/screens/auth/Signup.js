@@ -18,10 +18,11 @@ const Signup = (props) => {
       .then((result) => {
         setSubmitting(false);
         if (result) {
-          props.navigation.navigate("Auth");
+          props.navigation.navigate("Login");
         } else {
-          props.navigation.navigate("VerifySignup", {
-            ...vals,
+          props.navigation.navigate("VerifyAuth", {
+            vals: vals,
+            sentFrom: "Registration",
           });
         }
       })

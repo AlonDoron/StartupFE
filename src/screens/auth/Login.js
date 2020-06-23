@@ -16,7 +16,10 @@ const Login = (props) => {
       vals
     ).then((result) => {
       setSubmitting(false);
-      props.navigation.navigate(result ? "VerifyLogin" : "Signup", { ...vals });
+      props.navigation.navigate(result ? "VerifyAuth" : "Signup", {
+        vals: vals,
+        sentFrom: "Login",
+      });
     });
   };
 

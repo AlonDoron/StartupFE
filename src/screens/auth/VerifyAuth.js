@@ -2,17 +2,24 @@ import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 import HttpClient from "../../api/HttpClient";
 import apiConfig from "../../config/apiConfig";
-import VerifyLoginForm from "../../forms/VerifyLoginForm";
+import VerifyAuthForm from "../../forms/VerifyAuthForm";
 import TokensHandler from "../../api/TokensHandler";
 
-const VerifyLogin = (props) => {
+const VerifyAuth = (props) => {
   const [userGUID, setUserGuid] = useState({});
+  const sentFrom = props.navigation.state.params.sentFrom;
+  const values = props.navigation.state.params.vals;
+
+  const getPort = () => {
+    if (sentFrom === "Login") return apiConfig.LOGIN_PORT;
+    if (sentFrom === "Registration") return apiConfig.REGISTRATION_PORT;
+  };
 
   useEffect(() => {
     HttpClient.create(
-      apiConfig.LOGIN_PORT,
-      "api/Login/CreateVerficationRequest",
-      props.navigation.state.params
+      getPort(),
+      `api/${sentFrom}/CreateVerficationRequest`,
+      values
     )
       .then((result) => {
         setUserGuid({ VerificationRequestKey: result });
@@ -24,12 +31,15 @@ const VerifyLogin = (props) => {
     let mergedState = { ...userGUID, ...vals };
 
     HttpClient.create(
-      apiConfig.LOGIN_PORT,
-      "api/Login/VerifyCode",
+      getPort(),
+      `api/${sentFrom}/VerifyCode`,
       mergedState
     ).then((result) => {
       TokensHandler.writeTokenToDevice(result)
-        .then(() => props.navigation.navigate(result ? "App" : "Login"))
+        .then(() => {
+          result ? props.navigation.navigate("App") : props.navigation.goBack();
+        })
+
         .catch((err) => {
           console.log(err);
           props.navigation.navigate("Auth");
@@ -39,9 +49,9 @@ const VerifyLogin = (props) => {
 
   return (
     <View>
-      <VerifyLoginForm submitForm={handleSubmitForm} />
+      <VerifyAuthForm pageName={sentFrom} submitForm={handleSubmitForm} />
     </View>
   );
 };
 
-export default VerifyLogin;
+export default VerifyAuth;

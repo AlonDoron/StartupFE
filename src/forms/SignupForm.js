@@ -48,7 +48,7 @@ const SignupForm = (props) => {
         loading={props.submitting}
         disabled={props.submitting}
       >
-        Signup
+        Registration
       </Button>
     </View>
   );
