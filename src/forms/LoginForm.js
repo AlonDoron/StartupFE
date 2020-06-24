@@ -1,15 +1,19 @@
 import React from "react";
 import { View } from "react-native";
-import { Button } from "react-native-paper";
+import { Button, Text } from "react-native-paper";
 import { useForm } from "../hooks";
 import { Input } from "../components/common";
+import validateForm from "../forms/validateForm";
 
 const LoginForm = (props) => {
   const handleFormSubmit = () => {
     props.submitForm(values);
   };
 
-  const [values, handleChange, handleSubmit] = useForm(handleFormSubmit);
+  const [values, errors, handleChange, handleSubmit] = useForm(
+    handleFormSubmit,
+    validateForm
+  );
 
   return (
     <View>
@@ -20,7 +24,7 @@ const LoginForm = (props) => {
         label="Phone Number"
         keyboardType="number-pad"
       />
-
+      {errors.phoneNumber ? <Text>{errors.phoneNumber}</Text> : null}
       <Button
         mode="outlined"
         onPress={handleSubmit}

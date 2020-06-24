@@ -1,15 +1,19 @@
 import React from "react";
 import { View } from "react-native";
-import { Button } from "react-native-paper";
+import { Button, Text } from "react-native-paper";
 import { useForm } from "../hooks";
 import { Input } from "../components/common";
+import validateForm from "../forms/validateForm";
 
 const SignupForm = (props) => {
   const handleFormSubmit = () => {
     props.submitForm(values);
   };
 
-  const [values, handleChange, handleSubmit] = useForm(handleFormSubmit);
+  const [values, errors, handleChange, handleSubmit] = useForm(
+    handleFormSubmit,
+    validateForm
+  );
 
   return (
     <View>
@@ -20,6 +24,7 @@ const SignupForm = (props) => {
         label="First Name"
         keyboardType="default"
       />
+      {errors.firstName ? <Text>{errors.firstName}</Text> : null}
       <Input
         name="lastName"
         value={values.lastName || ""}
@@ -27,6 +32,7 @@ const SignupForm = (props) => {
         label="Last Name"
         keyboardType="default"
       />
+      {errors.lastName ? <Text>{errors.lastName}</Text> : null}
       <Input
         name="email"
         value={values.email || ""}
@@ -34,6 +40,7 @@ const SignupForm = (props) => {
         label="Email"
         keyboardType="email-address"
       />
+      {errors.email ? <Text>{errors.email}</Text> : null}
       <Input
         name="phoneNumber"
         value={values.phoneNumber || ""}
@@ -41,7 +48,7 @@ const SignupForm = (props) => {
         label="Phone Number"
         keyboardType="number-pad"
       />
-
+      {errors.phoneNumber ? <Text>{errors.phoneNumber}</Text> : null}
       <Button
         mode="outlined"
         onPress={handleSubmit}
