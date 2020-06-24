@@ -13,8 +13,9 @@ const Input = (props) => {
         mode="outlined"
         onChange={(newVal) => props.onChange(props.name, newVal)}
         required={props.required}
+        error={props.error ? true : false}
       />
-      {props.error ? <Text>{props.error}</Text> : null}
+      {props.error ? <Text style={styles.error}>{props.error}</Text> : null}
     </View>
   );
 };
@@ -24,6 +25,13 @@ const styles = StyleSheet.create({
     width: "80%",
     alignSelf: "center",
     paddingTop: "5%",
+  },
+
+  error: {
+    alignSelf: "center",
+    padding: "2.5%",
+    color: "red",
+    fontSize: 16,
   },
 });
 
