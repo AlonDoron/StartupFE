@@ -5,10 +5,9 @@ let useForm = (submitCallback, validateForm) => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
-    console.log("useForm handelSubmit state", state);
+  const handleSubmit = (e, from) => {
     e.preventDefault();
-    setErrors(validateForm(state));
+    setErrors(validateForm(state, from));
     setIsSubmitting(true);
   };
 
@@ -17,8 +16,6 @@ let useForm = (submitCallback, validateForm) => {
   };
 
   useEffect(() => {
-    console.log("errors length: ", Object.keys(errors).length);
-
     if (Object.keys(errors).length === 0 && isSubmitting) {
       submitCallback();
     }

@@ -23,9 +23,10 @@ const VerifyAuthForm = (props) => {
         onChange={(name, value) => handleChange(name, value)}
         label="Verification Code"
         keyboardType="number-pad"
+        error={errors.VerificationCode ? errors.VerificationCode : null}
       />
-      {errors.VerificationCode ? <Text>{errors.VerificationCode}</Text> : null}
-      <Button mode="outlined" onPress={handleSubmit}>
+
+      <Button mode="outlined" onPress={(e) => handleSubmit(e, "verifyAuth")}>
         {props.pageName}
       </Button>
     </View>

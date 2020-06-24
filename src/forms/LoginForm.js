@@ -23,11 +23,12 @@ const LoginForm = (props) => {
         onChange={(name, value) => handleChange(name, value)}
         label="Phone Number"
         keyboardType="number-pad"
+        error={errors.phoneNumber ? errors.phoneNumber : null}
       />
-      {errors.phoneNumber ? <Text>{errors.phoneNumber}</Text> : null}
+
       <Button
         mode="outlined"
-        onPress={handleSubmit}
+        onPress={(e) => handleSubmit(e, "login")}
         loading={props.submitting}
         disabled={props.submitting}
       >

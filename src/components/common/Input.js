@@ -14,7 +14,7 @@ const Input = (props) => {
         onChange={(newVal) => props.onChange(props.name, newVal)}
         required={props.required}
       />
-      <Text>{props.errors}</Text>
+      {props.error ? <Text>{props.error}</Text> : null}
     </View>
   );
 };

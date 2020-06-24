@@ -23,35 +23,39 @@ const SignupForm = (props) => {
         onChange={(name, value) => handleChange(name, value)}
         label="First Name"
         keyboardType="default"
+        error={errors.firstName ? errors.firstName : null}
       />
-      {errors.firstName ? <Text>{errors.firstName}</Text> : null}
+
       <Input
         name="lastName"
         value={values.lastName || ""}
         onChange={(name, value) => handleChange(name, value)}
         label="Last Name"
         keyboardType="default"
+        error={errors.lastName ? errors.lastName : null}
       />
-      {errors.lastName ? <Text>{errors.lastName}</Text> : null}
+
       <Input
         name="email"
         value={values.email || ""}
         onChange={(name, value) => handleChange(name, value)}
         label="Email"
         keyboardType="email-address"
+        error={errors.email ? errors.email : null}
       />
-      {errors.email ? <Text>{errors.email}</Text> : null}
+
       <Input
         name="phoneNumber"
         value={values.phoneNumber || ""}
         onChange={(name, value) => handleChange(name, value)}
         label="Phone Number"
         keyboardType="number-pad"
+        error={errors.phoneNumber ? errors.phoneNumber : null}
       />
-      {errors.phoneNumber ? <Text>{errors.phoneNumber}</Text> : null}
+
       <Button
         mode="outlined"
-        onPress={handleSubmit}
+        onPress={(e) => handleSubmit(e, "registraion")}
         loading={props.submitting}
         disabled={props.submitting}
       >
