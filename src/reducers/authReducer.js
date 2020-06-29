@@ -10,7 +10,7 @@ import {
   REGISTRAION_SUCCESS,
   REGISTRAION_FAIL,
   AUTH_USER,
-} from "../constant/authTypes";
+} from "../actions/authTypes";
 
 const initailState = {
   deviceToken: "",

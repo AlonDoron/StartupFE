@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { StatusBar, View } from "react-native";
 import { ActivityIndicator } from "react-native-paper";
 
-import { loadUser } from "../../actions/auth.action";
+import { loadUser } from "../../actions/authAction";
 
 const AuthLoading = (props) => {
   useEffect(() => {

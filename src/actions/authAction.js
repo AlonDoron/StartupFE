@@ -11,7 +11,7 @@ import {
   REGISTRAION_SUCCESS,
   REGISTRAION_FAIL,
   AUTH_USER,
-} from "../constant/authTypes";
+} from "./authTypes";
 
 import { ApiConfig } from "../config";
 import HttpClient from "../api/HttpClient";

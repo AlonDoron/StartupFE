@@ -1,6 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { authReducer } from "../reducers";
-import { loadUserMiddleware } from "../actions/auth.action";
+import { loadUserMiddleware } from "../actions/authAction";
 
 const rootReducer = combineReducers({ authReducer });
 const middleware = [loadUserMiddleware];
