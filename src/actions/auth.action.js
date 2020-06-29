@@ -13,18 +13,52 @@ import {
   AUTH_USER,
 } from "../constant/authTypes";
 
-export const loadUser = (token) => {
+import { ApiConfig } from "../config";
+import HttpClient from "../api/HttpClient";
+import TokensHandler from "../api/TokensHandler";
+
+export const loadUser = () => {
   return {
     type: USER_LOADING,
-    payload: token,
   };
 };
-export const loadedUser = (bol) => {
-  return {
-    type: USER_LOADED,
-    payload: bol,
+
+export const loadUserMiddleware = ({ dispatch }) => (next) => (action) => {
+  console.log("loadMiddleware");
+  const fetchToken = async () => {
+    return TokensHandler.getTokenFromDevice();
   };
+
+  switch (action.type) {
+    case USER_LOADING:
+      console.log("USER_LOADING");
+      fetchToken().then((token) => {
+        let params = {
+          userId: token,
+        };
+        dispatch({ type: USER_LOADING, payload: token });
+        HttpClient.get(ApiConfig.IDENTITY_PORT, "api/identity", params)
+          .then((result) => {
+            if (result) {
+              dispatch({ type: USER_LOADED, payload: token });
+              props.navigation.navigate("App");
+            } else {
+              props.navigation.navigate("Auth");
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+            props.navigation.navigate("Auth");
+          });
+      });
+      dispatch({ loadUser });
+      break;
+    default:
+      return;
+  }
+  return next(action);
 };
+
 export const loginUser = (userObject) => {
   return {
     type: LOGIN_SUCCESS,

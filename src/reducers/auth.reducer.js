@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 import {
   USER_LOADING,
   USER_LOADED,
@@ -33,13 +31,13 @@ const authReducer = (state = initailState, action) => {
       return {
         ...state,
         isLoading: true,
-        deviceToken: action.payload,
       };
     case USER_LOADED:
       return {
         ...state,
         isLooged: true,
         isLoading: false,
+        deviceToken: action.payload,
       };
     case LOGIN_SUCCESS:
     case REGISTRAION_SUCCESS:
