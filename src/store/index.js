@@ -1,10 +1,8 @@
-import { createStore, combineReducers, applyMiddleware } from "redux";
+import { createStore, combineReducers } from "redux";
 import { authReducer } from "../reducers";
-import { loadUserMiddleware } from "../actions/authAction";
 
 const rootReducer = combineReducers({ authReducer });
-const middleware = [loadUserMiddleware];
-const configureStore = () =>
-  createStore(rootReducer, applyMiddleware(...middleware));
+
+const configureStore = () => createStore(rootReducer);
 
 export default configureStore;
