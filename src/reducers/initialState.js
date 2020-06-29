@@ -1,6 +1,8 @@
 export const initailState = {
-  deviceToken: null,
-  isLogin: null,
-  isLoading: false,
-  user: null,
+  auth: {
+    deviceToken: null,
+    isLogin: false,
+    isLoading: false,
+    user: {},
+  },
 };

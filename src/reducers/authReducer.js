@@ -9,7 +9,7 @@ import {
 } from "../actions/authTypes";
 import { initailState } from "./initialState";
 
-const authReducer = (state = initailState, action) => {
+const authReducer = (state = initailState.auth, action) => {
   switch (action.type) {
     case USER_LOADING:
       return {
