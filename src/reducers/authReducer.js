@@ -27,7 +27,7 @@ const authReducer = (state = initailState.auth, action) => {
     case REGISTRAION_SUCCESS:
       return {
         ...state,
-        isLooged: true,
+        isLogin: true,
         isLoading: false,
         user: action.payload,
       };
@@ -38,9 +38,9 @@ const authReducer = (state = initailState.auth, action) => {
       return {
         ...state,
         deviceToken: null,
-        isLogin: null,
+        isLogin: false,
         isLoading: false,
-        user: null,
+        user: {},
       };
 
     default:
