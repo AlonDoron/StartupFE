@@ -1,8 +1,7 @@
 export const USER_LOADING = "USER_LOADING";
 export const USER_LOADED = "USER_LOADED";
 export const AUTH_ERROR = "AUTH_ERROR";
-export const IS_SUBMITTINGN = "IS_SUBMITTINGN";
-export const INPUT_CHANGED = "INPUT_CHANGED";
+export const IS_SUBMITTING = "IS_SUBMITTING";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
 export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
