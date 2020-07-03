@@ -7,9 +7,9 @@ import {
   REGISTRAION_FAIL,
   LOGOUT_SUCCESS,
 } from "../actions/authTypes";
-import { initailState } from "./initialState";
+import { initialState } from "./initialState";
 
-const authReducer = (state = initailState.auth, action) => {
+const authReducer = (state = initialState.auth, action) => {
   switch (action.type) {
     case USER_LOADING:
       return {

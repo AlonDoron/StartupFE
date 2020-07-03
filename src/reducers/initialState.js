@@ -1,4 +1,4 @@
-export const initailState = {
+export const initialState = {
   auth: {
     deviceToken: null,
     isLogin: false,
