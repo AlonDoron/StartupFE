@@ -1,6 +1,6 @@
 import {
   USER_LOADING,
-  USER_LOADED,
+  IS_USER_EXISTS,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT_SUCCESS,
@@ -8,15 +8,29 @@ import {
   REGISTRAION_FAIL,
 } from "./authTypes";
 
+import { ApiConfig } from "../config";
+import HttpClient from "../api/HttpClient";
+
 export const loadUser = () => {
   return {
     type: USER_LOADING,
   };
 };
-export const userLoaded = (token) => {
-  return {
-    type: USER_LOADED,
-    payload: token,
+
+export const isTokenExists = (token, dispatch) => {
+  return () => {
+    let params = {
+      userId: token,
+    };
+
+    return HttpClient.get(ApiConfig.IDENTITY_PORT, "api/identity", params).then(
+      (response) => {
+        dispatch({
+          type: IS_USER_EXISTS,
+          payload: response,
+        });
+      }
+    );
   };
 };
 

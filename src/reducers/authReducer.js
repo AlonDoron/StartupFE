@@ -1,6 +1,6 @@
 import {
   USER_LOADING,
-  USER_LOADED,
+  IS_USER_EXISTS,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   REGISTRAION_SUCCESS,
@@ -9,21 +9,22 @@ import {
 } from "../actions/authTypes";
 import { initialState } from "./initialState";
 
-const authReducer = (state = initialState.auth, action) => {
+const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case USER_LOADING:
       return {
         ...state,
         isLoading: true,
       };
-    case USER_LOADED:
+
+    case IS_USER_EXISTS:
+      console.log("Reducer - Payload: " + action.payload);
+
       return {
         ...state,
-        isLogin: true,
-        isLoading: false,
-        deviceToken: action.payload,
+        isUserExists: action.payload,
       };
-    case LOGIN_SUCCESS:
+
     case REGISTRAION_SUCCESS:
       return {
         ...state,
