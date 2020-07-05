@@ -17,20 +17,17 @@ export const loadUser = () => {
   };
 };
 
-export const isTokenExists = (token, dispatch) => {
-  return () => {
-    let params = {
+export const isTokenExists = (token) => {
+  return (dispatch) => {
+    return HttpClient.get(ApiConfig.IDENTITY_PORT, "api/identity", {
       userId: token,
-    };
-
-    return HttpClient.get(ApiConfig.IDENTITY_PORT, "api/identity", params).then(
-      (response) => {
-        dispatch({
-          type: IS_USER_EXISTS,
-          payload: response,
-        });
-      }
-    );
+    }).then((response) => {
+      console.log(response);
+      dispatch({
+        type: IS_USER_EXISTS,
+        payload: response,
+      });
+    });
   };
 };
 

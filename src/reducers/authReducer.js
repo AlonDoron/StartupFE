@@ -18,8 +18,6 @@ const authReducer = (state = initialState, action) => {
       };
 
     case IS_USER_EXISTS:
-      console.log("Reducer - Payload: " + action.payload);
-
       return {
         ...state,
         isUserExists: action.payload,

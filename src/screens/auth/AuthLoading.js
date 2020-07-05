@@ -1,15 +1,32 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
 import { StatusBar, View } from "react-native";
 import { ActivityIndicator } from "react-native-paper";
-
-import { loadUser } from "../../actions/authAction";
+import TokensHandler from "../../api/TokensHandler";
+import { useDispatch, useSelector } from "react-redux";
+import { isTokenExists } from "../../actions/authAction";
 
 const AuthLoading = (props) => {
+  console.log("AuthLoading running");
+  const isUser = useSelector((state) => state.authReducer.isUserExists);
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    props.loadUser();
+    getTokenAndCheckIfUserExists().then(() =>
+      props.navigation.navigate(isUser ? "App" : "Auth")
+    );
+
+    // TokensHandler.getTokenFromDevice().then((token) => {
+    //   console.log(token);
+    //   dispatch(isTokenExists(token)).then(() =>
+    //     props.navigation.navigate(isUser ? "App" : "Auth")
+    //   );
+    // });
   }, []);
 
+  const getTokenAndCheckIfUserExists = async () => {
+    const token = await TokensHandler.getTokenFromDevice();
+    dispatch(isTokenExists(token));
+  };
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <ActivityIndicator size="large" />
@@ -18,10 +35,4 @@ const AuthLoading = (props) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    loadUser: () => dispatch(loadUser),
-  };
-};
-
-export default connect(null, mapDispatchToProps)(AuthLoading);
+export default AuthLoading;
