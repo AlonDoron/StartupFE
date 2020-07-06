@@ -1,10 +1,2 @@
-export const USER_LOADING = "USER_LOADING";
 export const IS_USER_EXISTS = "IS_USER_EXISTS";
-export const AUTH_ERROR = "AUTH_ERROR";
-export const IS_SUBMITTING = "IS_SUBMITTING";
-export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
-export const LOGIN_FAIL = "LOGIN_FAIL";
-export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
-export const REGISTRAION_SUCCESS = "REGISTRAION_SUCCESS";
-export const REGISTRAION_FAIL = "REGISTRAION_FAIL";
-export const AUTH_USER = " AUTH_USER";
+export const DONE_FETCHING = "DONE_FETCHING";
