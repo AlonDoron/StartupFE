@@ -6,27 +6,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { isTokenExists } from "../../actions/authAction";
 
 const AuthLoading = (props) => {
-  console.log("AuthLoading running");
-  const isUser = useSelector((state) => state.authReducer.isUserExists);
   const dispatch = useDispatch();
+  const isUser = useSelector((state) => state.authReducer.isUserExists);
+  const isDoneFetching = useSelector(
+    (state) => state.authReducer.isDoneFetching
+  );
 
-  useEffect(() => {
-    getTokenAndCheckIfUserExists().then(() =>
-      props.navigation.navigate(isUser ? "App" : "Auth")
-    );
-
-    // TokensHandler.getTokenFromDevice().then((token) => {
-    //   console.log(token);
-    //   dispatch(isTokenExists(token)).then(() =>
-    //     props.navigation.navigate(isUser ? "App" : "Auth")
-    //   );
-    // });
-  }, []);
-
-  const getTokenAndCheckIfUserExists = async () => {
+  const fetchData = async () => {
     const token = await TokensHandler.getTokenFromDevice();
     dispatch(isTokenExists(token));
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    if (isDoneFetching === true)
+      props.navigation.navigate(isUser ? "App" : "Auth");
+  }, [isDoneFetching]);
+
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <ActivityIndicator size="large" />
