@@ -9,7 +9,13 @@ const authReducer = (state = initialState.auth, action) => {
         isDoneFetching: true,
       };
 
-    case authTypes.IS_USER_EXISTS:
+    case authTypes.SET_USER_ID:
+      return {
+        ...state,
+        userId: action.payload,
+      };
+
+    case authTypes.AUTH_SUCCESS:
       return {
         ...state,
         isUserExists: action.payload,
