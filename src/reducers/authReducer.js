@@ -1,7 +1,7 @@
 import * as authTypes from "../actions/authTypes";
 import { initialState } from "./initialState";
 
-const authReducer = (state = initialState, action) => {
+const authReducer = (state = initialState.auth, action) => {
   switch (action.type) {
     case authTypes.DONE_FETCHING:
       return {

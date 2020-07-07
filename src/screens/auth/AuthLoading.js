@@ -7,10 +7,8 @@ import { isTokenExists } from "../../actions/authAction";
 
 const AuthLoading = (props) => {
   const dispatch = useDispatch();
-  const isUser = useSelector((state) => state.authReducer.isUserExists);
-  const isDoneFetching = useSelector(
-    (state) => state.authReducer.isDoneFetching
-  );
+  const isUser = useSelector((state) => state.auth.isUserExists);
+  const isDoneFetching = useSelector((state) => state.auth.isDoneFetching);
 
   const fetchData = async () => {
     const token = await TokensHandler.getTokenFromDevice();

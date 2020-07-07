@@ -1,4 +1,6 @@
 export const initialState = {
-  isUserExists: false,
-  isDoneFetching: false,
+  auth: {
+    isUserExists: false,
+    isDoneFetching: false,
+  },
 };
