@@ -1,21 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { View } from "react-native";
 import LoginForm from "../../forms/LoginForm";
-import HttpClient from "../../api/HttpClient";
-import apiConfig from "../../config/apiConfig";
+import { checkIfUserExists } from "../../api/wrappers/authService";
 
 const Login = (props) => {
-  const [submitting, setSubmitting] = useState(false);
-
   const handleSubmitForm = (vals) => {
-    setSubmitting(true);
-
-    HttpClient.get(
-      apiConfig.LOGIN_PORT,
-      "api/Login/checkIfUserExists",
-      vals
-    ).then((result) => {
-      setSubmitting(false);
+    checkIfUserExists("Login", vals).then((result) => {
       props.navigation.navigate(result ? "VerifyAuth" : "Signup", {
         vals: vals,
         sentFrom: "Login",
@@ -25,7 +15,7 @@ const Login = (props) => {
 
   return (
     <View>
-      <LoginForm submitForm={handleSubmitForm} submitting={submitting} />
+      <LoginForm submitForm={handleSubmitForm} submitting={false} />
     </View>
   );
 };
