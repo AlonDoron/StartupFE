@@ -3,22 +3,34 @@ import { initialState } from "./initialState";
 
 const authReducer = (state = initialState.auth, action) => {
   switch (action.type) {
-    case authTypes.DONE_FETCHING:
+    case authTypes.GET_IS_USER_EXISTS_REQUEST:
       return {
         ...state,
-        isDoneFetching: true,
+        isFetching: true,
+      };
+
+    case authTypes.GET_IS_USER_EXISTS_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+      };
+
+    case authTypes.SET_IS_USER_EXISTS:
+      return {
+        ...state,
+        isUserExists: action.payload,
+      };
+
+    case authTypes.GET_IS_USER_EXISTS_ERROR:
+      return {
+        ...state,
+        errors: action.payload,
       };
 
     case authTypes.SET_USER_ID:
       return {
         ...state,
         userId: action.payload,
-      };
-
-    case authTypes.AUTH_SUCCESS:
-      return {
-        ...state,
-        isUserExists: action.payload,
       };
 
     default:

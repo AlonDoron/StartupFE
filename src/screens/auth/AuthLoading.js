@@ -7,8 +7,8 @@ import { isTokenExists } from "../../actions/authAction";
 
 const AuthLoading = (props) => {
   const dispatch = useDispatch();
-  const isUser = useSelector((state) => state.auth.isUserExists);
-  const isDoneFetching = useSelector((state) => state.auth.isDoneFetching);
+  const isUserExists = useSelector((state) => state.auth.isUserExists);
+  const isFetching = useSelector((state) => state.auth.isFetching);
 
   const fetchData = async () => {
     const token = await TokensHandler.getTokenFromDevice();
@@ -20,9 +20,9 @@ const AuthLoading = (props) => {
   }, []);
 
   useEffect(() => {
-    if (isDoneFetching === true)
-      props.navigation.navigate(isUser ? "App" : "Auth");
-  }, [isDoneFetching]);
+    if (!isFetching && isUserExists != null)
+      props.navigation.navigate(isUserExists ? "App" : "Auth");
+  }, [isUserExists]);
 
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>

@@ -2,18 +2,6 @@ import * as authTypes from "./authTypes";
 import { ApiConfig } from "../config";
 import HttpClient from "../api/HttpClient";
 
-const authSuccess = (response) => {
-  return {
-    type: authTypes.AUTH_SUCCESS,
-    payload: response,
-  };
-};
-
-const doneFetching = () => {
-  return {
-    type: authTypes.DONE_FETCHING,
-  };
-};
 const setUserId = (userId) => {
   return {
     type: authTypes.SET_USER_ID,
@@ -21,14 +9,26 @@ const setUserId = (userId) => {
   };
 };
 
+const setIsUserExists = (response) => {
+  return {
+    type: authTypes.SET_IS_USER_EXISTS,
+    payload: response,
+  };
+};
 export const isTokenExists = (token) => {
   return (dispatch) => {
+    dispatch({ type: authTypes.GET_IS_USER_EXISTS_REQUEST });
+
     return HttpClient.get(ApiConfig.IDENTITY_PORT, "api/identity", {
       userId: token,
-    }).then((response) => {
-      dispatch(authSuccess(response));
-      dispatch(setUserId(token));
-      dispatch(doneFetching());
-    });
+    })
+      .then((response) => {
+        dispatch({ type: authTypes.GET_IS_USER_EXISTS_SUCCESS });
+        dispatch(setIsUserExists(response));
+        if (response) dispatch(setUserId(token));
+      })
+      .catch((errors) => {
+        dispatch({ type: authTypes.GET_IS_USER_EXISTS_ERROR, payload: errors });
+      });
   };
 };
