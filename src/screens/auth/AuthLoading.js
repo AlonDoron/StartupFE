@@ -3,7 +3,7 @@ import { StatusBar, View } from "react-native";
 import { ActivityIndicator } from "react-native-paper";
 import TokensHandler from "../../api/TokensHandler";
 import { useDispatch, useSelector } from "react-redux";
-import { isTokenExists } from "../../actions/authAction";
+import { isUserExistsByToken } from "../../actions/authAction";
 
 const AuthLoading = (props) => {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ const AuthLoading = (props) => {
 
   const fetchData = async () => {
     const token = await TokensHandler.getTokenFromDevice();
-    dispatch(isTokenExists(token));
+    dispatch(isUserExistsByToken(token));
   };
 
   useEffect(() => {
