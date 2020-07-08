@@ -1,26 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
-import HttpClient from "../../api/HttpClient";
-import apiConfig from "../../config/apiConfig";
 import VerifyAuthForm from "../../forms/VerifyAuthForm";
 import TokensHandler from "../../api/TokensHandler";
+import {
+  createVerifyRequest,
+  verifyCode,
+} from "../../api/wrappers/authService";
 
 const VerifyAuth = (props) => {
   const [userGUID, setUserGuid] = useState({});
   const sentFrom = props.navigation.state.params.sentFrom;
   const values = props.navigation.state.params.vals;
 
-  const getPort = () => {
-    if (sentFrom === "Login") return apiConfig.LOGIN_PORT;
-    if (sentFrom === "Registration") return apiConfig.REGISTRATION_PORT;
-  };
-
   useEffect(() => {
-    HttpClient.create(
-      getPort(),
-      `api/${sentFrom}/CreateVerficationRequest`,
-      values
-    )
+    createVerifyRequest(sentFrom, values)
       .then((result) => {
         setUserGuid({ VerificationRequestKey: result });
       })
@@ -30,11 +23,7 @@ const VerifyAuth = (props) => {
   const handleSubmitForm = (vals) => {
     let mergedState = { ...userGUID, ...vals };
 
-    HttpClient.create(
-      getPort(),
-      `api/${sentFrom}/VerifyCode`,
-      mergedState
-    ).then((result) => {
+    verifyCode(sentFrom, mergedState).then((result) => {
       TokensHandler.writeTokenToDevice(result)
         .then(() => {
           result ? props.navigation.navigate("App") : props.navigation.goBack();

@@ -1,11 +1,27 @@
 import apiConfig from "../../config/apiConfig";
 import HttpClient from "../HttpClient";
 
-export const checkIfUserExists = async (sentFrom, vals) => {
+export const checkIfUserExists = async (sentFrom, params) => {
   return await HttpClient.get(
     getPort(sentFrom),
     `api/${sentFrom}/checkIfUserExists`,
-    vals
+    params
+  );
+};
+
+export const createVerifyRequest = async (sentFrom, params) => {
+  return await HttpClient.create(
+    getPort(sentFrom),
+    `api/${sentFrom}/CreateVerficationRequest`,
+    params
+  );
+};
+
+export const verifyCode = async (sentFrom, params) => {
+  return await HttpClient.create(
+    getPort(sentFrom),
+    `api/${sentFrom}/VerifyCode`,
+    params
   );
 };
 
