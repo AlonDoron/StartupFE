@@ -1,10 +1,20 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { View } from "react-native";
+import { Button } from "react-native-paper";
+import TokensHandler from "../../api/TokensHandler";
 
 const Account = (props) => {
+  const signout = () => {
+    TokensHandler.removeTokenFromDevice().then(
+      props.navigation.navigate("Auth")
+    );
+  };
+
   return (
     <View>
-      <Text>Account</Text>
+      <Button mode="contained" onPress={signout}>
+        Sign out!
+      </Button>
     </View>
   );
 };
