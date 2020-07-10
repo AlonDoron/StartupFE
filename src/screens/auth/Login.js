@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View } from "react-native";
 import LoginForm from "../../forms/LoginForm";
-import { checkIfUserExists } from "../../api/wrappers/authService";
+import { useDispatch, useSelector } from "react-redux";
+import { isUserExistsByPhoneNumber } from "../../actions/authAction";
 
 const Login = (props) => {
-  const handleSubmitForm = (vals) => {
-    checkIfUserExists("Login", vals).then((result) => {
-      props.navigation.navigate(result ? "VerifyAuth" : "Signup", {
-        vals: vals,
+  const dispatch = useDispatch();
+  const isUserExists = useSelector((state) => state.auth.isUserExists);
+  const isFetching = useSelector((state) => state.auth.isFetching);
+
+  useEffect(() => {
+    // TODO: CHECK WHEN DONE FETCHING AND UPDATE WHEN RELEVANT
+    if (!isFetching)
+      props.navigation.navigate(isUserExists ? "VerifyAuth" : "Signup", {
+        vals: "1234", // TODO: SEPERATE VALS TO BE AN INDEPENDANT STATE AT LOGIN.JS
         sentFrom: "Login",
       });
-    });
+  }, [isFetching]);
+
+  const handleSubmitForm = (vals) => {
+    dispatch(isUserExistsByPhoneNumber("Login", vals));
   };
 
   return (
