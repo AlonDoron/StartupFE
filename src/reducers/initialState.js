@@ -3,6 +3,5 @@ export const initialState = {
     userId: null,
     isUserExists: null,
     isFetching: false,
-    isDoneFetching: false,
   },
 };

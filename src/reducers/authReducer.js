@@ -7,14 +7,12 @@ const authReducer = (state = initialState.auth, action) => {
       return {
         ...state,
         isFetching: true,
-        isDoneFetching: false,
       };
 
     case authTypes.GET_IS_USER_EXISTS_SUCCESS:
       return {
         ...state,
         isFetching: false,
-        isDoneFetching: true,
       };
 
     case authTypes.SET_IS_USER_EXISTS:
