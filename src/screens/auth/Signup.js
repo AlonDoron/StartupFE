@@ -1,27 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 import SignupForm from "../../forms/SignupForm";
-import { checkIfUserExists } from "../../api/wrappers/authService";
+import { useDispatch, useSelector } from "react-redux";
+import { isUserExistsByPhoneNumber } from "../../actions/authAction";
 
 const Signup = (props) => {
+  const [values, setValues] = useState({});
+  const [allowNavigate, setAllowNavigate] = useState(false);
+
+  const dispatch = useDispatch();
+  const isUserExists = useSelector((state) => state.auth.isUserExists);
+  const isFetching = useSelector((state) => state.auth.isFetching);
+
   const handleSubmitForm = (vals) => {
-    checkIfUserExists("Registration", { phoneNumber: vals.phoneNumber })
-      .then((result) => {
-        if (result) {
-          props.navigation.navigate("Login");
-        } else {
-          props.navigation.navigate("VerifyAuth", {
-            vals: vals,
-            sentFrom: "Registration",
-          });
-        }
+    setValues(vals);
+    dispatch(
+      isUserExistsByPhoneNumber("Registration", {
+        phoneNumber: vals.phoneNumber,
       })
-      .catch((e) => console.log(e));
+    ).then(() => setAllowNavigate(true));
   };
+
+  useEffect(() => {
+    if (allowNavigate)
+      props.navigation.navigate(isUserExists ? "VerifyAuth" : "Signup", {
+        vals: values,
+        sentFrom: "Registration",
+      });
+  }, [allowNavigate, isUserExists, values]);
 
   return (
     <View>
-      <SignupForm submitForm={handleSubmitForm} submitting={false} />
+      <SignupForm submitForm={handleSubmitForm} submitting={isFetching} />
     </View>
   );
 };
