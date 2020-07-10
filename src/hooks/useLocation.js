@@ -5,11 +5,12 @@ import {
   watchPositionAsync,
 } from "expo-location";
 
-let useLocation = (shouldTrack) => {
+let useLocation = (shouldTrack, callback) => {
   const [err, setErr] = useState(null);
 
   useEffect(() => {
     let subscriber;
+
     const startWatcing = async () => {
       try {
         const { granted } = await requestPermissionsAsync();
@@ -18,18 +19,17 @@ let useLocation = (shouldTrack) => {
         }
         subscriber = await watchPositionAsync(
           {
-            accuracy: Accuracy.BestForNavigation,
-            timeInterval: 1000,
-            distanceInterval: 10,
+            accuracy: Accuracy.BestForNavigation, //accuracy of location is best for navigation(as walker, as biker, as driver)
+            timeInterval: 1000, //getLocation every 1000ms
+            distanceInterval: 10, // getLocation every 10meters
           },
-          (location) => {
-            console.log(location);
-          }
+          callback
         );
       } catch (e) {
         setErr(e);
       }
     };
+
     if (shouldTrack) {
       startWatcing();
     } else {
@@ -39,7 +39,7 @@ let useLocation = (shouldTrack) => {
     return () => {
       if (subscriber) subscriber.remove();
     };
-  }, [shouldTrack]);
+  }, [shouldTrack, callback]);
 
   return [err];
 };

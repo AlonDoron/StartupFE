@@ -2,13 +2,12 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import MapView from "react-native-maps";
 
-const Map = (props) => {
+const Map = ({ currentLocation }) => {
   return (
     <MapView
       style={styles.map}
       initialRegion={{
-        longitude: 34.7368496,
-        latitude: 31.8859948,
+        ...currentLocation,
         latitudeDelta: 0.01,
         longitudeDelta: 0.01,
       }}
@@ -18,7 +17,7 @@ const Map = (props) => {
 
 const styles = StyleSheet.create({
   map: {
-    height: "100%",
+    height: "90%",
   },
 });
 
