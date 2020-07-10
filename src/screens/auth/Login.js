@@ -10,6 +10,7 @@ const Login = (props) => {
 
   const dispatch = useDispatch();
   const isUserExists = useSelector((state) => state.auth.isUserExists);
+  const isFetching = useSelector((state) => state.auth.isFetching);
 
   const handleSubmitForm = (vals) => {
     setValues(vals);
