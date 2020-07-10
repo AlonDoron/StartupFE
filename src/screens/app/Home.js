@@ -1,20 +1,11 @@
 import React from "react";
-import { View } from "react-native";
-import { Button } from "react-native-paper";
-import TokensHandler from "../../api/TokensHandler";
+import { StyleSheet, View } from "react-native";
+import { Map } from "../../components/common/Map";
 
 const Home = (props) => {
-  const signout = () => {
-    TokensHandler.removeTokenFromDevice().then(
-      props.navigation.navigate("Auth")
-    );
-  };
-
   return (
     <View>
-      <Button mode="contained" onPress={signout}>
-        Sign out!
-      </Button>
+      <Map />
     </View>
   );
 };
