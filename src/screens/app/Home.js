@@ -1,13 +1,17 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { Map } from "../../components/common/Map";
+import { useLocation } from "../../hooks";
+import { withNavigationFocus } from "react-navigation";
+import { Map } from "../../components/common";
 
-const Home = (props) => {
+const Home = ({ isFocused }) => {
+  const [err] = useLocation(isFocused);
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <Map />
+      {err ? <Text>Please enable location services</Text> : null}
     </View>
   );
 };
 
-export default Home;
+export default withNavigationFocus(Home);
