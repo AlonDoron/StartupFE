@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { StatusBar, View } from "react-native";
 import { ActivityIndicator } from "react-native-paper";
 import TokensHandler from "../../api/TokensHandler";
@@ -8,12 +8,17 @@ import { isUserExistsByToken, setIsUserExists } from "../../actions/authAction";
 const AuthLoading = (props) => {
   const dispatch = useDispatch();
   const isUserExists = useSelector((state) => state.auth.isUserExists);
-  const isFetching = useSelector((state) => state.auth.isFetching);
+
+  const [allowNavigate, setAllowNavigate] = useState(false);
 
   const fetchData = async () => {
     const token = await TokensHandler.getTokenFromDevice();
-    if (token === null) dispatch(setIsUserExists(false));
-    else dispatch(isUserExistsByToken(token));
+
+    if (token === null) {
+      dispatch(setIsUserExists(false));
+      setAllowNavigate(true);
+    } else
+      dispatch(isUserExistsByToken(token)).then(() => setAllowNavigate(true));
   };
 
   useEffect(() => {
@@ -21,9 +26,9 @@ const AuthLoading = (props) => {
   }, []);
 
   useEffect(() => {
-    if (!isFetching && isUserExists != null)
+    if (allowNavigate || isUserExists != null)
       props.navigation.navigate(isUserExists ? "App" : "Auth");
-  }, [isUserExists]);
+  }, [allowNavigate, isUserExists]);
 
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
