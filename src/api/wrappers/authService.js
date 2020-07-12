@@ -17,7 +17,7 @@ export const createVerifyRequest = async (sentFrom, params) => {
   );
 };
 
-export const verifyCode = async (sentFrom, params) => {
+export const createVerifyCode = async (sentFrom, params) => {
   return await HttpClient.create(
     getPort(sentFrom),
     `api/${sentFrom}/VerifyCode`,
