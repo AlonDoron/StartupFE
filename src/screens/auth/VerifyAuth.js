@@ -2,31 +2,38 @@ import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 import VerifyAuthForm from "../../forms/VerifyAuthForm";
 import TokensHandler from "../../api/TokensHandler";
-import {
-  createVerifyRequest,
-  verifyCode,
-} from "../../api/wrappers/authService";
+import { useSelector, useDispatch } from "react-redux";
+import { verifyRequest, verifyCode } from "../../actions/authAction";
 
 const VerifyAuth = (props) => {
-  const [userGUID, setUserGuid] = useState({});
+  const dispatch = useDispatch();
+  const userId = useSelector((state) => state.auth.userId);
+
   const sentFrom = props.navigation.state.params.sentFrom;
   const values = props.navigation.state.params.vals;
 
+  const [allowNavigate, setAllowNavigate] = useState(false);
+  const [userGUID, setUserGuid] = useState({});
+
   useEffect(() => {
-    createVerifyRequest(sentFrom, values)
-      .then((result) => {
-        setUserGuid({ VerificationRequestKey: result });
-      })
-      .catch((err) => console.log(err));
+    dispatch(verifyRequest(sentFrom, values)).then((verificationRequestKey) => {
+      setUserGuid({ VerificationRequestKey: verificationRequestKey });
+    });
   }, []);
+
+  useEffect(() => {
+    if (allowNavigate) {
+      props.navigation.navigate("App");
+    }
+  }, [allowNavigate]);
 
   const handleSubmitForm = (vals) => {
     let mergedState = { ...userGUID, ...vals };
 
-    verifyCode(sentFrom, mergedState).then((result) => {
-      TokensHandler.writeTokenToDevice(result)
+    dispatch(verifyCode(sentFrom, mergedState)).then(() => {
+      TokensHandler.writeTokenToDevice(userId)
         .then(() => {
-          result ? props.navigation.navigate("App") : props.navigation.goBack();
+          setAllowNavigate(true);
         })
 
         .catch((err) => {
