@@ -20,12 +20,13 @@ const Login = (props) => {
   };
 
   useEffect(() => {
-    if (allowNavigate)
+    if (allowNavigate) {
       props.navigation.navigate(isUserExists ? "VerifyAuth" : "Signup", {
         vals: values,
         sentFrom: "Login",
       });
-  }, [allowNavigate, isUserExists, values]);
+    }
+  }, [allowNavigate]);
 
   return (
     <View>
