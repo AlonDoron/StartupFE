@@ -3,13 +3,13 @@ import { initialState } from "./initialState";
 
 const authReducer = (state = initialState.auth, action) => {
   switch (action.type) {
-    case authTypes.GET_IS_USER_EXISTS_REQUEST:
+    case authTypes.FETCH_REQUEST:
       return {
         ...state,
         isFetching: true,
       };
 
-    case authTypes.GET_IS_USER_EXISTS_SUCCESS:
+    case authTypes.FETCH_SUCCESS:
       return {
         ...state,
         isFetching: false,
@@ -21,7 +21,7 @@ const authReducer = (state = initialState.auth, action) => {
         isUserExists: action.payload,
       };
 
-    case authTypes.GET_IS_USER_EXISTS_ERROR:
+    case authTypes.FETCH_ERROR:
       return {
         ...state,
         errors: action.payload,
