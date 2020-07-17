@@ -7,7 +7,6 @@ import { verifyRequest, verifyCode } from "../../actions/authAction";
 
 const VerifyAuth = (props) => {
   const dispatch = useDispatch();
-  const userId = useSelector((state) => state.auth.userId);
   const isFetching = useSelector((state) => state.auth.isFetching);
 
   const sentFrom = props.navigation.state.params.sentFrom;
@@ -31,7 +30,7 @@ const VerifyAuth = (props) => {
   const handleSubmitForm = (vals) => {
     let mergedState = { ...userGUID, ...vals };
 
-    dispatch(verifyCode(sentFrom, mergedState)).then(() => {
+    dispatch(verifyCode(sentFrom, mergedState)).then((userId) => {
       TokensHandler.writeTokenToDevice(userId)
         .then(() => {
           setAllowNavigate(true);
