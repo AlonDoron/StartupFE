@@ -4,7 +4,7 @@ import LoginForm from "../../forms/LoginForm";
 import { useDispatch, useSelector } from "react-redux";
 import { isUserExistsByPhoneNumber } from "../../actions/authAction";
 
-const Login = (props) => {
+const Login = ({ navigation }) => {
   const [values, setValues] = useState({});
   const [allowNavigate, setAllowNavigate] = useState(false);
 
@@ -21,10 +21,12 @@ const Login = (props) => {
 
   useEffect(() => {
     if (allowNavigate) {
-      props.navigation.navigate(isUserExists ? "VerifyAuth" : "Signup", {
-        vals: values,
-        sentFrom: "Login",
-      });
+      if (isUserExists)
+        navigation.navigate("VerifyAuth", {
+          vals: values,
+          sentFrom: "Login",
+        });
+      else navigation.navigate("Signup");
     }
   }, [allowNavigate]);
 

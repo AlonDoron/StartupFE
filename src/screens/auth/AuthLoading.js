@@ -5,7 +5,7 @@ import TokensHandler from "../../api/TokensHandler";
 import { useDispatch, useSelector } from "react-redux";
 import { isUserExistsByToken, setIsUserExists } from "../../actions/authAction";
 
-const AuthLoading = (props) => {
+const AuthLoading = ({ navigation }) => {
   const dispatch = useDispatch();
   const isUserExists = useSelector((state) => state.auth.isUserExists);
 
@@ -27,7 +27,7 @@ const AuthLoading = (props) => {
 
   useEffect(() => {
     if (allowNavigate || isUserExists != null)
-      props.navigation.navigate(isUserExists ? "App" : "Auth");
+      navigation.navigate(isUserExists ? "App" : "Auth");
   }, [allowNavigate, isUserExists]);
 
   return (
