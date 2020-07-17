@@ -22,12 +22,15 @@ const Signup = ({ navigation }) => {
   };
 
   useEffect(() => {
-    if (allowNavigate)
-      navigation.navigate(isUserExists ? "VerifyAuth" : "Signup", {
-        vals: values,
-        sentFrom: "Registration",
-      });
-  }, [allowNavigate, isUserExists, values]);
+    if (allowNavigate) {
+      if (isUserExists) navigation.navigate("Login");
+      else
+        navigation.navigate("VerifyAuth", {
+          vals: values,
+          sentFrom: "Registration",
+        });
+    }
+  }, [allowNavigate]);
 
   return (
     <View>
