@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
-import VerifyAuthForm from "../../forms/VerifyAuthForm";
+import { VerifyAuthForm } from "../../forms";
 import TokensHandler from "../../api/TokensHandler";
 import { useSelector, useDispatch } from "react-redux";
 import { verifyRequest, verifyCode } from "../../actions/authAction";
 
-const VerifyAuth = (props) => {
+const VerifyAuth = ({ navigation }) => {
   const dispatch = useDispatch();
   const isFetching = useSelector((state) => state.auth.isFetching);
 
-  const sentFrom = props.navigation.state.params.sentFrom;
-  const values = props.navigation.state.params.vals;
+  const sentFrom = navigation.state.params.sentFrom;
+  const values = navigation.state.params.vals;
 
   const [allowNavigate, setAllowNavigate] = useState(false);
   const [userGUID, setUserGuid] = useState({});
@@ -23,7 +23,7 @@ const VerifyAuth = (props) => {
 
   useEffect(() => {
     if (allowNavigate) {
-      props.navigation.navigate("App");
+      navigation.navigate("App");
     }
   }, [allowNavigate]);
 
@@ -38,7 +38,7 @@ const VerifyAuth = (props) => {
 
         .catch((err) => {
           console.log(err);
-          props.navigation.navigate("Auth");
+          navigation.navigate("Auth");
         });
     });
   };

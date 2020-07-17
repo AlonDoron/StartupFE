@@ -1,13 +1,13 @@
 import { createStackNavigator } from "react-navigation-stack";
-import { Auth, Signup, Login, VerifyAuth } from "../../screens/auth";
+import { Auth, Registration, Login, VerifyAuth } from "../../screens/auth";
 
 const AuthStack = createStackNavigator(
   {
     Auth: {
       screen: Auth,
     },
-    Signup: {
-      screen: Signup,
+    Registration: {
+      screen: Registration,
     },
     Login: {
       screen: Login,

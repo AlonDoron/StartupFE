@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
-import SignupForm from "../../forms/SignupForm";
+import { RegistrationForm } from "../../forms";
 import { useDispatch, useSelector } from "react-redux";
 import { isUserExistsByPhoneNumber } from "../../actions/authAction";
 
-const Signup = (props) => {
+const Registration = ({ navigation }) => {
   const [values, setValues] = useState({});
   const [allowNavigate, setAllowNavigate] = useState(false);
 
@@ -22,18 +22,21 @@ const Signup = (props) => {
   };
 
   useEffect(() => {
-    if (allowNavigate)
-      props.navigation.navigate(isUserExists ? "VerifyAuth" : "Signup", {
-        vals: values,
-        sentFrom: "Registration",
-      });
-  }, [allowNavigate, isUserExists, values]);
+    if (allowNavigate) {
+      if (isUserExists) navigation.navigate("Login");
+      else
+        navigation.navigate("VerifyAuth", {
+          vals: values,
+          sentFrom: "Registration",
+        });
+    }
+  }, [allowNavigate]);
 
   return (
     <View>
-      <SignupForm submitForm={handleSubmitForm} submitting={isFetching} />
+      <RegistrationForm submitForm={handleSubmitForm} submitting={isFetching} />
     </View>
   );
 };
 
-export default Signup;
+export default Registration;
