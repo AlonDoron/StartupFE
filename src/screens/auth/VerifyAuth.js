@@ -8,6 +8,7 @@ import { verifyRequest, verifyCode } from "../../actions/authAction";
 const VerifyAuth = (props) => {
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.auth.userId);
+  const isFetching = useSelector((state) => state.auth.isFetching);
 
   const sentFrom = props.navigation.state.params.sentFrom;
   const values = props.navigation.state.params.vals;
@@ -45,7 +46,11 @@ const VerifyAuth = (props) => {
 
   return (
     <View>
-      <VerifyAuthForm pageName={sentFrom} submitForm={handleSubmitForm} />
+      <VerifyAuthForm
+        pageName={sentFrom}
+        submitForm={handleSubmitForm}
+        submitting={isFetching}
+      />
     </View>
   );
 };
