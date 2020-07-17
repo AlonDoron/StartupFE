@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
-import LoginForm from "../../forms/LoginForm";
+import { LoginForm } from "../../forms";
 import { useDispatch, useSelector } from "react-redux";
 import { isUserExistsByPhoneNumber } from "../../actions/authAction";
 
@@ -26,7 +26,7 @@ const Login = ({ navigation }) => {
           vals: values,
           sentFrom: "Login",
         });
-      else navigation.navigate("Signup");
+      else navigation.navigate("Registration");
     }
   }, [allowNavigate]);
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
-import VerifyAuthForm from "../../forms/VerifyAuthForm";
+import { VerifyAuthForm } from "../../forms";
 import TokensHandler from "../../api/TokensHandler";
 import { useSelector, useDispatch } from "react-redux";
 import { verifyRequest, verifyCode } from "../../actions/authAction";
