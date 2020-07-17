@@ -4,7 +4,7 @@ import { Button } from "react-native-paper";
 import { useForm } from "../hooks";
 import { Input } from "../components/common";
 
-const SignupForm = (props) => {
+const RegistrationForm = (props) => {
   const handleFormSubmit = () => {
     props.submitForm(values);
   };
@@ -54,4 +54,4 @@ const SignupForm = (props) => {
   );
 };
 
-export default SignupForm;
+export default RegistrationForm;

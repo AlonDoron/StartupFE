@@ -1,55 +1,55 @@
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
-import HttpClient from "../../api/HttpClient";
-import apiConfig from "../../config/apiConfig";
-import VerifyAuthForm from "../../forms/VerifyAuthForm";
+import { VerifyAuthForm } from "../../forms";
 import TokensHandler from "../../api/TokensHandler";
+import { useSelector, useDispatch } from "react-redux";
+import { verifyRequest, verifyCode } from "../../actions/authAction";
 
-const VerifyAuth = (props) => {
+const VerifyAuth = ({ navigation }) => {
+  const dispatch = useDispatch();
+  const isFetching = useSelector((state) => state.auth.isFetching);
+
+  const sentFrom = navigation.state.params.sentFrom;
+  const values = navigation.state.params.vals;
+
+  const [allowNavigate, setAllowNavigate] = useState(false);
   const [userGUID, setUserGuid] = useState({});
-  const sentFrom = props.navigation.state.params.sentFrom;
-  const values = props.navigation.state.params.vals;
-
-  const getPort = () => {
-    if (sentFrom === "Login") return apiConfig.LOGIN_PORT;
-    if (sentFrom === "Registration") return apiConfig.REGISTRATION_PORT;
-  };
 
   useEffect(() => {
-    HttpClient.create(
-      getPort(),
-      `api/${sentFrom}/CreateVerficationRequest`,
-      values
-    )
-      .then((result) => {
-        setUserGuid({ VerificationRequestKey: result });
-      })
-      .catch((err) => console.log(err));
+    dispatch(verifyRequest(sentFrom, values)).then((verificationRequestKey) => {
+      setUserGuid({ VerificationRequestKey: verificationRequestKey });
+    });
   }, []);
+
+  useEffect(() => {
+    if (allowNavigate) {
+      navigation.navigate("App");
+    }
+  }, [allowNavigate]);
 
   const handleSubmitForm = (vals) => {
     let mergedState = { ...userGUID, ...vals };
 
-    HttpClient.create(
-      getPort(),
-      `api/${sentFrom}/VerifyCode`,
-      mergedState
-    ).then((result) => {
-      TokensHandler.writeTokenToDevice(result)
+    dispatch(verifyCode(sentFrom, mergedState)).then((userId) => {
+      TokensHandler.writeTokenToDevice(userId)
         .then(() => {
-          result ? props.navigation.navigate("App") : props.navigation.goBack();
+          setAllowNavigate(true);
         })
 
         .catch((err) => {
           console.log(err);
-          props.navigation.navigate("Auth");
+          navigation.navigate("Auth");
         });
     });
   };
 
   return (
     <View>
-      <VerifyAuthForm pageName={sentFrom} submitForm={handleSubmitForm} />
+      <VerifyAuthForm
+        pageName={sentFrom}
+        submitForm={handleSubmitForm}
+        submitting={isFetching}
+      />
     </View>
   );
 };

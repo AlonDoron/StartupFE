@@ -21,7 +21,12 @@ const VerifyAuthForm = (props) => {
         keyboardType="number-pad"
       />
 
-      <Button mode="outlined" onPress={handleSubmit}>
+      <Button
+        mode="outlined"
+        onPress={handleSubmit}
+        loading={props.submitting}
+        disabled={props.submitting}
+      >
         {props.pageName}
       </Button>
     </View>
