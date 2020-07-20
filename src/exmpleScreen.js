@@ -4,7 +4,9 @@ import { Button, Text, TextInput } from "react-native-paper";
 import { Input } from "./components/common";
 import { Formik } from "formik";
 import * as yup from "yup";
+
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+
 const exmpleSchema = yup.object({
   firstName: yup.string().required(),
   lastName: yup.string().required(),
@@ -16,8 +18,6 @@ const exmpleSchema = yup.object({
 });
 
 const ExmpleScreen = (props) => {
-  const [error, setError] = useState("");
-
   return (
     <View>
       <Formik
@@ -33,18 +33,21 @@ const ExmpleScreen = (props) => {
         {(props) => (
           <View>
             <Input
-              name="firstName"
+              name="First Name"
               value={props.values.firstName}
               onChangeText={props.handleChange("firstName")}
               label="First Name"
               keyboardType="default"
+              isError={props.touched.firstName && props.errors.firstName}
             />
+            {console.log(props.errors.firstName)}
             <Input
-              name="lastName"
+              name="Last Name"
               value={props.values.lastName}
               onChangeText={props.handleChange("lastName")}
               label="Last Name"
               keyboardType="default"
+              isError={props.touched.lastName && props.errors.lastName}
             />
             <Input
               name="email"
@@ -52,16 +55,16 @@ const ExmpleScreen = (props) => {
               onChangeText={props.handleChange("email")}
               label="Email"
               keyboardType="email-address"
+              isError={props.touched.email && props.errors.email}
             />
             <Input
-              name="phoneNumber"
+              name="phone Number"
               value={props.values.phoneNumber}
               onChangeText={props.handleChange("phoneNumber")}
               label="Phone Number"
               keyboardType="number-pad"
+              isError={props.touched.phoneNumber && props.errors.phoneNumber}
             />
-
-            <Text>{error}</Text>
 
             <Button mode="outlined" onPress={props.handleSubmit}>
               Registration

@@ -13,7 +13,7 @@ const Input = (props) => {
         mode="outlined"
         onChangeText={props.onChangeText}
       />
-      <Text>{props.errors}</Text>
+      <Text>{props.isError}</Text>
     </View>
   );
 };
