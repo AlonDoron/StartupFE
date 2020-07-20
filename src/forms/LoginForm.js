@@ -37,6 +37,7 @@ const LoginForm = (props) => {
 
             <Button
               mode="outlined"
+              onPress={props.handleSubmit}
               loading={props.submitting}
               disabled={props.submitting}
             >

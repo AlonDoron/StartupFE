@@ -6,7 +6,7 @@ import { Formik } from "formik";
 import * as yup from "yup";
 
 const verificationSchema = yup.object({
-  VerificationCode: yup.string().required().equals(5),
+  VerificationCode: yup.string().required().min(5).max(5),
 });
 
 const VerifyAuthForm = (props) => {
@@ -34,6 +34,7 @@ const VerifyAuthForm = (props) => {
 
             <Button
               mode="outlined"
+              onPress={props.handleSubmit}
               loading={props.submitting}
               disabled={props.submitting}
             >
