@@ -34,7 +34,6 @@ const VerifyAuthForm = (props) => {
 
             <Button
               mode="outlined"
-              onPress={handleSubmit}
               loading={props.submitting}
               disabled={props.submitting}
             >
