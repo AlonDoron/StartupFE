@@ -11,8 +11,7 @@ const Input = (props) => {
         value={props.value}
         label={props.label}
         mode="outlined"
-        onChange={(newVal) => props.onChange(props.name, newVal)}
-        required={props.required}
+        onChangeText={props.onChangeText}
       />
       <Text>{props.errors}</Text>
     </View>

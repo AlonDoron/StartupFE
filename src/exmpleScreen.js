@@ -1,68 +1,74 @@
 import React, { useState } from "react";
 import { View } from "react-native";
-import { Button, Text } from "react-native-paper";
+import { Button, Text, TextInput } from "react-native-paper";
 import { Input } from "./components/common";
-import { useForm } from "./hooks";
+import { Formik } from "formik";
 import * as yup from "yup";
-
-const schema = yup.object().shape({
+const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+const exmpleSchema = yup.object({
   firstName: yup.string().required(),
   lastName: yup.string().required(),
   email: yup.string().required().email(),
-  phoneNumber: yup.string().required().min(10),
+  phoneNumber: yup
+    .string()
+    .required()
+    .matches(phoneRegExp, "Phone number is not valid"),
 });
 
 const ExmpleScreen = (props) => {
   const [error, setError] = useState("");
-  const handleFormSubmit = () => {
-    schema
-      .validate({ ...values })
-      .then((valid) => {
-        console.log(valid);
-      })
-      .catch((errors) => {
-        setError(errors);
-      });
-  };
-
-  const [values, handleChange, handleSubmit] = useForm(handleFormSubmit);
 
   return (
     <View>
-      <Input
-        name="firstName"
-        value={values.firstName || ""}
-        onChange={(name, value) => handleChange(name, value)}
-        label="First Name"
-        keyboardType="default"
-      />
-      <Input
-        name="lastName"
-        value={values.lastName || ""}
-        onChange={(name, value) => handleChange(name, value)}
-        label="Last Name"
-        keyboardType="default"
-      />
-      <Input
-        name="email"
-        value={values.email || ""}
-        onChange={(name, value) => handleChange(name, value)}
-        label="Email"
-        keyboardType="email-address"
-      />
-      <Input
-        name="phoneNumber"
-        value={values.phoneNumber || ""}
-        onChange={(name, value) => handleChange(name, value)}
-        label="Phone Number"
-        keyboardType="number-pad"
-      />
+      <Formik
+        initialValues={{
+          firstName: "",
+          lastName: "",
+          email: "",
+          phoneNumber: "",
+        }}
+        validationSchema={exmpleSchema}
+        onSubmit={(values) => console.log(values)}
+      >
+        {(props) => (
+          <View>
+            <Input
+              name="firstName"
+              value={props.values.firstName}
+              onChangeText={props.handleChange("firstName")}
+              label="First Name"
+              keyboardType="default"
+            />
+            <Input
+              name="lastName"
+              value={props.values.lastName}
+              onChangeText={props.handleChange("lastName")}
+              label="Last Name"
+              keyboardType="default"
+            />
+            <Input
+              name="email"
+              value={props.values.email}
+              onChangeText={props.handleChange("email")}
+              label="Email"
+              keyboardType="email-address"
+            />
+            <Input
+              name="phoneNumber"
+              value={props.values.phoneNumber}
+              onChangeText={props.handleChange("phoneNumber")}
+              label="Phone Number"
+              keyboardType="number-pad"
+            />
 
-      <Text>{error}</Text>
+            <Text>{error}</Text>
 
-      <Button mode="outlined" onPress={handleSubmit}>
-        Registration
-      </Button>
+            <Button mode="outlined" onPress={props.handleSubmit}>
+              Registration
+            </Button>
+          </View>
+        )}
+      </Formik>
     </View>
   );
 };
