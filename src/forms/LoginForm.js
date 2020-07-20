@@ -10,7 +10,7 @@ const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2
 const loginSchema = yup.object({
   phoneNumber: yup
     .string()
-    .required()
+    .required("Phone Number is Required")
     .matches(phoneRegExp, "Phone number is not valid"),
 });
 

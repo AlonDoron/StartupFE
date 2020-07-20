@@ -8,13 +8,13 @@ import * as yup from "yup";
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
 const registraionSchema = yup.object({
-  firstName: yup.string().required(),
-  lastName: yup.string().required(),
-  email: yup.string().required().email(),
+  firstName: yup.string().required("First Name is Required"),
+  lastName: yup.string().required("Last Name is Required"),
+  email: yup.string().required("Email is Required").email("Email is invalid"),
   phoneNumber: yup
     .string()
-    .required()
-    .matches(phoneRegExp, "Phone number is not valid"),
+    .required("Phone number is required")
+    .matches(phoneRegExp, "Phone number is invalid"),
 });
 
 const RegistrationForm = (props) => {

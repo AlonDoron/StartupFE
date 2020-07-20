@@ -13,7 +13,9 @@ const Input = (props) => {
         mode="outlined"
         onChangeText={props.onChangeText}
       />
-      <Text>{props.isError}</Text>
+      {props.isError ? (
+        <Text style={{ color: "red" }}>*{props.isError}</Text>
+      ) : null}
     </View>
   );
 };
