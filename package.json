@@ -30,14 +30,13 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
-    "@testing-library/react": "^10.4.7",
-    "@testing-library/react-native": "^5.0.3",
     "babel-jest": "^26.1.0",
     "babel-preset-expo": "^8.1.0",
     "babel-preset-react-native": "^4.0.1",
     "jest": "^26.1.0",
     "jest-dom": "^4.0.0",
     "jest-react-native": "^18.0.0",
+    "react-native-testing-library": "^2.1.1",
     "react-test-renderer": "^16.13.1"
   },
   "jest": {
