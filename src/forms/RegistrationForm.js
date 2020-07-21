@@ -4,17 +4,21 @@ import { Button } from "react-native-paper";
 import { Input } from "../components/common";
 import { Formik } from "formik";
 import * as yup from "yup";
+import errorMessages from "../../errorMessages";
 
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
 const registraionSchema = yup.object({
-  firstName: yup.string().required("First Name is Required"),
-  lastName: yup.string().required("Last Name is Required"),
-  email: yup.string().required("Email is Required").email("Email is invalid"),
+  firstName: yup.string().required(errorMessages("First Name")),
+  lastName: yup.string().required(errorMessages("Last Name")),
+  email: yup
+    .string()
+    .required(errorMessages("Email"))
+    .email(errorMessages("Email", "Invalid")),
   phoneNumber: yup
     .string()
-    .required("Phone number is required")
-    .matches(phoneRegExp, "Phone number is invalid"),
+    .required(errorMessages("Phone Number"))
+    .matches(phoneRegExp, errorMessages("Phone Number", "Invalid")),
 });
 
 const RegistrationForm = (props) => {
@@ -36,15 +40,17 @@ const RegistrationForm = (props) => {
               name="First Name"
               value={props.values.firstName}
               onChangeText={props.handleChange("firstName")}
+              onBlur={props.handleBlur("firstName")}
               label="First Name"
               keyboardType="default"
               isError={props.touched.firstName && props.errors.firstName}
             />
-            {console.log(props.errors.firstName)}
+
             <Input
               name="Last Name"
               value={props.values.lastName}
               onChangeText={props.handleChange("lastName")}
+              onBlur={props.handleBlur("lastName")}
               label="Last Name"
               keyboardType="default"
               isError={props.touched.lastName && props.errors.lastName}
@@ -53,6 +59,7 @@ const RegistrationForm = (props) => {
               name="email"
               value={props.values.email}
               onChangeText={props.handleChange("email")}
+              onBlur={props.handleBlur("email")}
               label="Email"
               keyboardType="email-address"
               isError={props.touched.email && props.errors.email}
@@ -61,6 +68,7 @@ const RegistrationForm = (props) => {
               name="phone Number"
               value={props.values.phoneNumber}
               onChangeText={props.handleChange("phoneNumber")}
+              onBlur={props.handleBlur("phoneNumber")}
               label="Phone Number"
               keyboardType="number-pad"
               isError={props.touched.phoneNumber && props.errors.phoneNumber}

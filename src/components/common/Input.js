@@ -12,9 +12,10 @@ const Input = (props) => {
         label={props.label}
         mode="outlined"
         onChangeText={props.onChangeText}
+        onBlur={props.onBlur}
       />
       {props.isError ? (
-        <Text style={{ color: "red" }}>*{props.isError}</Text>
+        <Text style={{ color: "red" }}>{props.isError}</Text>
       ) : null}
     </View>
   );
@@ -25,6 +26,7 @@ const styles = StyleSheet.create({
     width: "80%",
     alignSelf: "center",
     paddingTop: "5%",
+    marginBottom: "5%",
   },
 });
 

@@ -4,11 +4,12 @@ import { Button } from "react-native-paper";
 import { Input } from "../components/common";
 import { Formik } from "formik";
 import * as yup from "yup";
+import errorMessages from "../../errorMessages";
 
 const verificationSchema = yup.object({
   VerificationCode: yup
     .string()
-    .required("Please enter your Verification Code")
+    .required(errorMessages("Verification Code"))
     .min(5)
     .max(5),
 });
