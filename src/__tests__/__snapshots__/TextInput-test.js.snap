@@ -79,6 +79,7 @@ exports[`Render Input renders correctly 1`] = `
               },
             ]
           }
+          testID="text-input"
           underlineColorAndroid="transparent"
         />
       </View>
