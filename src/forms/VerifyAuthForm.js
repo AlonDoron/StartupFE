@@ -3,17 +3,7 @@ import { View } from "react-native";
 import { Button } from "react-native-paper";
 import { Input } from "../components/common";
 import { Formik } from "formik";
-import * as yup from "yup";
-import errorMessages from "../../errorMessages";
-
-const verificationSchema = yup.object({
-  VerificationCode: yup
-    .string()
-    .required(errorMessages("Verification Code"))
-    .min(5)
-    .max(5),
-});
-
+import { verificationSchema } from "../validation/validationSchema";
 const VerifyAuthForm = (props) => {
   return (
     <View>
