@@ -3,7 +3,7 @@ import * as authService from "../api/wrappers/authService";
 import { apiConfig } from "../config";
 import HttpClient from "../api/HttpClient";
 
-const setUserId = (userId) => {
+export const setUserId = (userId) => {
   return {
     type: authTypes.SET_USER_ID,
     payload: userId,
