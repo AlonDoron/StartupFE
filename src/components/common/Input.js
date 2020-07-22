@@ -13,6 +13,7 @@ const Input = (props) => {
         mode="outlined"
         onChange={(newVal) => props.onChange(props.name, newVal)}
         required={props.required}
+        testID="text-input"
       />
       <Text>{props.errors}</Text>
     </View>
