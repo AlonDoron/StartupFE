@@ -3,7 +3,7 @@ import { View } from "react-native";
 import { Button } from "react-native-paper";
 import { Input } from "../components/common";
 import { Formik } from "formik";
-import { loginSchema } from "../validation/validationSchema";
+import { loginSchema } from "../validations/validationSchema";
 const LoginForm = (props) => {
   return (
     <View>
@@ -19,10 +19,10 @@ const LoginForm = (props) => {
             <Input
               name="phone Number"
               value={props.values.phoneNumber}
-              onChangeText={props.handleChange("phoneNumber")}
+              handleChangeText={props.handleChange("phoneNumber")}
               label="Phone Number"
               keyboardType="number-pad"
-              isError={props.touched.phoneNumber && props.errors.phoneNumber}
+              error={props.touched.phoneNumber && props.errors.phoneNumber}
             />
 
             <Button

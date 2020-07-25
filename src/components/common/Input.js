@@ -11,12 +11,10 @@ const Input = (props) => {
         value={props.value}
         label={props.label}
         mode="outlined"
-        onChangeText={props.onChangeText}
-        onBlur={props.onBlur}
+        onChangeText={props.handleChangeText}
+        onBlur={props.handleonBlur}
       />
-      {props.isError ? (
-        <Text style={{ color: "red" }}>{props.isError}</Text>
-      ) : null}
+      {props.error && <Text style={{ color: "red" }}>{props.error}</Text>}
     </View>
   );
 };

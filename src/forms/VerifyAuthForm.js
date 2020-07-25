@@ -3,7 +3,7 @@ import { View } from "react-native";
 import { Button } from "react-native-paper";
 import { Input } from "../components/common";
 import { Formik } from "formik";
-import { verificationSchema } from "../validation/validationSchema";
+import { verificationSchema } from "../validations/validationSchema";
 const VerifyAuthForm = (props) => {
   return (
     <View>
@@ -19,10 +19,10 @@ const VerifyAuthForm = (props) => {
             <Input
               name="VerificationCode"
               value={props.values.VerificationCode}
-              onChangeText={props.handleChange("VerificationCode")}
+              handleChangeText={props.handleChange("VerificationCode")}
               label="Verification Code"
               keyboardType="number-pad"
-              isError={
+              error={
                 props.touched.VerificationCode && props.errors.VerificationCode
               }
             />
