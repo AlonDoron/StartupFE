@@ -22,7 +22,7 @@ const VerifyAuthForm = (props) => {
               handleChangeText={props.handleChange("VerificationCode")}
               label="Verification Code"
               keyboardType="number-pad"
-              error={
+              errors={
                 props.touched.VerificationCode && props.errors.VerificationCode
               }
             />

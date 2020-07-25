@@ -26,7 +26,7 @@ const RegistrationForm = (props) => {
               handleBlur={props.handleBlur("firstName")}
               label="First Name"
               keyboardType="default"
-              error={props.touched.firstName && props.errors.firstName}
+              errors={props.touched.firstName && props.errors.firstName}
             />
 
             <Input
@@ -36,7 +36,7 @@ const RegistrationForm = (props) => {
               handleBlur={props.handleBlur("lastName")}
               label="Last Name"
               keyboardType="default"
-              error={props.touched.lastName && props.errors.lastName}
+              errors={props.touched.lastName && props.errors.lastName}
             />
             <Input
               name="email"
@@ -45,7 +45,7 @@ const RegistrationForm = (props) => {
               handleBlur={props.handleBlur("email")}
               label="Email"
               keyboardType="email-address"
-              error={props.touched.email && props.errors.email}
+              errors={props.touched.email && props.errors.email}
             />
             <Input
               name="phone Number"
@@ -54,7 +54,7 @@ const RegistrationForm = (props) => {
               handleBlur={props.handleBlur("phoneNumber")}
               label="Phone Number"
               keyboardType="number-pad"
-              error={props.touched.phoneNumber && props.errors.phoneNumber}
+              errors={props.touched.phoneNumber && props.errors.phoneNumber}
             />
 
             <Button

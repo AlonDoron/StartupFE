@@ -22,7 +22,7 @@ const LoginForm = (props) => {
               handleChangeText={props.handleChange("phoneNumber")}
               label="Phone Number"
               keyboardType="number-pad"
-              error={props.touched.phoneNumber && props.errors.phoneNumber}
+              errors={props.touched.phoneNumber && props.errors.phoneNumber}
             />
 
             <Button
