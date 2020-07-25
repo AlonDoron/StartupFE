@@ -14,7 +14,7 @@ const Input = (props) => {
         onChangeText={props.handleChangeText}
         onBlur={props.handleBlur}
       />
-      {props.errors && <Text style={{ color: "red" }}>{props.error}</Text>}
+      {props.errors && <Text style={{ color: "red" }}>{props.errors}</Text>}
     </View>
   );
 };
