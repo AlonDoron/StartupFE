@@ -11,10 +11,10 @@ const Input = (props) => {
         value={props.value}
         label={props.label}
         mode="outlined"
-        onChange={(newVal) => props.onChange(props.name, newVal)}
-        required={props.required}
+        onChangeText={props.handleChangeText}
+        onBlur={props.handleBlur}
       />
-      <Text>{props.errors}</Text>
+      {props.errors && <Text style={{ color: "red" }}>{props.errors}</Text>}
     </View>
   );
 };
@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
     width: "80%",
     alignSelf: "center",
     paddingTop: "5%",
+    marginBottom: "5%",
   },
 });
 
