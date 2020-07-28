@@ -3,7 +3,7 @@ import { View } from "react-native";
 import { Button } from "react-native-paper";
 import { Input } from "../components/common";
 import { Formik } from "formik";
-import { registrationSchema } from "../validations/validationSchema";
+import { registrationSchema } from "../validations";
 const RegistrationForm = (props) => {
   return (
     <View>

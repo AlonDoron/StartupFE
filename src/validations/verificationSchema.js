@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import errorMessages from "../errorMessages";
+import errorMessages from "./errorMessages";
 
 export default verificationSchema = yup.object({
   VerificationCode: yup
