@@ -1,7 +1,7 @@
 import * as yup from "yup";
 import errorMessages from "../errorMessages";
 
-export const verificationSchema = yup.object({
+export default verificationSchema = yup.object({
   VerificationCode: yup
     .string()
     .required(errorMessages("Verification Code"))
