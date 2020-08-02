@@ -20,7 +20,7 @@ let useLocation = (shouldTrack, callback) => {
         subscriber = await watchPositionAsync(
           {
             accuracy: Accuracy.BestForNavigation, //accuracy of location is best for navigation(as walker, as biker, as driver)
-            timeInterval: 1000, //getLocation every 1000ms
+            timeInterval: 3000, //getLocation every 1000ms
             distanceInterval: 10, // getLocation every 10meters
           },
           callback
