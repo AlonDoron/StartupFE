@@ -12,14 +12,11 @@ const AuthLoading = (props) => {
         userId: token,
       };
 
-      debugger;
-      if (!params.userId) props.navigation.navigate("Auth");
-      else
-        HttpClient.get(ApiConfig.IDENTITY_PORT, "api/identity", params)
-          .then((result) => {
-            props.navigation.navigate(result ? "App" : "Auth");
-          })
-          .catch((err) => console.log(err));
+      HttpClient.get(ApiConfig.IDENTITY_PORT, "api/identity", params)
+        .then((result) => {
+          props.navigation.navigate(result ? "App" : "Auth");
+        })
+        .catch((err) => console.log(err));
     });
   }, []);
 
