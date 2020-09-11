@@ -22,7 +22,23 @@ const AuthLoading = ({ navigation }) => {
   };
 
   useEffect(() => {
+
     fetchData();
+
+    fetchToken().then((token) => {
+      let params = {
+        userId: token,
+      };
+
+      if (!params.userId) props.navigation.navigate("Auth");
+      else
+        HttpClient.get(ApiConfig.IDENTITY_PORT, "api/identity", params)
+          .then((result) => {
+            props.navigation.navigate(result ? "App" : "Auth");
+          })
+          .catch((err) => console.log(err));
+    });
+
   }, []);
 
   useEffect(() => {
