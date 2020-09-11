@@ -1,2 +1,2 @@
-export { default as apiConfig } from "./apiConfig";
-export { default as deviceConfig } from "./deviceConfig";
+export { default as ApiConfig } from "./apiConfig";
+export { default as DeviceConfig } from "./deviceConfig";

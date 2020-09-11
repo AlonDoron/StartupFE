@@ -1,38 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { View } from "react-native";
-import { LoginForm } from "../../forms";
-import { useDispatch, useSelector } from "react-redux";
-import { isUserExistsByPhoneNumber } from "../../actions/authAction";
+import LoginForm from "../../forms/LoginForm";
+import HttpClient from "../../api/HttpClient";
+import apiConfig from "../../config/apiConfig";
 
-const Login = ({ navigation }) => {
-  const [values, setValues] = useState({});
-  const [allowNavigate, setAllowNavigate] = useState(false);
-
-  const dispatch = useDispatch();
-  const isUserExists = useSelector((state) => state.auth.isUserExists);
-  const isFetching = useSelector((state) => state.auth.isFetching);
+const Login = (props) => {
+  const [submitting, setSubmitting] = useState(false);
 
   const handleSubmitForm = (vals) => {
-    setValues(vals);
-    dispatch(isUserExistsByPhoneNumber("Login", vals)).then(() =>
-      setAllowNavigate(true)
-    );
-  };
+    setSubmitting(true);
 
-  useEffect(() => {
-    if (allowNavigate) {
-      if (isUserExists)
-        navigation.navigate("VerifyAuth", {
-          vals: values,
-          sentFrom: "Login",
-        });
-      else navigation.navigate("Registration");
-    }
-  }, [allowNavigate]);
+    HttpClient.get(
+      apiConfig.LOGIN_PORT,
+      "api/Login/checkIfUserExists",
+      vals
+    ).then((result) => {
+      setSubmitting(false);
+      props.navigation.navigate(result ? "VerifyAuth" : "Signup", {
+        vals: vals,
+        sentFrom: "Login",
+      });
+    });
+  };
 
   return (
     <View>
-      <LoginForm submitForm={handleSubmitForm} submitting={isFetching} />
+      <LoginForm submitForm={handleSubmitForm} submitting={submitting} />
     </View>
   );
 };
