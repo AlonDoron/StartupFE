@@ -1,4 +1,4 @@
-import { ApiConfig } from "../config";
+import { apiConfig } from "../config";
 
 const request = async (port, route, params, method = "GET") => {
   const options = {
@@ -16,8 +16,8 @@ const request = async (port, route, params, method = "GET") => {
     }
   }
 
-  const targetUrl = `${ApiConfig.SERVER_URL}:${port}/${route}`;
-
+  const targetUrl = `${apiConfig.SERVER_URL}:${port}/${route}`;
+  console.log(targetUrl);
   const response = await fetch(targetUrl, options);
 
   if (response.status !== 200) {

@@ -2,14 +2,14 @@ import React from "react";
 import { View } from "react-native";
 import { Button } from "react-native-paper";
 
-const Auth = (props) => {
+const Auth = ({ navigation }) => {
   return (
     <View>
       <View>
         <Button
           style={{ margin: "5%" }}
           mode="contained"
-          onPress={() => props.navigation.navigate("Login")}
+          onPress={() => navigation.navigate("Login")}
         >
           Login
         </Button>
@@ -19,9 +19,9 @@ const Auth = (props) => {
         <Button
           style={{ margin: "5%" }}
           mode="contained"
-          onPress={() => props.navigation.navigate("Signup")}
+          onPress={() => navigation.navigate("Registration")}
         >
-          Signup
+          Registration
         </Button>
       </View>
     </View>
