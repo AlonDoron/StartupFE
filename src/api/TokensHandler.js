@@ -1,16 +1,16 @@
 import { AsyncStorage } from "react-native";
-import { deviceConfig } from "../config";
+import { DeviceConfig } from "../config";
 
 const writeTokenToDevice = async (token) => {
-  await AsyncStorage.setItem(deviceConfig.DEVICE_TOKEN_NAME, token);
+  await AsyncStorage.setItem(DeviceConfig.DEVICE_TOKEN_NAME, token);
 };
 
 const getTokenFromDevice = async () => {
-  const token = await AsyncStorage.getItem(deviceConfig.DEVICE_TOKEN_NAME);
+  const token = await AsyncStorage.getItem(DeviceConfig.DEVICE_TOKEN_NAME);
   return token;
 };
 const removeTokenFromDevice = async () => {
-  await AsyncStorage.removeItem(deviceConfig.DEVICE_TOKEN_NAME);
+  await AsyncStorage.removeItem(DeviceConfig.DEVICE_TOKEN_NAME);
 };
 
 export default {
