@@ -1,44 +1,29 @@
 import React from "react";
 import { View } from "react-native";
 import { Button } from "react-native-paper";
+import { useForm } from "../hooks";
 import { Input } from "../components/common";
-import { Formik } from "formik";
-import { verificationSchema } from "../validations";
+
 const VerifyAuthForm = (props) => {
+  const handleFormSubmit = () => {
+    props.submitForm(values);
+  };
+
+  const [values, handleChange, handleSubmit] = useForm(handleFormSubmit);
+
   return (
     <View>
-      <Formik
-        initialValues={{
-          VerificationCode: "",
-        }}
-        validationSchema={verificationSchema}
-        onSubmit={(values) => props.submitForm(values)}
-      >
-        {(props) => (
-          <View>
-            <Input
-              name="VerificationCode"
-              value={props.values.VerificationCode}
-              handleChangeText={props.handleChange("VerificationCode")}
-              label="Verification Code"
-              keyboardType="number-pad"
-              errors={
-                props.touched.VerificationCode && props.errors.VerificationCode
-              }
-            />
+      <Input
+        name="VerificationCode"
+        value={values.VerificationCode || ""}
+        onChange={(name, value) => handleChange(name, value)}
+        label="Verification Code"
+        keyboardType="number-pad"
+      />
 
-            <Button
-              mode="outlined"
-              onPress={props.handleSubmit}
-              loading={props.submitting}
-              disabled={props.submitting}
-            >
-              Verify
-              {props.pageName}
-            </Button>
-          </View>
-        )}
-      </Formik>
+      <Button mode="outlined" onPress={handleSubmit}>
+        {props.pageName}
+      </Button>
     </View>
   );
 };

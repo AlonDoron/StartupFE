@@ -1,10 +1,16 @@
-import { createStackNavigator } from "react-navigation-stack";
-import { Home } from "../../screens/app";
+import { createBottomTabNavigator } from "react-navigation-tabs";
+import { Home, Account, MyServices } from "../../screens/app";
 
-const AppStack = createStackNavigator(
+const AppStack = createBottomTabNavigator(
   {
+    MyServices: {
+      screen: MyServices,
+    },
     Home: {
       screen: Home,
+    },
+    Account: {
+      screen: Account,
     },
   },
   { initialRouteName: "Home" }
