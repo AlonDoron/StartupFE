@@ -7,6 +7,8 @@ import { Provider as PaperProvider } from "react-native-paper";
 import configureStore from "./src/store/configureStore";
 const store = configureStore();
 
+/*THIS IS A TEST COMMIT*/
+
 export default function App() {
   return (
     <StoreProvider store={store}>
