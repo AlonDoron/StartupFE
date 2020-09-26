@@ -1,22 +1,20 @@
 import React from "react";
 import { View } from "react-native";
-import { Button } from "react-native-paper";
-import TokensHandler from "../../api/TokensHandler";
-
+import { Text } from "react-native-paper";
+import { Map } from "../../components/common";
+import { Foundation } from "@expo/vector-icons";
 const Home = (props) => {
-  const signout = () => {
-    TokensHandler.removeTokenFromDevice().then(
-      props.navigation.navigate("Auth")
-    );
-  };
-
   return (
-    <View>
-      <Button mode="contained" onPress={signout}>
-        Sign out!
-      </Button>
+    <View style={{ justifyContent: "center", alignItems: "center" }}>
+      <Text style={{ fontSize: 40 }}>Home</Text>
+      <Map />
     </View>
   );
+};
+
+Home.navigationOptions = {
+  title: "Find",
+  tabBarIcon: <Foundation name="target-two" size={20} />,
 };
 
 export default Home;
