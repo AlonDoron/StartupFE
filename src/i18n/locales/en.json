@@ -1,0 +1,11 @@
+{
+  "login": "Login",
+  "registration": "Registration",
+  "verify": "Verify",
+
+  "phoneNumber": "Phone Number",
+  "firstName": "First Name",
+  "lastName": "Last Name",
+  "email": "Email",
+  "verificationCode": "Verification Code"
+}
