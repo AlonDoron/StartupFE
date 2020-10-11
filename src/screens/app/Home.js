@@ -1,6 +1,4 @@
 import React, {useState,useEffect} from "react";
-import { View, ActivityIndicator,StatusBar } from "react-native";
-import { Text } from "react-native-paper";
 import { Map } from "../../components/common";
 import {Marker} from 'react-native-maps'
 import { Foundation } from "@expo/vector-icons";
@@ -9,41 +7,43 @@ import HttpClient from "../../api/HttpClient";
 import { apiConfig } from "../../config";
 const Home = (props) => {
  const [location, err ] = useLocation(true)
-const [consumers, setConsumers] = useState([])
+const [serviceProviders, setServiceProviders] = useState([])
+const [isLocation ,setIsLocation] = useState(false)
+const initLocation={
+  longitude:34.7789174,
+  latitude: 31.9882718
+}
   useEffect(() => {
-    console.log("useEfefct");
-    if(!location || Object.keys(location).length === 0) return undefined
-    HttpClient.get(
+    if(!location || Object.keys(location).length === 0){
+        setIsLocation(false)
+    } else{
+        setIsLocation(true)
+    }
+   HttpClient.get(
       apiConfig.CONSUMER_PORT,
-      `/api/Consumer?Latitude=${location.coords.latitude}&Longitude=${location.coords.longitude}&Radius=1000&MeasureUnit=0`
+      `/api/Consumer?Latitude=${isLocation?location.coords.latitude:initLocation.latitude}&Longitude=${isLocation?location.coords.longitude:initLocation.longitude}&Radius=1000&MeasureUnit=0`
     )
-      .then((res) => setConsumers(res))
+      .then((res) => setServiceProviders(res))
       .catch((err) => console.log(err));
   }, [location]);
   return (
-    <View style={{flex:1 }}>
-      {(!location || Object.keys(location).length === 0)
-      ?
-            <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <ActivityIndicator size="large" />
-      <StatusBar barStyle="default" />
-    </View>
-      :
-        
-        <Map location={location.coords}>
-        {consumers.map((consumer,index)=>{
-          return(
-              <Marker key={index} coordinate={{
-            longitude: consumer.Location.longitude || 0,
-            latitude: consumer.Location.latitude || 0
-          }} />
-          )
-        } )}
+    <Map location={ Object.keys(location).length === 0?initLocation:location.coords}>
+      {serviceProviders.map((provider, i) => {
+        if (provider.Location.Latitude && provider.Location.Longitude) {
+          console.log("TEST", provider.Location.Longitude);
+         return(<Marker
+            key={i}
+            coordinate={{
+              latitude: provider.Location.Latitude,
+              longitude:provider.Location.Longitude
+            }}
+            title={"noam"}
+            pinColor={"#ffd1dc"}
+          />)
+        }
+      })}
       </Map>
-      
-      }
-     
-    </View>
+  
   );
 };
 
