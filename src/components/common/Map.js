@@ -1,18 +1,24 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
-const Map = (props) => {
+import MapView from 'react-native-maps'
+const Map = ({children, location}) => {
   return (
-    <View style={styles.map}>
-      <Text style={{ color: "red" }}>Map</Text>
-    </View>
+     <MapView
+      style={styles.map}
+      initialRegion={{
+        ...location,
+        latitudeDelta: 0.02,
+        longitudeDelta: 0.02,
+      }}
+    >
+      {children}
+    </MapView>
   );
 };
 
 const styles = StyleSheet.create({
   map: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
   },
 });
 
