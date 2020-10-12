@@ -4,14 +4,11 @@ import {
   requestPermissionsAsync,
   watchPositionAsync,
 } from "expo-location";
-import { setLocale } from "yup";
+import {locationConfig} from '../config'
 
 const useLocation = (shouldTrack) => {
   const [err, setErr] = useState(null);
-  const [location, setLocation] = useState({
-  longitude:34.7789174,
-  latitude: 31.9882718
-})
+  const [location, setLocation] = useState(locationConfig.initLocation)
 
   useEffect(() => {
     let subscriber;
@@ -25,8 +22,8 @@ const useLocation = (shouldTrack) => {
         subscriber = await watchPositionAsync(
           {
             accuracy: Accuracy.BestForNavigation, //accuracy of location is best for navigation(as walker, as biker, as driver)
-            timeInterval: 1000, //getLocation every 1000ms
-            distanceInterval: 10, // getLocation every 10meters
+            timeInterval: locationConfig.getLocationInterval, //getLocation every 1000ms
+            distanceInterval: locationConfig.getDistanceInterval, // getLocation every 10meters
           },
           (location)=>{
             setLocation(location)
