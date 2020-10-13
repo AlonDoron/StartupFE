@@ -1,16 +1,16 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import MapView from 'react-native-maps'
-import { locationConfig } from '../../config'
-const Map = ({children, location}) => {
+import {locationConfig} from '../../config'
+const OfflineMap = (props) => {
   return (
      <MapView
       style={styles.map}
       initialRegion={{
-       ...location,
-       ...locationConfig.initDeltaCoords
+        ...locationConfig.initLocation,
+        ...locationConfig.initDeltaCoords,
       }}>
-      {children}
+      {props.children}
     </MapView>
   );
 };
@@ -21,4 +21,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Map;
+export default OfflineMap;
