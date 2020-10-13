@@ -1,6 +1,7 @@
 import React from "react";
 import { View } from "react-native";
 import { Button } from "react-native-paper";
+import i18n from "../../i18n";
 
 const Auth = ({ navigation }) => {
   return (
@@ -11,7 +12,7 @@ const Auth = ({ navigation }) => {
           mode="contained"
           onPress={() => navigation.navigate("Login")}
         >
-          Login
+          {i18n.t("login")}
         </Button>
       </View>
 
@@ -21,7 +22,7 @@ const Auth = ({ navigation }) => {
           mode="contained"
           onPress={() => navigation.navigate("Registration")}
         >
-          Registration
+          {i18n.t("registration")}
         </Button>
       </View>
     </View>
