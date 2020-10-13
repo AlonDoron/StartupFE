@@ -1,0 +1,11 @@
+{
+  "login": "התחברות",
+  "registration": "הרשמה",
+  "verify": "אישור התחברות",
+
+  "phoneNumber": "טלפון",
+  "firstName": "שם פרטי",
+  "lastName": "שם משפחה",
+  "email": "כתובת מייל",
+  "verificationCode": "קוד שקיבלתם לטלפון"
+}
