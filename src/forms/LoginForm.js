@@ -3,6 +3,7 @@ import { Layout, Button } from "@ui-kitten/components";
 import { Input, LoadingIndicator } from "../components/common";
 import { Formik } from "formik";
 import { loginSchema } from "../validations";
+import i18n from "../i18n";
 
 const LoginForm = (props) => {
   return (
@@ -20,7 +21,7 @@ const LoginForm = (props) => {
               name="phone Number"
               value={props.values.phoneNumber}
               handleChangeText={props.handleChange("phoneNumber")}
-              label="Phone Number"
+              label={i18n.t("phoneNumber")}
               keyboardType="number-pad"
               errors={props.touched.phoneNumber && props.errors.phoneNumber}
             />
@@ -31,7 +32,7 @@ const LoginForm = (props) => {
               disabled={props.submitting}
               accessoryLeft={LoadingIndicator}
             >
-              Login
+              {i18n.t("login")}
             </Button>
           </Layout>
         )}

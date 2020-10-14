@@ -3,6 +3,7 @@ import { Layout, Button } from "@ui-kitten/components";
 import { Input, LoadingIndicator } from "../components/common";
 import { Formik } from "formik";
 import { verificationSchema } from "../validations";
+import i18n from "../i18n";
 
 const VerifyAuthForm = (props) => {
   return (
@@ -20,7 +21,7 @@ const VerifyAuthForm = (props) => {
               name="VerificationCode"
               value={props.values.VerificationCode}
               handleChangeText={props.handleChange("VerificationCode")}
-              label="Verification Code"
+              label={i18n.t("verificationCode")}
               keyboardType="number-pad"
               errors={
                 props.touched.VerificationCode && props.errors.VerificationCode
@@ -33,8 +34,7 @@ const VerifyAuthForm = (props) => {
               disabled={props.submitting}
               accessoryLeft={LoadingIndicator}
             >
-              Verify
-              {props.pageName}
+              {i18n.t("verify")}
             </Button>
           </Layout>
         )}

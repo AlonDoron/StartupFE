@@ -3,6 +3,8 @@ import { Layout, Button } from "@ui-kitten/components";
 import { Input, LoadingIndicator } from "../components/common";
 import { Formik } from "formik";
 import { registrationSchema } from "../validations";
+import i18n from "../i18n";
+
 const RegistrationForm = (props) => {
   return (
     <Layout>
@@ -23,7 +25,7 @@ const RegistrationForm = (props) => {
               value={props.values.firstName}
               handleChangeText={props.handleChange("firstName")}
               handleBlur={props.handleBlur("firstName")}
-              label="First Name"
+              label={i18n.t("firstName")}
               keyboardType="default"
               errors={props.touched.firstName && props.errors.firstName}
             />
@@ -33,7 +35,7 @@ const RegistrationForm = (props) => {
               value={props.values.lastName}
               handleChangeText={props.handleChange("lastName")}
               handleBlur={props.handleBlur("lastName")}
-              label="Last Name"
+              label={i18n.t("lastName")}
               keyboardType="default"
               errors={props.touched.lastName && props.errors.lastName}
             />
@@ -42,7 +44,7 @@ const RegistrationForm = (props) => {
               value={props.values.email}
               handleChangeText={props.handleChange("email")}
               handleBlur={props.handleBlur("email")}
-              label="Email"
+              label={i18n.t("email")}
               keyboardType="email-address"
               errors={props.touched.email && props.errors.email}
             />
@@ -51,7 +53,7 @@ const RegistrationForm = (props) => {
               value={props.values.phoneNumber}
               handleChangeText={props.handleChange("phoneNumber")}
               handleBlur={props.handleBlur("phoneNumber")}
-              label="Phone Number"
+              label={i18n.t("phoneNumber")}
               keyboardType="number-pad"
               errors={props.touched.phoneNumber && props.errors.phoneNumber}
             />
@@ -63,7 +65,7 @@ const RegistrationForm = (props) => {
               disabled={props.submitting}
               accessoryLeft={LoadingIndicator}
             >
-              Registraion
+              {i18n.t("registration")}
             </Button>
           </Layout>
         )}
