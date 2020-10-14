@@ -1,5 +1,7 @@
 import React from "react";
 import AppNavigator from "./src/navigation/AppNavigator";
+import { I18nManager } from "react-native";
+import * as Localization from "expo-localization";
 
 import { Provider as StoreProvider } from "react-redux";
 import { ApplicationProvider, IconRegistry } from "@ui-kitten/components";
@@ -10,6 +12,8 @@ import configureStore from "./src/store/configureStore";
 const store = configureStore();
 
 export default function App() {
+  I18nManager.forceRTL(Localization.isRTL);
+
   return (
     <StoreProvider store={store}>
       <IconRegistry icons={EvaIconsPack} />
