@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View } from "react-native";
+import { Layout } from "@ui-kitten/components";
 import { RegistrationForm } from "../../forms";
 import { useDispatch, useSelector } from "react-redux";
 import { isUserExistsByPhoneNumber } from "../../actions/authAction";
@@ -33,9 +33,9 @@ const Registration = ({ navigation }) => {
   }, [allowNavigate]);
 
   return (
-    <View>
+    <Layout>
       <RegistrationForm submitForm={handleSubmitForm} submitting={isFetching} />
-    </View>
+    </Layout>
   );
 };
 
