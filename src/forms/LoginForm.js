@@ -1,12 +1,12 @@
 import React from "react";
-import { View } from "react-native";
-import { Button } from "react-native-paper";
-import { Input } from "../components/common";
+import { Layout, Button } from "@ui-kitten/components";
+import { Input, LoadingIndicator } from "../components/common";
 import { Formik } from "formik";
 import { loginSchema } from "../validations";
+
 const LoginForm = (props) => {
   return (
-    <View>
+    <Layout>
       <Formik
         initialValues={{
           phoneNumber: "",
@@ -15,7 +15,7 @@ const LoginForm = (props) => {
         onSubmit={(values) => props.submitForm(values)}
       >
         {(props) => (
-          <View>
+          <Layout>
             <Input
               name="phone Number"
               value={props.values.phoneNumber}
@@ -28,15 +28,15 @@ const LoginForm = (props) => {
             <Button
               mode="outlined"
               onPress={props.handleSubmit}
-              loading={props.submitting}
               disabled={props.submitting}
+              accessoryLeft={LoadingIndicator}
             >
               Login
             </Button>
-          </View>
+          </Layout>
         )}
       </Formik>
-    </View>
+    </Layout>
   );
 };
 

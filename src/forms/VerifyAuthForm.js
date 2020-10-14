@@ -1,12 +1,12 @@
 import React from "react";
-import { View } from "react-native";
-import { Button } from "react-native-paper";
-import { Input } from "../components/common";
+import { Layout, Button } from "@ui-kitten/components";
+import { Input, LoadingIndicator } from "../components/common";
 import { Formik } from "formik";
 import { verificationSchema } from "../validations";
+
 const VerifyAuthForm = (props) => {
   return (
-    <View>
+    <Layout>
       <Formik
         initialValues={{
           VerificationCode: "",
@@ -15,7 +15,7 @@ const VerifyAuthForm = (props) => {
         onSubmit={(values) => props.submitForm(values)}
       >
         {(props) => (
-          <View>
+          <Layout>
             <Input
               name="VerificationCode"
               value={props.values.VerificationCode}
@@ -30,16 +30,16 @@ const VerifyAuthForm = (props) => {
             <Button
               mode="outlined"
               onPress={props.handleSubmit}
-              loading={props.submitting}
               disabled={props.submitting}
+              accessoryLeft={LoadingIndicator}
             >
               Verify
               {props.pageName}
             </Button>
-          </View>
+          </Layout>
         )}
       </Formik>
-    </View>
+    </Layout>
   );
 };
 
