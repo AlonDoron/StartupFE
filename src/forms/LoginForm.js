@@ -1,4 +1,5 @@
 import React from "react";
+import { StyleSheet } from "react-native";
 import { Layout, Button } from "@ui-kitten/components";
 import { Input, LoadingIndicator } from "../components/common";
 import { Formik } from "formik";
@@ -16,7 +17,7 @@ const LoginForm = (props) => {
         onSubmit={(values) => props.submitForm(values)}
       >
         {(props) => (
-          <Layout>
+          <Layout style={styles.form1}>
             <Input
               name="phone Number"
               value={props.values.phoneNumber}
@@ -27,6 +28,7 @@ const LoginForm = (props) => {
             />
 
             <Button
+              style={styles.button}
               mode="outlined"
               onPress={props.handleSubmit}
               disabled={props.submitting}
@@ -40,5 +42,12 @@ const LoginForm = (props) => {
     </Layout>
   );
 };
+
+const styles = StyleSheet.create({
+  button: {
+    width: 380,
+    alignSelf: "center",
+  },
+});
 
 export default LoginForm;

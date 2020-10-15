@@ -1,4 +1,5 @@
 import React from "react";
+import { StyleSheet } from "react-native";
 import { Layout, Button } from "@ui-kitten/components";
 import { Input, LoadingIndicator } from "../components/common";
 import { Formik } from "formik";
@@ -59,6 +60,7 @@ const RegistrationForm = (props) => {
             />
 
             <Button
+              style={styles.button}
               mode="outlined"
               onPress={props.handleSubmit}
               loading={props.submitting}
@@ -73,5 +75,12 @@ const RegistrationForm = (props) => {
     </Layout>
   );
 };
+
+const styles = StyleSheet.create({
+  button: {
+    width: 380,
+    alignSelf: "center",
+  },
+});
 
 export default RegistrationForm;

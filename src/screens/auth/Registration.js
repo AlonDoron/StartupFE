@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { StyleSheet } from "react-native";
 import { Layout } from "@ui-kitten/components";
 import { RegistrationForm } from "../../forms";
 import { useDispatch, useSelector } from "react-redux";
@@ -33,10 +34,18 @@ const Registration = ({ navigation }) => {
   }, [allowNavigate]);
 
   return (
-    <Layout>
+    <Layout style={styles.container}>
       <RegistrationForm submitForm={handleSubmitForm} submitting={isFetching} />
     </Layout>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: "column",
+    alignContent: "center",
+  },
+});
 
 export default Registration;
