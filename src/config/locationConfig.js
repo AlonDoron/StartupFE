@@ -7,7 +7,7 @@ const getLocationInterval = 1000
 
 const  getDistanceInterval = 10 
 
-const radius =  1000
+const radius = 1000
 
 const initDeltaCoords={
     latitudeDelta: 0.03,
