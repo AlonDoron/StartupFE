@@ -1,14 +1,14 @@
 import * as Localization from "expo-localization";
 import i18n from "i18n-js";
 
-import en from "./locales/en.json";
-import il from "./locales/il.json";
+import enUS from "./locales/en-US.json";
+import heIL from "./locales/he-IL.json";
 
 i18n.fallbacks = true;
 
 i18n.translations = {
-  en,
-  il,
+  "en-US": enUS,
+  "he-IL": heIL,
 };
 
 i18n.locale = Localization.locale;
