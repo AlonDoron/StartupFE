@@ -2,6 +2,7 @@ import React from "react";
 import AppNavigator from "./src/navigation/AppNavigator";
 import { I18nManager } from "react-native";
 import * as Localization from "expo-localization";
+import { Appearance } from "react-native-appearance";
 
 import { Provider as StoreProvider } from "react-redux";
 import { ApplicationProvider, IconRegistry } from "@ui-kitten/components";
@@ -17,7 +18,7 @@ export default function App() {
   return (
     <StoreProvider store={store}>
       <IconRegistry icons={EvaIconsPack} />
-      <ApplicationProvider {...eva} theme={eva.dark}>
+      <ApplicationProvider {...eva} theme={eva[Appearance.getColorScheme()]}>
         <AppNavigator />
       </ApplicationProvider>
     </StoreProvider>
