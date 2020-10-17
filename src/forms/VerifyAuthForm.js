@@ -19,7 +19,7 @@ const VerifyAuthForm = (props) => {
         {(props) => (
           <Layout>
             <Input
-              name="VerificationCode"
+              name="verificationCode"
               value={props.values.VerificationCode}
               handleChangeText={props.handleChange("VerificationCode")}
               label={i18n.t("verificationCode")}

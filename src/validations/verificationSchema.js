@@ -4,7 +4,7 @@ import errorMessages from "./errorMessages";
 export default verificationSchema = yup.object({
   VerificationCode: yup
     .string()
-    .required(errorMessages("Verification Code"))
-    .min(5)
-    .max(5),
+    .required(errorMessages("verificationCode"))
+    .min(5, errorMessages("verificationCode", "invalid"))
+    .max(5, errorMessages("verificationCode", "invalid")),
 });
