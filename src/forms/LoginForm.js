@@ -19,7 +19,7 @@ const LoginForm = (props) => {
         {(props) => (
           <Layout style={styles.form1}>
             <Input
-              name="phone Number"
+              name="phoneNumber"
               value={props.values.phoneNumber}
               handleChangeText={props.handleChange("phoneNumber")}
               label={i18n.t("phoneNumber")}

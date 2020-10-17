@@ -22,7 +22,7 @@ const RegistrationForm = (props) => {
         {(props) => (
           <Layout>
             <Input
-              name="First Name"
+              name="firstName"
               value={props.values.firstName}
               handleChangeText={props.handleChange("firstName")}
               handleBlur={props.handleBlur("firstName")}
@@ -32,7 +32,7 @@ const RegistrationForm = (props) => {
             />
 
             <Input
-              name="Last Name"
+              name="lastName"
               value={props.values.lastName}
               handleChangeText={props.handleChange("lastName")}
               handleBlur={props.handleBlur("lastName")}
@@ -50,7 +50,7 @@ const RegistrationForm = (props) => {
               errors={props.touched.email && props.errors.email}
             />
             <Input
-              name="phone Number"
+              name="phoneNumber"
               value={props.values.phoneNumber}
               handleChangeText={props.handleChange("phoneNumber")}
               handleBlur={props.handleBlur("phoneNumber")}
