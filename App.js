@@ -8,7 +8,6 @@ import { Provider as StoreProvider } from "react-redux";
 import { ApplicationProvider, IconRegistry } from "@ui-kitten/components";
 import * as eva from "@eva-design/eva";
 import { EvaIconsPack } from "@ui-kitten/eva-icons";
-
 import configureStore from "./src/store/configureStore";
 const store = configureStore();
 
