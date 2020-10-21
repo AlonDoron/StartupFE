@@ -1,6 +1,6 @@
 import React, {useState,useEffect} from "react";
 import {StyleSheet} from 'react-native'
-import { Map, OfflineMap, ToolTip } from "../../components/maps";
+import { Map, OfflineMap, ToolTip, ServiceProviders } from "../../components/maps";
 import { Marker} from 'react-native-maps'
 import { Foundation } from "@expo/vector-icons";
 import {useLocation} from '../../hooks'
@@ -47,7 +47,8 @@ const dataObject={
   return (
           isLocation?
    <Map style={styles.map} location={ coords}>
-      {serviceProviders.map(({Id,Location}, i) => {
+     <ServiceProviders serviceProviders={serviceProviders}/>
+      {/* {serviceProviders.map(({Id,Location}, i) => {
         if (Location.Latitude && Location.Longitude) {
          return(<Marker
             key={i}
@@ -64,7 +65,7 @@ const dataObject={
             }}
           />)
         }
-      })}
+      })} */}
        <ToolTip
        visible={toolTipData.isActive} 
        providerData={toolTipData.data}
