@@ -5,6 +5,6 @@ const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2
 export default loginSchema = yup.object({
   phoneNumber: yup
     .string()
-    .required(errorMessages("Phone Number"))
-    .matches(phoneRegExp, errorMessages("Phone Number", "Invalid")),
+    .required(errorMessages("phoneNumber"))
+    .matches(phoneRegExp, errorMessages("phoneNumber", "invalid")),
 });

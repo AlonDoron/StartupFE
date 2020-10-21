@@ -1,26 +1,26 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
-import { Text, TextInput } from "react-native-paper";
+import { StyleSheet } from "react-native";
+import { Layout, Input as FormInput } from "@ui-kitten/components";
 
 const Input = (props) => {
   return (
-    <View style={styles.textInput}>
-      <TextInput
+    <Layout style={styles.container}>
+      <FormInput
         name={props.name}
         keyboardType={props.keyboardType}
         value={props.value}
         label={props.label}
-        mode="outlined"
+        caption={props.errors}
         onChangeText={props.handleChangeText}
         onBlur={props.handleBlur}
+        status={(props.errors && "danger") || "basic"}
       />
-      {props.errors && <Text style={{ color: "red" }}>{props.errors}</Text>}
-    </View>
+    </Layout>
   );
 };
 
 const styles = StyleSheet.create({
-  textInput: {
+  container: {
     width: "80%",
     alignSelf: "center",
     paddingTop: "5%",

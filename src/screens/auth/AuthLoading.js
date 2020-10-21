@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { StatusBar, View } from "react-native";
+import { StatusBar } from "react-native";
+import { Layout } from "@ui-kitten/components";
 import { ActivityIndicator } from "react-native-paper";
 import TokensHandler from "../../api/TokensHandler";
 import { useDispatch, useSelector } from "react-redux";
@@ -31,10 +32,10 @@ const AuthLoading = ({ navigation }) => {
   }, [allowNavigate, isUserExists]);
 
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <Layout style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <ActivityIndicator size="large" />
       <StatusBar barStyle="default" />
-    </View>
+    </Layout>
   );
 };
 

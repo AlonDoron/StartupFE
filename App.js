@@ -1,21 +1,25 @@
 import React from "react";
 import AppNavigator from "./src/navigation/AppNavigator";
+import { I18nManager } from "react-native";
+import * as Localization from "expo-localization";
+import { Appearance } from "react-native-appearance";
 
 import { Provider as StoreProvider } from "react-redux";
-import { Provider as PaperProvider } from "react-native-paper";
-import { ApplicationProvider as KittenProvider } from '@ui-kitten/components';
-import * as eva from '@eva-design/eva';
+import { ApplicationProvider, IconRegistry } from "@ui-kitten/components";
+import * as eva from "@eva-design/eva";
+import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import configureStore from "./src/store/configureStore";
 const store = configureStore();
 
 export default function App() {
+  I18nManager.forceRTL(Localization.isRTL);
+
   return (
     <StoreProvider store={store}>
-      <PaperProvider>
-        <KittenProvider {...eva} theme={eva.light}>
-          <AppNavigator />
-        </KittenProvider>
-      </PaperProvider>
+      <IconRegistry icons={EvaIconsPack} />
+      <ApplicationProvider {...eva} theme={eva[Appearance.getColorScheme()]}>
+        <AppNavigator />
+      </ApplicationProvider>
     </StoreProvider>
   );
 }

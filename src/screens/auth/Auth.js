@@ -1,31 +1,41 @@
 import React from "react";
-import { View } from "react-native";
-import { Button } from "react-native-paper";
+import { StyleSheet } from "react-native";
+import { Button, Layout } from "@ui-kitten/components";
+import i18n from "../../i18n";
 
 const Auth = ({ navigation }) => {
   return (
-    <View>
-      <View>
-        <Button
-          style={{ margin: "5%" }}
-          mode="contained"
-          onPress={() => navigation.navigate("Login")}
-        >
-          Login
-        </Button>
-      </View>
+    <Layout style={styles.container}>
+      <Button
+        style={styles.button}
+        onPress={() => navigation.navigate("Login")}
+      >
+        {i18n.t("login")}
+      </Button>
 
-      <View>
-        <Button
-          style={{ margin: "5%" }}
-          mode="contained"
-          onPress={() => navigation.navigate("Registration")}
-        >
-          Registration
-        </Button>
-      </View>
-    </View>
+      <Button
+        style={styles.button}
+        onPress={() => navigation.navigate("Registration")}
+      >
+        {i18n.t("registration")}
+      </Button>
+    </Layout>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  button: {
+    padding: 20,
+    textAlign: "center",
+    margin: 30,
+    width: 200,
+  },
+});
 
 export default Auth;

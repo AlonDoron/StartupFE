@@ -1,12 +1,14 @@
 import React from "react";
-import { View } from "react-native";
-import { Button } from "react-native-paper";
-import { Input } from "../components/common";
+import { StyleSheet } from "react-native";
+import { Layout, Button } from "@ui-kitten/components";
+import { Input, LoadingIndicator } from "../components/common";
 import { Formik } from "formik";
 import { loginSchema } from "../validations";
+import i18n from "../i18n";
+
 const LoginForm = (props) => {
   return (
-    <View>
+    <Layout>
       <Formik
         initialValues={{
           phoneNumber: "",
@@ -15,29 +17,37 @@ const LoginForm = (props) => {
         onSubmit={(values) => props.submitForm(values)}
       >
         {(props) => (
-          <View>
+          <Layout style={styles.form1}>
             <Input
-              name="phone Number"
+              name="phoneNumber"
               value={props.values.phoneNumber}
               handleChangeText={props.handleChange("phoneNumber")}
-              label="Phone Number"
+              label={i18n.t("phoneNumber")}
               keyboardType="number-pad"
               errors={props.touched.phoneNumber && props.errors.phoneNumber}
             />
 
             <Button
+              style={styles.button}
               mode="outlined"
               onPress={props.handleSubmit}
-              loading={props.submitting}
               disabled={props.submitting}
+              accessoryLeft={LoadingIndicator}
             >
-              Login
+              {i18n.t("login")}
             </Button>
-          </View>
+          </Layout>
         )}
       </Formik>
-    </View>
+    </Layout>
   );
 };
+
+const styles = StyleSheet.create({
+  button: {
+    width: 380,
+    alignSelf: "center",
+  },
+});
 
 export default LoginForm;
