@@ -19,16 +19,14 @@ const useLocation = (shouldTrack) => {
   useEffect(() => {
     let subscriber;
 
-    const startWatcing = async () => {
+    const startWatching = async () => {
       try {
         const { granted } = await requestPermissionsAsync();
         if (!granted) {
           throw new Error("Location Permissions not granted");
         }
         subscriber = await watchPositionAsync(
-          {
-            
-          },
+          watchPositionOption,
           (location)=>{
             setLocation(location)
           }
@@ -39,7 +37,7 @@ const useLocation = (shouldTrack) => {
     };
 
     if (shouldTrack) {
-      startWatcing();
+      startWatching();
     } else {
       if (subscriber) subscriber.remove();
       subscriber = null;
