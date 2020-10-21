@@ -10,6 +10,12 @@ const useLocation = (shouldTrack) => {
   const [err, setErr] = useState(null);
   const [location, setLocation] = useState({})
 
+  const watchPositionOption = {
+    accuracy: Accuracy.BestForNavigation, 
+    timeInterval: locationConfig.getLocationInterval, 
+    distanceInterval: locationConfig.getDistanceInterval, 
+  }
+
   useEffect(() => {
     let subscriber;
 
@@ -21,9 +27,7 @@ const useLocation = (shouldTrack) => {
         }
         subscriber = await watchPositionAsync(
           {
-            accuracy: Accuracy.BestForNavigation, 
-            timeInterval: locationConfig.getLocationInterval, 
-            distanceInterval: locationConfig.getDistanceInterval, 
+            
           },
           (location)=>{
             setLocation(location)
