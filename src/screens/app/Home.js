@@ -1,6 +1,6 @@
 import React, {useState,useEffect} from "react";
 import {StyleSheet,View} from 'react-native'
-import { Map, OfflineMap, ToolTip } from "../../components/common";
+import { Map, OfflineMap, ToolTip } from "../../components/maps";
 import { Marker} from 'react-native-maps'
 import { Foundation } from "@expo/vector-icons";
 import {useLocation} from '../../hooks'
