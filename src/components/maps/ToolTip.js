@@ -3,11 +3,10 @@ import {StyleSheet, View, Image} from 'react-native'
 import {Modal, Text, Button} from '@ui-kitten/components'
 
 const ToolTip = ({visible, providerData, hideToolTip}) => {
-    // console.log(providerData)
     return (
-        <Modal  visible={visible} style={styles.model} onBackdropPress={hideToolTip} backdropStyle={styles.backdropStyle}>
-            <Text>{providerData.Id}</Text>
-            <Button onPress={hideToolTip}>Hide</Button>
+        <Modal  visible={visible} style={styles.model} onBackdropPress={()=>hideToolTip(false)} backdropStyle={styles.backdropStyle}>
+            <Text>{providerData.firstName} {providerData.lastName}</Text>
+            <Button onPress={()=>hideToolTip(false)}>Hide</Button>
         </Modal>
     )
 }

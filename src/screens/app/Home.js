@@ -1,7 +1,6 @@
 import React, {useState,useEffect} from "react";
 import {StyleSheet} from 'react-native'
 import { Map, OfflineMap, ToolTip, ServiceProviderMarker } from "../../components/maps";
-import { Marker} from 'react-native-maps'
 import { Foundation } from "@expo/vector-icons";
 import {useLocation} from '../../hooks'
 import {getServiceProviders} from '../../api/wrappers/locationService'
@@ -15,13 +14,6 @@ const Home = (props) => {
   data:{},
   isActive: false,
  })
-
-const dataObject={
-  image_url:'https://cdn.jpegmini.com/user/images/slider_puffin_before_mobile.jpg',
-  rating:4,
-  full_name:'Jacob',
-  title:'Jacob Store'
-}
 
   useEffect(() => {
     if(!coords || err ){
@@ -38,18 +30,27 @@ const dataObject={
         .catch((err) => console.log(err));
     }
   }, [coords, err]);
-  
+
+  const handleToolTipVisible = (isVisible) => {
+      setToolTipData(prevState=>({...prevState,isActive:isVisible }))
+  }
+  const handleToolTipData = (dataObj) => {
+      setToolTipData(prevState=>({...prevState, data:{ ...dataObj}}))
+  }
+
   return (
         isLocation
         ?
           <Map style={styles.map} location={ coords}>
             <ServiceProviderMarker
               serviceProviders={serviceProviders || []}
+              openToolTip={(isVisible)=>handleToolTipVisible(isVisible)}
+              passToolTipData={(dataObj)=>handleToolTipData(dataObj)}
             />
             <ToolTip
               visible={toolTipData.isActive} 
               providerData={toolTipData.data}
-              hideToolTip={()=>  setToolTipData(oldState=>({...oldState,  isActive:true }))}
+              hideToolTip={(isVisible)=>handleToolTipVisible(isVisible)}
             />
           </Map>
         :
