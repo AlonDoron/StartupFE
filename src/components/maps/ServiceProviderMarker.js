@@ -1,7 +1,7 @@
 import React from 'react'
 import {Marker} from 'react-native-maps'
 
-const ServiceProviderMarker = ({serviceProviders, openToolTip, passToolTipData, onToolTip}) => {
+const ServiceProviderMarker = ({serviceProviders, openToolTip, passToolTipData, onToolTip, onMarkerPress}) => {
     return(
         serviceProviders.map((provider,i)=>(
             <Marker
@@ -13,6 +13,7 @@ const ServiceProviderMarker = ({serviceProviders, openToolTip, passToolTipData, 
             pinColor={"#ffd1dc"}
             onPress={()=>{
                 console.log('marker pressed')
+                // onMarkerPress(provider.Id)
                 onToolTip(true,{
                     profession:provider.Profession,
                     title:provider.Title,
@@ -20,16 +21,7 @@ const ServiceProviderMarker = ({serviceProviders, openToolTip, passToolTipData, 
                     lastName:provider.LastName,
                     description:provider.Description,
                     rating:provider.Rating
-                })
-                // openToolTip(true)
-                // passToolTipData({
-                //     profession:provider.Profession,
-                //     title:provider.Title,
-                //     firstName:provider.FirstName,
-                //     lastName:provider.LastName,
-                //     description:provider.Description,
-                //     rating:provider.Rating
-                // })             
+                })            
             }}
             />
         ))

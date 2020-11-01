@@ -14,7 +14,8 @@ const Home = (props) => {
   data:{},
   isActive: false,
  })
-
+//  const [currentProvider, setCurrentProvider] = useState({});
+// console.log('curernt provider', currentProvider)
 
   useEffect(() => {
     if(!coords || err ){
@@ -37,6 +38,12 @@ const Home = (props) => {
     setToolTipData(prevState=>({...prevState, isActive:visibilty, data:{ ...data}}))
   }
 
+  // const onMarkerPress = (id) => {
+  //   const [current] = serviceProviders.filter((provider)=>provider.Id == id)
+  //   if(current) setCurrentProvider(current)
+  //   else return
+  // }
+
   return (
         isLocation
         ?
@@ -44,6 +51,7 @@ const Home = (props) => {
             <ServiceProviderMarker
               serviceProviders={serviceProviders || []}
               onToolTip={(visibilty, data)=> handleToolTip(visibilty, data)}
+              // onMarkerPress={(providerId)=>onMarkerPress(providerId)}
             />
             <ToolTip
               visible={toolTipData.isActive} 
