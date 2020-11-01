@@ -3,10 +3,15 @@ import {StyleSheet, View, Image} from 'react-native'
 import {Modal, Text, Button} from '@ui-kitten/components'
 
 const ToolTip = ({visible, providerData, hideToolTip}) => {
+    if(!providerData || providerData === {}){
+        return(
+            <Text>Soory There is no data for this provider</Text>
+        )
+    }
     return (
-        <Modal  visible={visible} style={styles.model} onBackdropPress={()=>hideToolTip(false)} backdropStyle={styles.backdropStyle}>
+        <Modal  visible={visible} style={styles.model} onBackdropPress={hideToolTip} backdropStyle={styles.backdropStyle}>
             <Text>{providerData.firstName} {providerData.lastName}</Text>
-            <Button onPress={()=>hideToolTip(false)}>Hide</Button>
+            <Button onPress={hideToolTip}>Hide</Button>
         </Modal>
     )
 }

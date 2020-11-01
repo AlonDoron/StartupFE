@@ -15,6 +15,7 @@ const Home = (props) => {
   isActive: false,
  })
 
+
   useEffect(() => {
     if(!coords || err ){
       setIsLocation(false)
@@ -31,11 +32,9 @@ const Home = (props) => {
     }
   }, [coords, err]);
 
-  const handleToolTipVisible = (isVisible) => {
-      setToolTipData(prevState=>({...prevState,isActive:isVisible }))
-  }
-  const handleToolTipData = (dataObj) => {
-      setToolTipData(prevState=>({...prevState, data:{ ...dataObj}}))
+
+  const handleToolTip = (visibilty, data={} ) => {
+    setToolTipData(prevState=>({...prevState, isActive:visibilty, data:{ ...data}}))
   }
 
   return (
@@ -44,13 +43,12 @@ const Home = (props) => {
           <Map style={styles.map} location={ coords}>
             <ServiceProviderMarker
               serviceProviders={serviceProviders || []}
-              openToolTip={(isVisible)=>handleToolTipVisible(isVisible)}
-              passToolTipData={(dataObj)=>handleToolTipData(dataObj)}
+              onToolTip={(visibilty, data)=> handleToolTip(visibilty, data)}
             />
             <ToolTip
               visible={toolTipData.isActive} 
               providerData={toolTipData.data}
-              hideToolTip={(isVisible)=>handleToolTipVisible(isVisible)}
+              hideToolTip={()=>setToolTipData({...toolTipData, isActive:false})}
             />
           </Map>
         :
