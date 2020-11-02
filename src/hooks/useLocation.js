@@ -46,8 +46,6 @@ const useLocation = (shouldTrack) => {
         subscriber = await watchPositionAsync(
           watchPositionOption,
           (newLocation)=>{
-            // console.log('newLocation', newLocation)
-            // console.log('location', location)
             if(location.coords){
                 if(!shallowEqualLocation(newLocation.coords, location.coords)){
                     setLocation(newLocation)

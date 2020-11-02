@@ -38,11 +38,6 @@ const Home = (props) => {
     setToolTipData(prevState=>({...prevState, isActive:visibilty, data:{ ...data}}))
   }
 
-  // const onMarkerPress = (id) => {
-  //   const [current] = serviceProviders.filter((provider)=>provider.Id == id)
-  //   if(current) setCurrentProvider(current)
-  //   else return
-  // }
 
   return (
         isLocation
@@ -51,7 +46,6 @@ const Home = (props) => {
             <ServiceProviderMarker
               serviceProviders={serviceProviders || []}
               onToolTip={(visibilty, data)=> handleToolTip(visibilty, data)}
-              // onMarkerPress={(providerId)=>onMarkerPress(providerId)}
             />
             <ToolTip
               visible={toolTipData.isActive} 
