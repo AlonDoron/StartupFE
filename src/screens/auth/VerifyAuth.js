@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { View } from "react-native";
+import { StyleSheet } from "react-native";
+import { Layout } from "@ui-kitten/components";
 import { VerifyAuthForm } from "../../forms";
 import TokensHandler from "../../api/TokensHandler";
 import { useSelector, useDispatch } from "react-redux";
@@ -44,14 +45,22 @@ const VerifyAuth = ({ navigation }) => {
   };
 
   return (
-    <View>
+    <Layout style={styles.container}>
       <VerifyAuthForm
         pageName={sentFrom}
         submitForm={handleSubmitForm}
         submitting={isFetching}
       />
-    </View>
+    </Layout>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: "column",
+    alignContent: "center",
+  },
+});
 
 export default VerifyAuth;

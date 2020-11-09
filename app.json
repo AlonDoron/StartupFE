@@ -2,6 +2,7 @@
   "expo": {
     "name": "StartupFE",
     "slug": "StartupFE",
+    "userInterfaceStyle": "automatic",
     "platforms": [
       "ios",
       "android",

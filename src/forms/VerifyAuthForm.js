@@ -1,12 +1,14 @@
 import React from "react";
-import { View } from "react-native";
-import { Button } from "react-native-paper";
-import { Input } from "../components/common";
+import { StyleSheet } from "react-native";
+import { Layout, Button } from "@ui-kitten/components";
+import { Input, LoadingIndicator } from "../components/common";
 import { Formik } from "formik";
 import { verificationSchema } from "../validations";
+import i18n from "../i18n";
+
 const VerifyAuthForm = (props) => {
   return (
-    <View>
+    <Layout>
       <Formik
         initialValues={{
           VerificationCode: "",
@@ -15,12 +17,12 @@ const VerifyAuthForm = (props) => {
         onSubmit={(values) => props.submitForm(values)}
       >
         {(props) => (
-          <View>
+          <Layout>
             <Input
-              name="VerificationCode"
+              name="verificationCode"
               value={props.values.VerificationCode}
               handleChangeText={props.handleChange("VerificationCode")}
-              label="Verification Code"
+              label={i18n.t("verificationCode")}
               keyboardType="number-pad"
               errors={
                 props.touched.VerificationCode && props.errors.VerificationCode
@@ -28,19 +30,26 @@ const VerifyAuthForm = (props) => {
             />
 
             <Button
+              style={styles.button}
               mode="outlined"
               onPress={props.handleSubmit}
-              loading={props.submitting}
               disabled={props.submitting}
+              accessoryLeft={LoadingIndicator}
             >
-              Verify
-              {props.pageName}
+              {i18n.t("verify")}
             </Button>
-          </View>
+          </Layout>
         )}
       </Formik>
-    </View>
+    </Layout>
   );
 };
+
+const styles = StyleSheet.create({
+  button: {
+    width: 380,
+    alignSelf: "center",
+  },
+});
 
 export default VerifyAuthForm;
