@@ -6,22 +6,13 @@ import { AntDesign } from "@expo/vector-icons";
 const MyServices = (props) => {
   return (
     <View style={{ justifyContent: "center", alignItems: "center" }}>
-      <Text>FUCKKKKKKKKKK</Text>
-      <Text>FUCKKKKKKKKKK</Text>
-      <Text>FUCKKKKKKKKKK</Text>
-      <Text>FUCKKKKKKKKKK</Text>
-      <Text>FUCKKKKKKKKKK</Text>
-      <Text>FUCKKKKKKKKKK</Text>
-      <Text>FUCKKKKKKKKKK</Text>
-      <Text>FUCKKKKKKKKKK</Text>
-      <Text>FUCKKKKKKKKKK</Text>
-      <Text>FUCKKKKKKKKKK</Text>
+      <Text style={{ fontSize: 40 }}>My Services</Text>
     </View>
   );
 };
 
 MyServices.navigationOptions = {
-  title: "My Service",
+  title: "My Services",
   tabBarIcon: <AntDesign name="home" size={20} />,
 };
 
