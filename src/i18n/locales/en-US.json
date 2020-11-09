@@ -24,7 +24,7 @@
     "myServicesTab": "My Services"
   },
   "myServices": {
-    "storeName": "store name",
-    "createStore": "create store"
+    "storeName": "Store name",
+    "createStore": "Create store"
   }
 }
