@@ -4,14 +4,10 @@ import {
   requestPermissionsAsync,
   watchPositionAsync,
 } from "expo-location";
-import { setLocale } from "yup";
 
 const useLocation = (shouldTrack) => {
   const [err, setErr] = useState(null);
-  const [location, setLocation] = useState({
-  longitude:34.7789174,
-  latitude: 31.9882718
-})
+  const [location, setLocation] = useState({})
 
   useEffect(() => {
     let subscriber;
@@ -28,9 +24,7 @@ const useLocation = (shouldTrack) => {
             timeInterval: 1000, //getLocation every 1000ms
             distanceInterval: 10, // getLocation every 10meters
           },
-          (location)=>{
-            setLocation(location)
-          }
+          (location)=>setLocation(location)
         );
       } catch (e) {
         setErr(e);
