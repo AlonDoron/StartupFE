@@ -30,7 +30,7 @@ const dataObject={
         setIsLocation(true)
          HttpClient.get(
       apiConfig.CONSUMER_PORT,
-      `api/Consumer?Latitude=${coords.latitude}&Longitude=${coords.longitude}&Radius=${locationConfig.radius}&MeasureUnit=0`
+      `/api/Consumer?Latitude=${coords.latitude}&Longitude=${coords.longitude}&Radius=${locationConfig.radius}&MeasureUnit=0`
     )
       .then((res) => setServiceProviders(res))
       .catch((err) => console.log(err));
