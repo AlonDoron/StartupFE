@@ -1,27 +1,14 @@
 import React, {useState,useEffect} from "react";
-import {StyleSheet,View} from 'react-native'
-import { Map, OfflineMap, ToolTip } from "../../components/common";
+import { Map, OfflineMap } from "../../components/common";
 import { Marker} from 'react-native-maps'
 import { Foundation } from "@expo/vector-icons";
 import {useLocation} from '../../hooks'
 import HttpClient from "../../api/HttpClient";
 import { apiConfig, locationConfig } from "../../config";
-
 const Home = (props) => {
  const [{coords}, err ] = useLocation(true)
 const [serviceProviders, setServiceProviders] = useState([])
 const [isLocation ,setIsLocation] = useState(false)
-const [toolTipData, setToolTipData] = useState({
-  data:{},
-  isActive: false,
-})
-
-const dataObject={
-  image_url:'https://cdn.jpegmini.com/user/images/slider_puffin_before_mobile.jpg',
-  rating:4,
-  full_name:'Jacob',
-  title:'Jacob Store'
-}
 
   useEffect(() => {
     if(!coords || err ){
@@ -38,9 +25,10 @@ const dataObject={
   }, [coords, err]);
   
   return (
-          isLocation?
-   <Map style={styles.map} location={ coords}>
-      {serviceProviders.map(({Id,Location}, i) => {
+    
+    isLocation?
+   <Map location={ coords}>
+      {serviceProviders.map(({Location}, i) => {
         if (Location.Latitude && Location.Longitude) {
          return(<Marker
             key={i}
@@ -48,24 +36,14 @@ const dataObject={
               latitude: Location.Latitude,
               longitude:Location.Longitude
             }}
+            title={"Provider"}
             pinColor={"#ffd1dc"}
-            onPress={()=>{
-              console.log('marker pressed')
-              setToolTipData(oldState=>({
-                ...oldState, data:{Id, ...dataObject}, isActive:true
-              }))
-            }}
           />)
         }
       })}
-       <ToolTip
-       visible={toolTipData.isActive} 
-       providerData={toolTipData.data}
-        hideToolTip={()=>  setToolTipData(oldState=>({...oldState,  isActive:true }))}
-        />
       </Map>
       :
-      <OfflineMap style={styles.map}/>
+      <OfflineMap/>
   );
 };
 
@@ -73,11 +51,5 @@ Home.navigationOptions = {
   title: "Find",
   tabBarIcon: <Foundation name="target-two" size={20} />,
 };
-
-const styles = StyleSheet.create({
-  map:{
-    flex:1
-  }
-})
 
 export default Home;
