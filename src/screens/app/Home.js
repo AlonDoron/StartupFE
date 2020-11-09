@@ -12,7 +12,6 @@ const Home = (props) => {
 };
 
 Home.navigationOptions = {
-  // title: "Find",
   title: i18n.t('bottomTabs.homeTab'),
   tabBarIcon: <Foundation name="target-two" size={20} />,
 };

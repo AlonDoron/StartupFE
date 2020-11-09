@@ -22,7 +22,6 @@ const Account = (props) => {
 };
 
 Account.navigationOptions = {
-  // title: "Account",
   title: i18n.t('bottomTabs.accountTab'),
   tabBarIcon: <FontAwesome name="user" size={20} />,
 };

@@ -21,7 +21,6 @@ const ServicesStack = createStackNavigator(
 
 ServicesStack.navigationOptions = {
     title: i18n.t('bottomTabs.myServicesTab'),
-    // title: "My Services",
     tabBarIcon: <AntDesign name="home" size={20} />,
 };
 

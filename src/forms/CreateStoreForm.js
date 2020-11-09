@@ -22,7 +22,7 @@ const CreateStoreForm = (props) => {
                             name="storeName"
                             value={props.values.storeName}
                             handleChangeText={props.handleChange("storeName")}
-                            label={i18n.t("storeName")}
+                            label={i18n.t("myServices.storeName")}
                             keyboardType="default"
                             errors={props.touched.storeName && props.errors.storeName}
                         />
@@ -34,7 +34,7 @@ const CreateStoreForm = (props) => {
                             disabled={props.submitting}
                             accessoryLeft={LoadingIndicator}
                         >
-                            {i18n.t("createStore")}
+                            {i18n.t("myServices.createStore")}
                         </Button>
                     </Layout>
                 )}
