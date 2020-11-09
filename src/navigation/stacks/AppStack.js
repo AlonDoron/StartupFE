@@ -6,7 +6,7 @@ import { ServicesStack } from './bottomTabStacks'
 const AppStack = createBottomTabNavigator(
   {
     ServicesStack: {
-      screen: ServicesStack
+      screen: ServicesStack,
     },
     Home: {
       screen: Home,

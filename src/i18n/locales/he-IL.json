@@ -2,13 +2,11 @@
   "login": "התחברות",
   "registration": "הרשמה",
   "verify": "אישור התחברות",
-
   "phoneNumber": "טלפון",
   "firstName": "שם פרטי",
   "lastName": "שם משפחה",
   "email": "כתובת מייל",
   "verificationCode": "קוד שקיבלתם לטלפון",
-
   "errors": {
     "phoneNumber_is_required": "מספר טלפון הינו שדה חובה",
     "phoneNumber_is_invalid": "מספר טלפון לא תקין",
@@ -17,6 +15,12 @@
     "email_is_required": "כתובת מייל הינו שדה חובה",
     "email_is_invalid": "כתובת מייל לא חוקית",
     "verificationCode_is_required": "קוד אימות הינו שדה חובה",
-    "verificationCode_is_invalid": "קוד אימות לא חוקי"
+    "verificationCode_is_invalid": "קוד אימות לא חוקי",
+    "storeName_is_required": "שם החנות הינו שדה חובה"
+  },
+  "bottomTabs": {
+    "accountTab": "איזור אישי",
+    "homeTab": "בסביבה",
+    "myServicesTab": "השירותים שלי"
   }
 }

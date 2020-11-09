@@ -3,7 +3,7 @@ import { createStackNavigator } from 'react-navigation-stack'
 import { MyServices } from '../../../screens/app'
 import { CreateStore } from '../../../screens/app/myServicesScreens'
 import { AntDesign } from "@expo/vector-icons";
-
+import i18n from "../../../i18n";
 
 const ServicesStack = createStackNavigator(
     {
@@ -20,7 +20,8 @@ const ServicesStack = createStackNavigator(
 )
 
 ServicesStack.navigationOptions = {
-    title: "My Services",
+    title: i18n.t('bottomTabs.myServicesTab'),
+    // title: "My Services",
     tabBarIcon: <AntDesign name="home" size={20} />,
 };
 

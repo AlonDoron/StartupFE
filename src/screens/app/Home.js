@@ -2,6 +2,7 @@ import React from "react";
 import { View } from "react-native";
 import { Text } from "@ui-kitten/components";
 import { Foundation } from "@expo/vector-icons";
+import i18n from '../../i18n'
 const Home = (props) => {
   return (
     <View style={{ justifyContent: "center", alignItems: "center" }}>
@@ -11,7 +12,8 @@ const Home = (props) => {
 };
 
 Home.navigationOptions = {
-  title: "Find",
+  // title: "Find",
+  title: i18n.t('bottomTabs.homeTab'),
   tabBarIcon: <Foundation name="target-two" size={20} />,
 };
 
