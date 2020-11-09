@@ -13,7 +13,7 @@ const AppStack = createBottomTabNavigator(
       screen: Account,
     },
   },
-  { initialRouteName: "Home" }
+  { initialRouteName: "MyServices" }
 );
 
 export default AppStack;
