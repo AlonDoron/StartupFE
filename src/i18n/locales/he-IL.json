@@ -25,6 +25,7 @@
   },
   "myServices": {
     "storeName": "שם החנות",
-    "createStore": "צור חנות"
+    "createStore": "צור חנות",
+    "editStore": "ערוך חנות"
   }
 }

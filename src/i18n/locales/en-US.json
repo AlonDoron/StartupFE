@@ -25,6 +25,7 @@
   },
   "myServices": {
     "storeName": "Store name",
-    "createStore": "Create store"
+    "createStore": "Create store",
+    "editStore": "Edit store"
   }
 }
