@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-import MapView,{Circle, Marker} from 'react-native-maps'
+import MapView from 'react-native-maps'
 import { locationConfig } from '../../config'
 const Map = ({children, location}) => {
   return (
@@ -10,8 +10,6 @@ const Map = ({children, location}) => {
        ...location,
        ...locationConfig.initDeltaCoords
       }}>
-         <Marker pinColor='#FFD700' coordinate={location} title='Consumer'/>
-      <Circle center={location} radius={locationConfig.radius}/>
       {children}
     </MapView>
   );
