@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { StatusBar } from "react-native";
 import { Layout } from "@ui-kitten/components";
-import { ActivityIndicator } from "react-native-paper";
+import { LoadingIndicator } from "../../components/common";
 import TokensHandler from "../../api/TokensHandler";
 import { useDispatch, useSelector } from "react-redux";
 import { isUserExistsByToken, setIsUserExists } from "../../actions/authAction";
@@ -33,7 +33,7 @@ const AuthLoading = ({ navigation }) => {
 
   return (
     <Layout style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <ActivityIndicator size="large" />
+      <LoadingIndicator size="large" />
       <StatusBar barStyle="default" />
     </Layout>
   );

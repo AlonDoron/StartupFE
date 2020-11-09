@@ -1,13 +1,11 @@
 import React from "react";
 import { View } from "react-native";
-import { Text } from "react-native-paper";
-import { Map } from "../../components/common";
+import { Text } from "@ui-kitten/components";
 import { Foundation } from "@expo/vector-icons";
 const Home = (props) => {
   return (
     <View style={{ justifyContent: "center", alignItems: "center" }}>
       <Text style={{ fontSize: 40 }}>Home</Text>
-      <Map />
     </View>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import { Text } from "react-native-paper";
+import { Text } from "@ui-kitten/components";
 import { AntDesign } from "@expo/vector-icons";
 
 const MyService = (props) => {

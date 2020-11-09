@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text } from "react-native";
-import { Button } from "react-native-paper";
+import { Button } from "@ui-kitten/components";
 import { FontAwesome } from "@expo/vector-icons";
 import TokensHandler from "../../api/TokensHandler";
 
