@@ -8,7 +8,7 @@ import {locationConfig} from '../config'
 
 const useLocation = (shouldTrack) => {
   const [err, setErr] = useState(null);
-  const [location, setLocation] = useState({})
+  const [location, setLocation] = useState(locationConfig.initLocation)
 
   useEffect(() => {
     let subscriber;
@@ -21,9 +21,9 @@ const useLocation = (shouldTrack) => {
         }
         subscriber = await watchPositionAsync(
           {
-            accuracy: Accuracy.BestForNavigation, 
-            timeInterval: locationConfig.getLocationInterval, 
-            distanceInterval: locationConfig.getDistanceInterval, 
+            accuracy: Accuracy.BestForNavigation, //accuracy of location is best for navigation(as walker, as biker, as driver)
+            timeInterval: locationConfig.getLocationInterval, //getLocation every 1000ms
+            distanceInterval: locationConfig.getDistanceInterval, // getLocation every 10meters
           },
           (location)=>{
             setLocation(location)

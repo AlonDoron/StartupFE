@@ -1,15 +1,26 @@
-import React from "react";
-import { StyleSheet } from "react-native";
+import React, {useState, useEffect} from "react";
+import { StyleSheet, View, Text } from "react-native";
 import MapView from 'react-native-maps'
-import { locationConfig } from '../../config'
 const Map = ({children, location}) => {
+  const [initialLocation, setInitialLocation] = useState({})
+
+  useEffect(() => {
+    if(!location || Object.keys(location).length === 0){
+      setInitialLocation({latitude: 31.9882718,
+    longitude: 34.7789174})
+    }   
+    else setInitialLocation(location)
+  }, [location])
+
   return (
      <MapView
       style={styles.map}
       initialRegion={{
-       ...location,
-       ...locationConfig.initDeltaCoords
-      }}>
+        ...initialLocation,
+        latitudeDelta: 0.02,
+        longitudeDelta: 0.02,
+      }}
+    >
       {children}
     </MapView>
   );
