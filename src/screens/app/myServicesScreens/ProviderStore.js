@@ -1,10 +1,58 @@
 import React from "react";
 import { View } from "react-native";
-import { Text } from "@ui-kitten/components";
-import { StoreItem } from '../../../components/store'
+import { Text, Layout } from "@ui-kitten/components";
+import { StoreItemList } from '../../../components/store'
 import i18n from '../../../i18n';
 
 let storeItems = [
+    {
+        itemName: 'bob1',
+        itemPrice: '20'
+    },
+    {
+        itemName: 'bob2',
+        itemPrice: '20'
+    },
+    {
+        itemName: 'bob3',
+        itemPrice: '20'
+    },
+    {
+        itemName: 'bob1',
+        itemPrice: '20'
+    },
+    {
+        itemName: 'bob2',
+        itemPrice: '20'
+    },
+    {
+        itemName: 'bob3',
+        itemPrice: '20'
+    },
+    {
+        itemName: 'bob1',
+        itemPrice: '20'
+    },
+    {
+        itemName: 'bob2',
+        itemPrice: '20'
+    },
+    {
+        itemName: 'bob3',
+        itemPrice: '20'
+    },
+    {
+        itemName: 'bob1',
+        itemPrice: '20'
+    },
+    {
+        itemName: 'bob2',
+        itemPrice: '20'
+    },
+    {
+        itemName: 'bob3',
+        itemPrice: '20'
+    },
     {
         itemName: 'bob1',
         itemPrice: '20'
@@ -22,16 +70,10 @@ let storeItems = [
 const ProviderStore = ({ navigation }) => {
     const storeName = navigation.state.params.storeName;
     return (
-        <View style={{ justifyContent: "center", alignItems: "center" }}>
+        <Layout style={{ flex: 1 }}>
             <Text>{storeName}</Text>
-            {
-                storeItems.map((value, i) => {
-                    return (
-                        <StoreItem key={i} itemName={value.itemName} itemPrice={value.itemPrice} />
-                    )
-                })
-            }
-        </View>
+            <StoreItemList storeItems={storeItems} navigation={navigation} />
+        </Layout>
     );
 };
 
