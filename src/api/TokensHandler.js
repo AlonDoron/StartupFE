@@ -1,5 +1,5 @@
 import { AsyncStorage } from "react-native";
-import { deviceConfig } from "../config";
+import { deviceConfig } from "config";
 
 const writeTokenToDevice = async (token) => {
   await AsyncStorage.setItem(deviceConfig.DEVICE_TOKEN_NAME, token);

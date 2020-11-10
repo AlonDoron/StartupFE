@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import { Button, Layout } from "@ui-kitten/components";
-import i18n from "../../i18n";
+import i18n from "i18n";
 
 const Auth = ({ navigation }) => {
   return (

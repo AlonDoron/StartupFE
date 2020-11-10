@@ -1,10 +1,10 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import { Layout, Button } from "@ui-kitten/components";
-import { Input, LoadingIndicator } from "../components/common";
+import { Input, LoadingIndicator } from "components/common";
 import { Formik } from "formik";
 import { registrationSchema } from "../validations";
-import i18n from "../i18n";
+import i18n from "i18n";
 
 const RegistrationForm = (props) => {
   return (

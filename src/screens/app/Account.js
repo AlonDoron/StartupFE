@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text } from "react-native";
 import { Button } from "@ui-kitten/components";
 import { FontAwesome } from "@expo/vector-icons";
-import TokensHandler from "../../api/TokensHandler";
+import TokensHandler from "api/TokensHandler";
 
 const Account = (props) => {
   const signout = () => {
