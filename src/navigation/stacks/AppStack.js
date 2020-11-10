@@ -1,10 +1,11 @@
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import { Home, Account, MyServices } from "screens/app";
+import { ServicesStack } from './bottomTabStacks'
 
 const AppStack = createBottomTabNavigator(
   {
-    MyServices: {
-      screen: MyServices,
+    ServicesStack: {
+      screen: ServicesStack,
     },
     Home: {
       screen: Home,
@@ -13,7 +14,7 @@ const AppStack = createBottomTabNavigator(
       screen: Account,
     },
   },
-  { initialRouteName: "Home" }
+  { initialRouteName: "ServicesStack" }
 );
 
 export default AppStack;

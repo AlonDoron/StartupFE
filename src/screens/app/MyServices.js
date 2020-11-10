@@ -1,19 +1,15 @@
 import React from "react";
 import { View } from "react-native";
-import { Text } from "@ui-kitten/components";
-import { AntDesign } from "@expo/vector-icons";
-
+import { Text, Button } from "@ui-kitten/components";
+import i18n from '../../i18n'
 const MyServices = (props) => {
   return (
     <View style={{ justifyContent: "center", alignItems: "center" }}>
-      <Text style={{ fontSize: 40 }}>My Services</Text>
+      <Text style={{ fontSize: 40 }}>Dont have a shop yet?</Text>
+      <Button onPress={() => props.navigation.navigate('CreateStore')}>{i18n.t("myServices.createStore")}</Button>
     </View>
   );
 };
 
-MyServices.navigationOptions = {
-  title: "My Services",
-  tabBarIcon: <AntDesign name="home" size={20} />,
-};
 
 export default MyServices;
