@@ -2,11 +2,13 @@
   "login": "Login",
   "registration": "Registration",
   "verify": "Verify",
+
   "phoneNumber": "Phone Number",
   "firstName": "First Name",
   "lastName": "Last Name",
   "email": "Email",
   "verificationCode": "Verification Code",
+
   "errors": {
     "phoneNumber_is_required": "Phone number is required",
     "phoneNumber_is_invalid": "Phone number is invalid",
@@ -15,17 +17,6 @@
     "email_is_required": "Mail address is required",
     "email_is_invalid": "Mail address is invalid",
     "verificationCode_is_required": "Verification code is required",
-    "verificationCode_is_invalid": "Verification code is invalid",
-    "storeName_is_required": "Store name is required"
-  },
-  "bottomTabs": {
-    "accountTab": "Account",
-    "homeTab": "Find",
-    "myServicesTab": "My Services"
-  },
-  "myServices": {
-    "storeName": "Store name",
-    "createStore": "Create store",
-    "editStore": "Edit store"
+    "verificationCode_is_invalid": "Verification code is invalid"
   }
 }
