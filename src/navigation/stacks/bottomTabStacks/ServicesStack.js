@@ -1,9 +1,9 @@
 import React from 'react'
 import { createStackNavigator } from 'react-navigation-stack'
-import { MyServices } from '../../../screens/app'
-import { CreateStore, ProviderStore, StoreItem } from '../../../screens/app/myServicesScreens'
+import { MyServices } from 'screens/app'
+import { CreateStore, ProviderStore, StoreItem } from 'screens/app/myServicesScreens'
 import { AntDesign } from "@expo/vector-icons";
-import i18n from "../../../i18n";
+import i18n from "i18n";
 
 const ServicesStack = createStackNavigator(
     {

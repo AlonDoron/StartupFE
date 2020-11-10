@@ -2,7 +2,7 @@ import React from "react";
 import { View } from "react-native";
 import { Text } from "@ui-kitten/components";
 import { Foundation } from "@expo/vector-icons";
-import i18n from '../../i18n'
+import i18n from 'i18n'
 const Home = (props) => {
   return (
     <View style={{ justifyContent: "center", alignItems: "center" }}>

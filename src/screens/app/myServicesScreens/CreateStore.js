@@ -1,8 +1,8 @@
 import React from "react";
 import { StyleSheet } from 'react-native'
 import { Layout } from "@ui-kitten/components"
-import i18n from '../../../i18n';
-import { CreateStoreForm } from '../../../forms'
+import i18n from 'i18n';
+import { CreateStoreForm } from 'forms'
 const CreateStore = (props) => {
 
     const handleSubmit = (values) => {

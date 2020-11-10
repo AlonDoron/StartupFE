@@ -1,8 +1,8 @@
 import React from "react";
 import { View } from "react-native";
 import { Text, Layout } from "@ui-kitten/components";
-import { StoreItemList } from '../../../components/store'
-import i18n from '../../../i18n';
+import { StoreItemList } from 'components/store'
+import i18n from 'i18n';
 
 let storeItems = [
     {
