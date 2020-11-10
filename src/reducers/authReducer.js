@@ -1,4 +1,4 @@
-import * as authTypes from "~actions/authTypes";
+import * as authTypes from "actions/authTypes";
 import { initialState } from "./initialState";
 
 const authReducer = (state = initialState.auth, action) => {

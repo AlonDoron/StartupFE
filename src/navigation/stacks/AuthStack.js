@@ -1,5 +1,5 @@
 import { createStackNavigator } from "react-navigation-stack";
-import { Auth, Registration, Login, VerifyAuth } from "~screens/auth";
+import { Auth, Registration, Login, VerifyAuth } from "screens/auth";
 
 const AuthStack = createStackNavigator(
   {

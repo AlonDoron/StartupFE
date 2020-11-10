@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
 import { Layout } from "@ui-kitten/components";
-import { RegistrationForm } from "~forms";
+import { RegistrationForm } from "forms";
 import { useDispatch, useSelector } from "react-redux";
-import { isUserExistsByPhoneNumber } from "~actions/authAction";
+import { isUserExistsByPhoneNumber } from "actions/authAction";
 
 const Registration = ({ navigation }) => {
   const [values, setValues] = useState({});
