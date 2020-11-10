@@ -12,6 +12,7 @@
     "@react-native-community/masked-view": "0.1.6",
     "@ui-kitten/components": "^5.0.0",
     "@ui-kitten/eva-icons": "^5.0.0",
+    "babel-plugin-module-resolver": "^4.0.0",
     "expo": "^37.0.0",
     "expo-localization": "^8.1.0",
     "formik": "^2.1.5",

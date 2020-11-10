@@ -2,8 +2,9 @@ import React from "react";
 import { View, Text } from "react-native";
 import { Button } from "@ui-kitten/components";
 import { FontAwesome } from "@expo/vector-icons";
-import TokensHandler from "../../api/TokensHandler";
-import i18n from '../../i18n'
+import TokensHandler from "api/TokensHandler";
+import i18n from 'i18n'
+
 const Account = (props) => {
   const signout = () => {
     TokensHandler.removeTokenFromDevice().then(

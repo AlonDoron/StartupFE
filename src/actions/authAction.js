@@ -1,7 +1,7 @@
 import * as authTypes from "./authTypes";
-import * as authService from "../api/wrappers/authService";
-import { apiConfig } from "../config";
-import HttpClient from "../api/HttpClient";
+import * as authService from "api/wrappers/authService";
+import { apiConfig } from "config";
+import HttpClient from "api/HttpClient";
 
 const setUserId = (userId) => {
   return {
