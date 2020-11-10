@@ -7,8 +7,8 @@ import heIL from "./locales/he-IL.json";
 i18n.fallbacks = true;
 
 i18n.translations = {
-  "en-US": enUS,
-  "he-IL": heIL,
+  en: enUS,
+  he: heIL,
 };
 
 i18n.locale = Localization.locale;
