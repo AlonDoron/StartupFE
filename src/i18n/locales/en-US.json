@@ -2,6 +2,10 @@
   "login": "Login",
   "registration": "Registration",
   "verify": "Verify",
+  "home": "Home",
+  "explore": "Explore",
+  "myServices": "My Services",
+  "account": "Account",
 
   "phoneNumber": "Phone Number",
   "firstName": "First Name",

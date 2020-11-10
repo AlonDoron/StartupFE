@@ -3,6 +3,7 @@ import { View, Text } from "react-native";
 import { Button } from "@ui-kitten/components";
 import { FontAwesome } from "@expo/vector-icons";
 import TokensHandler from "api/TokensHandler";
+import i18n from "i18n";
 
 const Account = (props) => {
   const signout = () => {
@@ -22,7 +23,7 @@ const Account = (props) => {
 };
 
 Account.navigationOptions = {
-  title: "Account",
+  title: i18n.t("account"),
   tabBarIcon: <FontAwesome name="user" size={20} />,
 };
 
