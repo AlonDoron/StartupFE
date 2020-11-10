@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { StatusBar } from "react-native";
 import { Layout } from "@ui-kitten/components";
-import { LoadingIndicator } from "../../components/common";
-import TokensHandler from "../../api/TokensHandler";
+import { LoadingIndicator } from "~components/common";
+import TokensHandler from "~api/TokensHandler";
 import { useDispatch, useSelector } from "react-redux";
-import { isUserExistsByToken, setIsUserExists } from "../../actions/authAction";
+import { isUserExistsByToken, setIsUserExists } from "~actions/authAction";
 
 const AuthLoading = ({ navigation }) => {
   const dispatch = useDispatch();

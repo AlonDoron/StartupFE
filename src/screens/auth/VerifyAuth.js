@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
 import { Layout } from "@ui-kitten/components";
-import { VerifyAuthForm } from "../../forms";
-import TokensHandler from "../../api/TokensHandler";
+import { VerifyAuthForm } from "~forms";
+import TokensHandler from "~api/TokensHandler";
 import { useSelector, useDispatch } from "react-redux";
-import { verifyRequest, verifyCode } from "../../actions/authAction";
+import { verifyRequest, verifyCode } from "~actions/authAction";
 
 const VerifyAuth = ({ navigation }) => {
   const dispatch = useDispatch();

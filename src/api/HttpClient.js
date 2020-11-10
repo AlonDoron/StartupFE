@@ -1,4 +1,4 @@
-import { apiConfig } from "../config";
+import { apiConfig } from "~config";
 
 const request = async (port, route, params, method = "GET") => {
   const options = {

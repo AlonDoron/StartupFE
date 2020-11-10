@@ -1,4 +1,4 @@
-import { apiConfig } from "../../config";
+import { apiConfig } from "~config";
 import HttpClient from "../HttpClient";
 
 export const checkIfUserExists = async (sentFrom, params) => {

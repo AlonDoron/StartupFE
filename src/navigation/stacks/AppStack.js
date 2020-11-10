@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from "react-navigation-tabs";
-import { Home, Account, MyServices } from "../../screens/app";
+import { Home, Account, MyServices } from "~screens/app";
 
 const AppStack = createBottomTabNavigator(
   {

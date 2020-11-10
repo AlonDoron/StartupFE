@@ -1,5 +1,5 @@
 import React from "react";
-import AppNavigator from "./src/navigation/AppNavigator";
+import AppNavigator from "~navigation/AppNavigator";
 import { I18nManager } from "react-native";
 import * as Localization from "expo-localization";
 import { Appearance } from "react-native-appearance";
@@ -23,3 +23,4 @@ export default function App() {
     </StoreProvider>
   );
 }
+
