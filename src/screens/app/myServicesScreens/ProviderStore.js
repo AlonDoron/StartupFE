@@ -1,78 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { View } from "react-native";
 import { Text, Layout } from "@ui-kitten/components";
 import { StoreItemList } from 'components/store'
 import i18n from 'i18n';
 
-let storeItems = [
-    {
-        itemName: 'bob1',
-        itemPrice: '20'
-    },
-    {
-        itemName: 'bob2',
-        itemPrice: '20'
-    },
-    {
-        itemName: 'bob3',
-        itemPrice: '20'
-    },
-    {
-        itemName: 'bob1',
-        itemPrice: '20'
-    },
-    {
-        itemName: 'bob2',
-        itemPrice: '20'
-    },
-    {
-        itemName: 'bob3',
-        itemPrice: '20'
-    },
-    {
-        itemName: 'bob1',
-        itemPrice: '20'
-    },
-    {
-        itemName: 'bob2',
-        itemPrice: '20'
-    },
-    {
-        itemName: 'bob3',
-        itemPrice: '20'
-    },
-    {
-        itemName: 'bob1',
-        itemPrice: '20'
-    },
-    {
-        itemName: 'bob2',
-        itemPrice: '20'
-    },
-    {
-        itemName: 'bob3',
-        itemPrice: '20'
-    },
-    {
-        itemName: 'bob1',
-        itemPrice: '20'
-    },
-    {
-        itemName: 'bob2',
-        itemPrice: '20'
-    },
-    {
-        itemName: 'bob3',
-        itemPrice: '20'
-    },
-]
-
 const ProviderStore = ({ navigation }) => {
     const storeName = navigation.state.params.storeName;
+    const [storeItems, setStoreItems] = useState([])
+
+    const addStoreItem = (newItem) => {
+        setStoreItems(prevItems => [...prevItems, { key: prevItems.length, ...newItem }])
+    }
+
+    const deleteStoreItem = (itemKey) => {
+        let updatedStoreItems = storeItems.filter((item) => item.key !== itemKey)
+        setStoreItems(updatedStoreItems)
+    }
     return (
         <Layout style={{ flex: 1 }}>
             <Text>{storeName}</Text>
-            <StoreItemList storeItems={storeItems} navigation={navigation} />
+            <StoreItemList
+                storeItems={storeItems}
+                navigation={navigation}
+                onAdd={addStoreItem}
+                onDelete={deleteStoreItem}
+            />
         </Layout>
     );
 };
