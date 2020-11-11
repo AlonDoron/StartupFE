@@ -1,6 +1,6 @@
 const INITIAL_REGION = {
-  latitude: 32.081574,
-  longitude: 34.780806,
+  latitude: 31.978821,
+  longitude: 34.772711,
   latitudeDelta: 0.0922,
   longitudeDelta: 0.0421,
 };

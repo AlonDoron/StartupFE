@@ -1,40 +1,19 @@
 import React from "react";
 import ProvidersList from "./ProvidersList";
+import { View } from "react-native";
 import MapView from "react-native-maps";
-import { Marker } from "react-native-maps";
-import { Layout, Text } from "@ui-kitten/components";
-import { StyleSheet, Dimensions, View } from "react-native";
+import { Layout } from "@ui-kitten/components";
+import { StyleSheet, Dimensions } from "react-native";
 import { mapsConfig } from "config";
 
 const MapviewWrapper = (props) => {
-  const providersListMock = [
-    {
-      id: 1,
-      location: {
-        longitude: 34.780806,
-        latitude: 32.081583,
-      },
-      title: "drug store",
-      description: "best shit in town",
-    },
-    {
-      id: 2,
-      location: {
-        longitude: 34.780806,
-        latitude: 20.081583,
-      },
-      title: "shoes store",
-      description: "great shoes!",
-    },
-  ];
-
   return (
     <Layout>
       <MapView
         style={styles.mapStyle}
         initialRegion={mapsConfig.INITIAL_REGION}
       >
-        <ProvidersList providers={providersListMock} />
+        <ProvidersList />
       </MapView>
     </Layout>
   );
