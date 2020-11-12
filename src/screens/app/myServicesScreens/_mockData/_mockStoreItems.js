@@ -8,6 +8,7 @@ export default [
       require("./_mockItemImg2.jpg"),
       require("./_mockItemImg3.jpg"),
     ],
+    key: "111",
   },
   {
     ItemName: "item2",
@@ -18,6 +19,7 @@ export default [
       require("./_mockItemImg2.jpg"),
       require("./_mockItemImg3.jpg"),
     ],
+    key: "222",
   },
   {
     ItemName: "item3",
@@ -28,6 +30,7 @@ export default [
       require("./_mockItemImg2.jpg"),
       require("./_mockItemImg3.jpg"),
     ],
+    key: "333",
   },
   {
     ItemName: "item4",
@@ -38,6 +41,7 @@ export default [
       require("./_mockItemImg2.jpg"),
       require("./_mockItemImg3.jpg"),
     ],
+    key: "444",
   },
   {
     ItemName: "item5",
@@ -48,6 +52,7 @@ export default [
       require("./_mockItemImg2.jpg"),
       require("./_mockItemImg3.jpg"),
     ],
+    key: "555",
   },
   {
     ItemName: "item6",
@@ -58,5 +63,6 @@ export default [
       require("./_mockItemImg2.jpg"),
       require("./_mockItemImg3.jpg"),
     ],
+    key: "666",
   },
 ];
