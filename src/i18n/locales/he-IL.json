@@ -26,6 +26,12 @@
   "myServices": {
     "storeName": "שם החנות",
     "createStore": "צור חנות",
-    "editStore": "ערוך חנות"
+    "editStore": "ערוך חנות",
+    "storeItem": {
+      "itemName": "שם החפץ",
+      "itemPrice": "מחיר החפץ",
+      "itemDescription": "תיאור החפץ",
+      "createItem": "הוסף חפץ"
+    }
   }
 }

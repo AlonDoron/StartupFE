@@ -26,6 +26,12 @@
   "myServices": {
     "storeName": "Store name",
     "createStore": "Create store",
-    "editStore": "Edit store"
+    "editStore": "Edit store",
+    "storeItem": {
+      "itemName": "Item name",
+      "itemPrice": "Item price",
+      "itemDescription": "Item description",
+      "createItem": "Add item"
+    }
   }
 }
