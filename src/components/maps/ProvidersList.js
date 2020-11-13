@@ -1,19 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Marker } from "react-native-maps";
-import { View } from "react-native";
-import { locationConfig } from "config";
+import { mapsConfig } from "config";
 import { getProviders } from "api/wrappers/appService";
 
 const getProvidersAsync = (setProviders) => {
   getProviders({
-    Latitude: 31.978821,
-    Longitude: 34.772711,
+    Latitude: mapsConfig.INITIAL_REGION.latitude,
+    Longitude: mapsConfig.INITIAL_REGION.longitude,
     Radius: 1000,
     MeasureUnit: 0,
-  }).then((providers) => {
-    // console.log(providers.length);
-    setProviders(providers);
-  });
+  }).then((providers) => setProviders(providers));
 };
 
 const ProvidersList = (props) => {
@@ -24,7 +20,7 @@ const ProvidersList = (props) => {
   }, []);
 
   return (
-    <View>
+    <>
       {providers.length > 0 &&
         providers.map((provider, id) => (
           <Marker
@@ -37,7 +33,7 @@ const ProvidersList = (props) => {
             description={provider.Description}
           />
         ))}
-    </View>
+    </>
   );
 };
 
