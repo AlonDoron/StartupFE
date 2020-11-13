@@ -17,6 +17,12 @@ const ProvidersList = (props) => {
 
   useEffect(() => {
     getProvidersAsync(setProviders);
+
+    const fetchProvidersInterval = setInterval(() => {
+      getProvidersAsync(setProviders);
+    }, 3000);
+
+    return () => clearInterval(fetchProvidersInterval);
   }, []);
 
   return (
