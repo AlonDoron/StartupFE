@@ -15,18 +15,18 @@ const Home = (props) => {
     setCurrProvider(provider);
   };
 
-  const handleHideModal = () => {
+  const hideModal = () => {
     setProviderModalVisible(false);
+    setCurrProvider({});
   };
 
   return (
     <Layout style={styles.container}>
-      <Text style={{ fontSize: 40 }}>{i18n.t("home")}</Text>
       <MapviewWrapper onProviderPress={showModal} />
       {isProviderModalVisible && (
         <ProviderModal
           isVisible={isProviderModalVisible}
-          onHideModal={handleHideModal}
+          onHideModal={hideModal}
           providerData={currProvider}
         />
       )}
