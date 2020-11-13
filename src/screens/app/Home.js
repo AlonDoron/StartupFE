@@ -1,19 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 import { Text, Layout } from "@ui-kitten/components";
 import { Foundation } from "@expo/vector-icons";
 import { MapviewWrapper } from "components/maps";
+import { ProviderModal } from "components/providers";
 import i18n from "i18n";
 
 const Home = (props) => {
+  const [isProviderModalVisible, setProviderModalVisible] = useState(false);
+  const [currProvider, setCurrProvider] = useState({});
+
   const showModal = (provider) => {
-    console.log(provider);
+    setProviderModalVisible(true);
+    setCurrProvider(provider);
+  };
+
+  const handleHideModal = () => {
+    setProviderModalVisible(false);
   };
 
   return (
     <Layout style={styles.container}>
       <Text style={{ fontSize: 40 }}>{i18n.t("home")}</Text>
-      <MapviewWrapper handleProviderPress={showModal} />
+      <MapviewWrapper onProviderPress={showModal} />
+      {isProviderModalVisible && (
+        <ProviderModal
+          isVisible={isProviderModalVisible}
+          onHideModal={handleHideModal}
+          providerData={currProvider}
+        />
+      )}
     </Layout>
   );
 };
