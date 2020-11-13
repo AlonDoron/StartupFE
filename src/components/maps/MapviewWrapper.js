@@ -9,6 +9,7 @@ const MapviewWrapper = (props) => {
   return (
     <Layout>
       <MapView
+        moveOnMarkerPress={false}
         style={styles.mapStyle}
         initialRegion={mapsConfig.INITIAL_REGION}
       >
