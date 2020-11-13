@@ -1,5 +1,5 @@
 import React from "react";
-import ProvidersList from "./ProvidersList";
+import { ProvidersList } from "../providers";
 import MapView from "react-native-maps";
 import { Layout } from "@ui-kitten/components";
 import { StyleSheet, Dimensions } from "react-native";
