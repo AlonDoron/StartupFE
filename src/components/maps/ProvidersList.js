@@ -4,12 +4,14 @@ import { mapsConfig, locationConfig } from "config";
 import { getProviders } from "api/wrappers/appService";
 
 const getProvidersAsync = (setProviders) => {
-  getProviders({
+  const locationData = {
     Latitude: mapsConfig.INITIAL_REGION.latitude,
     Longitude: mapsConfig.INITIAL_REGION.longitude,
     Radius: locationConfig.RADIUS,
     MeasureUnit: locationConfig.MEASURE_UNIT,
-  }).then((providers) => setProviders(providers));
+  };
+
+  getProviders(locationData).then((providers) => setProviders(providers));
 };
 
 const ProvidersList = (props) => {
@@ -37,6 +39,7 @@ const ProvidersList = (props) => {
             }}
             title={provider.Title}
             description={provider.Description}
+            onPress={() => props.onProviderPress(provider)}
           />
         ))}
     </>

@@ -6,10 +6,14 @@ import { MapviewWrapper } from "components/maps";
 import i18n from "i18n";
 
 const Home = (props) => {
+  const showModal = (provider) => {
+    console.log(provider);
+  };
+
   return (
     <Layout style={styles.container}>
       <Text style={{ fontSize: 40 }}>{i18n.t("home")}</Text>
-      <MapviewWrapper />
+      <MapviewWrapper handleProviderPress={showModal} />
     </Layout>
   );
 };
