@@ -1,5 +1,4 @@
 import React from "react";
-import { StyleSheet } from "react-native";
 import { Text, Button } from "@ui-kitten/components";
 import Modal from "react-native-modal";
 
@@ -8,9 +7,12 @@ const ProviderModal = (props) => {
   return (
     <Modal
       isVisible={props.isVisible}
-      swipeDirection={["up", "left", "right", "down"]}
-      style={styles.view}
-      onBackdropPress={() => props.hideModal}
+      swipeDirection={["left", "right", "down"]}
+      style={props.style}
+      onSwipeComplete={props.onHideModal}
+      onBackdropPress={props.onHideModal}
+      animationInTiming={250}
+      coverScreen={false}
     >
       <Text>ID: {props.providerData.Id}</Text>
       <Text>
@@ -22,9 +24,5 @@ const ProviderModal = (props) => {
     </Modal>
   );
 };
-
-const styles = StyleSheet.create({
-  view: {},
-});
 
 export default ProviderModal;

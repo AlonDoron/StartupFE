@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet } from "react-native";
-import { Text, Layout } from "@ui-kitten/components";
+import { Layout } from "@ui-kitten/components";
 import { Foundation } from "@expo/vector-icons";
 import { MapviewWrapper } from "components/maps";
 import { ProviderModal } from "components/providers";
@@ -25,6 +25,7 @@ const Home = (props) => {
       <MapviewWrapper onProviderPress={showModal} />
       {isProviderModalVisible && (
         <ProviderModal
+          style={styles.modal}
           isVisible={isProviderModalVisible}
           onHideModal={hideModal}
           providerData={currProvider}
@@ -45,6 +46,10 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
+  },
+  modal: {
+    flex: 1,
+    justifyContent: "flex-end",
   },
 });
 
