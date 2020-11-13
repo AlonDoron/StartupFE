@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Marker } from "react-native-maps";
-import { mapsConfig } from "config";
+import { mapsConfig, locationConfig } from "config";
 import { getProviders } from "api/wrappers/appService";
 
 const getProvidersAsync = (setProviders) => {
   getProviders({
     Latitude: mapsConfig.INITIAL_REGION.latitude,
     Longitude: mapsConfig.INITIAL_REGION.longitude,
-    Radius: 1000,
-    MeasureUnit: 0,
+    Radius: locationConfig.RADIUS,
+    MeasureUnit: locationConfig.MEASURE_UNIT,
   }).then((providers) => setProviders(providers));
 };
 
@@ -20,7 +20,7 @@ const ProvidersList = (props) => {
 
     const fetchProvidersInterval = setInterval(() => {
       getProvidersAsync(setProviders);
-    }, 3000);
+    }, locationConfig.FETCH_PROVIDERS_INTERVAL_TIME);
 
     return () => clearInterval(fetchProvidersInterval);
   }, []);
