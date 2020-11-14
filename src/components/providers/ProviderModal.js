@@ -1,9 +1,9 @@
 import React from "react";
-import { Text, Button } from "@ui-kitten/components";
+import { Text, Button, Layout } from "@ui-kitten/components";
 import Modal from "react-native-modal";
+import i18n from "i18n";
 
 const ProviderModal = (props) => {
-  console.log(props.providerData);
   return (
     <Modal
       isVisible={props.isVisible}
@@ -11,16 +11,28 @@ const ProviderModal = (props) => {
       style={props.style}
       onSwipeComplete={props.onHideModal}
       onBackdropPress={props.onHideModal}
-      animationInTiming={250}
-      coverScreen={false}
+      backdropOpacity={0.1}
     >
-      <Text>ID: {props.providerData.Id}</Text>
-      <Text>
-        {props.providerData.FirstName}
-        {props.providerData.LastName}
-      </Text>
-      <Text>{props.providerData.Title}</Text>
-      <Button onPress={props.onHideModal}>Press To Close!</Button>
+      <Layout>
+        <Text>
+          {i18n.t("firstName")}: {props.providerData.FirstName}
+        </Text>
+        <Text>
+          {i18n.t("lastName")}: {props.providerData.LastName}
+        </Text>
+        <Text>
+          {i18n.t("title")}: {props.providerData.Title}
+        </Text>
+        <Text>
+          {i18n.t("profession")}: {props.providerData.Profession}
+        </Text>
+
+        <Text>
+          {i18n.t("rating")}: {props.providerData.Rating}
+        </Text>
+
+        <Button onPress={props.onHideModal}>Press To Close!</Button>
+      </Layout>
     </Modal>
   );
 };

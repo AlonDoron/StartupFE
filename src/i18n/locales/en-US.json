@@ -13,6 +13,10 @@
   "email": "Email",
   "verificationCode": "Verification Code",
 
+  "title": "title",
+  "profession": "profession",
+  "rating": "rating",
+
   "errors": {
     "phoneNumber_is_required": "Phone number is required",
     "phoneNumber_is_invalid": "Phone number is invalid",

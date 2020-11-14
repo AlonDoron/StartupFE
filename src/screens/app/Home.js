@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 import { Layout } from "@ui-kitten/components";
 import { Foundation } from "@expo/vector-icons";
 import { MapviewWrapper } from "components/maps";
@@ -48,8 +48,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   modal: {
-    flex: 1,
+    flex: 0,
     justifyContent: "flex-end",
+    alignContent: "flex-end",
+    top: Dimensions.get("window").height * 0.65,
+    height: "auto",
+    width: "80%",
+    backgroundColor: "#BDB4BF",
+    marginLeft: "3%",
   },
 });
 

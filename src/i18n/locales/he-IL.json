@@ -13,6 +13,10 @@
   "email": "כתובת מייל",
   "verificationCode": "קוד שקיבלתם לטלפון",
 
+  "title": "שם חנות",
+  "profession": "מקצוע",
+  "rating": "דירוג",
+
   "errors": {
     "phoneNumber_is_required": "מספר טלפון הינו שדה חובה",
     "phoneNumber_is_invalid": "מספר טלפון לא תקין",
