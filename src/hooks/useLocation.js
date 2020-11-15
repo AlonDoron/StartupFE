@@ -12,7 +12,7 @@ const setIsLocationEnabled = async () => {
   }
 };
 
-const useLocation = () => {
+const useLocation = (isTracking) => {
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
 
@@ -22,31 +22,28 @@ const useLocation = () => {
     distanceInterval: locationConfig.FETCH_PROVIDERS_INTERVAL_RADIUS,
   };
 
-  useEffect(
-    (isTracking) => {
-      (async () => {
-        try {
-          setIsLocationEnabled();
+  useEffect(() => {
+    (async () => {
+      try {
+        setIsLocationEnabled();
 
-          if (isTracking) {
-            let location = await Location.watchPositionAsync(
-              locationOptions,
-              (currLocation) => setLocation(currLocation)
-            );
+        if (isTracking) {
+          let location = await Location.watchPositionAsync(
+            locationOptions,
+            (currLocation) => setLocation(currLocation)
+          );
 
-            setLocation(location);
-          }
-        } catch (locationError) {
-          setErrorMsg(locationError);
+          setLocation(location);
         }
-      })();
+      } catch (locationError) {
+        setErrorMsg(locationError);
+      }
+    })();
 
-      return () => {
-        if (location) location.remove();
-      };
-    },
-    [isTracking, location]
-  );
+    return () => {
+      if (location) location.remove();
+    };
+  }, [isTracking, location]);
 
   return [location, errorMsg];
 };
