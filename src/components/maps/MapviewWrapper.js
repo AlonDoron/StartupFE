@@ -13,7 +13,10 @@ const MapviewWrapper = (props) => {
         style={styles.mapStyle}
         initialRegion={mapsConfig.INITIAL_REGION}
       >
-        <ProvidersList onProviderPress={props.onProviderPress} />
+        <ProvidersList
+          onProviderPress={props.onProviderPress}
+          userLocation={props.userLocation}
+        />
       </MapView>
     </Layout>
   );
