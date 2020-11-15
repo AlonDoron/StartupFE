@@ -17,6 +17,7 @@ module.exports = function (api) {
             actions: path.resolve(__dirname, "src/actions"),
             api: path.resolve(__dirname, "src/api"),
             forms: path.resolve(__dirname, "src/forms"),
+            hooks: path.resolve(__dirname, "src/hooks"),
           },
         },
       ],
