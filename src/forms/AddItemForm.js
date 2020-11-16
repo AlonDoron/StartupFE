@@ -6,17 +6,18 @@ import { Formik } from "formik";
 import { addItemSchema } from "../validations";
 import i18n from "i18n";
 
-const AddItemForm = (props) => {
+const AddItemForm = ({ editData, submitForm }) => {
   return (
     <Layout>
       <Formik
         initialValues={{
-          ItemName: props.editData ? editData.ItemName : "",
-          ItemPrice: props.editData ? editData.ItemPrice : 0,
-          ItemDescription: props.editData ? editData.ItemDescription : "",
+          ItemName: editData ? editData.ItemName : "",
+          ItemPrice: editData ? editData.ItemPrice : "",
+          ItemDescription: editData ? editData.ItemDescription : "",
+          key: editData ? editData.key : "",
         }}
         validationSchema={addItemSchema}
-        onSubmit={(values) => props.submitForm(values)}
+        onSubmit={(values) => submitForm(values)}
       >
         {(props) => (
           <Layout style={styles.form1}>
@@ -54,7 +55,9 @@ const AddItemForm = (props) => {
               disabled={props.submitting}
               accessoryLeft={LoadingIndicator}
             >
-              {i18n.t("myServices.storeItem.createItem")}
+              {i18n.t(
+                `myServices.storeItem.${editData ? "editItem" : "createItem"}`
+              )}
             </Button>
           </Layout>
         )}

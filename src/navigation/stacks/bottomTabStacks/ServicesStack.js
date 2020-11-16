@@ -6,6 +6,7 @@ import {
   ProviderStore,
   StoreItem,
   AddItem,
+  EditItem,
 } from "screens/app/myServicesScreens";
 import { AntDesign } from "@expo/vector-icons";
 import i18n from "i18n";
@@ -26,6 +27,9 @@ const ServicesStack = createStackNavigator(
     },
     AddItem: {
       screen: AddItem,
+    },
+    EditItem: {
+      screen: EditItem,
     },
   },
   {

@@ -1,7 +1,7 @@
 export default [
   {
     ItemName: "item1",
-    ItemPrice: 100,
+    ItemPrice: "100",
     ItemDescription: "Description for item1",
     Images: [
       require("./_mockItemImg1.jpg"),
@@ -12,7 +12,7 @@ export default [
   },
   {
     ItemName: "item2",
-    ItemPrice: 200,
+    ItemPrice: "200",
     ItemDescription: "Description for item2",
     Images: [
       require("./_mockItemImg1.jpg"),
@@ -23,7 +23,7 @@ export default [
   },
   {
     ItemName: "item3",
-    ItemPrice: 300,
+    ItemPrice: "300",
     ItemDescription: "Description for item3",
     Images: [
       require("./_mockItemImg1.jpg"),
@@ -34,7 +34,7 @@ export default [
   },
   {
     ItemName: "item4",
-    ItemPrice: 400,
+    ItemPrice: "400",
     ItemDescription: "Description for item4",
     Images: [
       require("./_mockItemImg1.jpg"),
@@ -45,7 +45,7 @@ export default [
   },
   {
     ItemName: "item5",
-    ItemPrice: 500,
+    ItemPrice: "500",
     ItemDescription: "Description for item5",
     Images: [
       require("./_mockItemImg1.jpg"),
@@ -56,7 +56,161 @@ export default [
   },
   {
     ItemName: "item6",
-    ItemPrice: 600,
+    ItemPrice: "600",
+    ItemDescription: "Description for item6",
+    Images: [
+      require("./_mockItemImg1.jpg"),
+      require("./_mockItemImg2.jpg"),
+      require("./_mockItemImg3.jpg"),
+    ],
+    key: "666",
+  },
+  {
+    ItemName: "item6",
+    ItemPrice: "600",
+    ItemDescription: "Description for item6",
+    Images: [
+      require("./_mockItemImg1.jpg"),
+      require("./_mockItemImg2.jpg"),
+      require("./_mockItemImg3.jpg"),
+    ],
+    key: "666",
+  },
+  {
+    ItemName: "item6",
+    ItemPrice: "600",
+    ItemDescription: "Description for item6",
+    Images: [
+      require("./_mockItemImg1.jpg"),
+      require("./_mockItemImg2.jpg"),
+      require("./_mockItemImg3.jpg"),
+    ],
+    key: "666",
+  },
+  {
+    ItemName: "item6",
+    ItemPrice: "600",
+    ItemDescription: "Description for item6",
+    Images: [
+      require("./_mockItemImg1.jpg"),
+      require("./_mockItemImg2.jpg"),
+      require("./_mockItemImg3.jpg"),
+    ],
+    key: "666",
+  },
+  {
+    ItemName: "item6",
+    ItemPrice: "600",
+    ItemDescription: "Description for item6",
+    Images: [
+      require("./_mockItemImg1.jpg"),
+      require("./_mockItemImg2.jpg"),
+      require("./_mockItemImg3.jpg"),
+    ],
+    key: "666",
+  },
+  {
+    ItemName: "item6",
+    ItemPrice: "600",
+    ItemDescription: "Description for item6",
+    Images: [
+      require("./_mockItemImg1.jpg"),
+      require("./_mockItemImg2.jpg"),
+      require("./_mockItemImg3.jpg"),
+    ],
+    key: "666",
+  },
+  {
+    ItemName: "item6",
+    ItemPrice: "600",
+    ItemDescription: "Description for item6",
+    Images: [
+      require("./_mockItemImg1.jpg"),
+      require("./_mockItemImg2.jpg"),
+      require("./_mockItemImg3.jpg"),
+    ],
+    key: "666",
+  },
+  {
+    ItemName: "item6",
+    ItemPrice: "600",
+    ItemDescription: "Description for item6",
+    Images: [
+      require("./_mockItemImg1.jpg"),
+      require("./_mockItemImg2.jpg"),
+      require("./_mockItemImg3.jpg"),
+    ],
+    key: "666",
+  },
+  {
+    ItemName: "item6",
+    ItemPrice: "600",
+    ItemDescription: "Description for item6",
+    Images: [
+      require("./_mockItemImg1.jpg"),
+      require("./_mockItemImg2.jpg"),
+      require("./_mockItemImg3.jpg"),
+    ],
+    key: "666",
+  },
+  {
+    ItemName: "item6",
+    ItemPrice: "600",
+    ItemDescription: "Description for item6",
+    Images: [
+      require("./_mockItemImg1.jpg"),
+      require("./_mockItemImg2.jpg"),
+      require("./_mockItemImg3.jpg"),
+    ],
+    key: "666",
+  },
+  {
+    ItemName: "item6",
+    ItemPrice: "600",
+    ItemDescription: "Description for item6",
+    Images: [
+      require("./_mockItemImg1.jpg"),
+      require("./_mockItemImg2.jpg"),
+      require("./_mockItemImg3.jpg"),
+    ],
+    key: "666",
+  },
+  {
+    ItemName: "item6",
+    ItemPrice: "600",
+    ItemDescription: "Description for item6",
+    Images: [
+      require("./_mockItemImg1.jpg"),
+      require("./_mockItemImg2.jpg"),
+      require("./_mockItemImg3.jpg"),
+    ],
+    key: "666",
+  },
+  {
+    ItemName: "item6",
+    ItemPrice: "600",
+    ItemDescription: "Description for item6",
+    Images: [
+      require("./_mockItemImg1.jpg"),
+      require("./_mockItemImg2.jpg"),
+      require("./_mockItemImg3.jpg"),
+    ],
+    key: "666",
+  },
+  {
+    ItemName: "item6",
+    ItemPrice: "600",
+    ItemDescription: "Description for item6",
+    Images: [
+      require("./_mockItemImg1.jpg"),
+      require("./_mockItemImg2.jpg"),
+      require("./_mockItemImg3.jpg"),
+    ],
+    key: "666",
+  },
+  {
+    ItemName: "item6",
+    ItemPrice: "600",
     ItemDescription: "Description for item6",
     Images: [
       require("./_mockItemImg1.jpg"),

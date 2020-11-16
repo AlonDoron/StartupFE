@@ -31,7 +31,8 @@
       "itemName": "שם החפץ",
       "itemPrice": "מחיר החפץ",
       "itemDescription": "תיאור החפץ",
-      "createItem": "הוסף חפץ"
+      "createItem": "הוסף חפץ",
+      "editItem": "ערוך חפץ"
     }
   }
 }
