@@ -1,13 +1,13 @@
 import React from "react";
-import { StyleSheet, ScrollView, FlatList } from "react-native";
-import { Text, List, Divider, Layout } from "@ui-kitten/components";
+import { StyleSheet } from "react-native";
+import { List, Divider, Layout } from "@ui-kitten/components";
 import StoreListItem from "./StoreListItem";
 const StoreItemList = (props) => {
   return (
     <Layout style={{ flex: 1, width: "100%" }}>
       <List
         contentContainerStyle={styles.listContaier}
-        scrollEnabled={true}
+        scrollEnabled
         data={props.storeItems}
         renderItem={({ item, index }) => (
           <StoreListItem
@@ -26,9 +26,7 @@ const StoreItemList = (props) => {
 
 const styles = StyleSheet.create({
   listContaier: {
-    // flex: 1,
     justifyContent: "space-around",
-    // maxHeight: 1000,
   },
 });
 

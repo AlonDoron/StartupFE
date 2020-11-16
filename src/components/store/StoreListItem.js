@@ -1,19 +1,20 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import { Avatar, Button, Layout, ListItem, Text } from "@ui-kitten/components";
-
+import i18n from "i18n";
 const StoreListItem = ({ itemData, navigation, onDelete, onEdit }) => {
+  const title = () => <Text category="s1">{itemData.ItemName}</Text>;
+  const subtitle = () => <Text category="s2">{itemData.ItemDescription}</Text>;
+  const miniImage = () => (
+    <Avatar style={{ tintColor: null }} source={itemData.Images[0]} />
+  );
   return (
     <Layout style={styles.itemContainer}>
       <ListItem
         onPress={() => navigation.navigate("StoreItem", { itemData })}
-        title={() => <Text style={{ fontSize: 20 }}>{itemData.ItemName}</Text>}
-        description={() => (
-          <Text style={{ fontSize: 12 }}>{itemData.ItemDescription}</Text>
-        )}
-        accessoryLeft={() => (
-          <Avatar style={{ tintColor: null }} source={itemData.Images[0]} />
-        )}
+        title={title}
+        description={subtitle}
+        accessoryLeft={miniImage}
         accessoryRight={() => {
           return (
             <Layout style={styles.btnContainer}>
@@ -27,14 +28,14 @@ const StoreListItem = ({ itemData, navigation, onDelete, onEdit }) => {
                   });
                 }}
               >
-                Edit
+                {i18n.t("myServices.storeItem.editItem")}
               </Button>
               <Button
                 style={{ flex: 1, margin: 5 }}
                 size="small"
                 onPress={() => onDelete(itemData.key)}
               >
-                Delete
+                {i18n.t("myServices.storeItem.deleteItem")}
               </Button>
             </Layout>
           );

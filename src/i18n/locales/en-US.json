@@ -32,7 +32,8 @@
       "itemPrice": "Item price",
       "itemDescription": "Item description",
       "createItem": "Add item",
-      "editItem": "Edit item"
+      "editItem": "Edit",
+      "deleteItem": "Delete"
     }
   }
 }

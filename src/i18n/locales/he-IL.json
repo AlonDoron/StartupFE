@@ -32,7 +32,8 @@
       "itemPrice": "מחיר החפץ",
       "itemDescription": "תיאור החפץ",
       "createItem": "הוסף חפץ",
-      "editItem": "ערוך חפץ"
+      "editItem": "ערוך",
+      "deleteItem": "מחק"
     }
   }
 }

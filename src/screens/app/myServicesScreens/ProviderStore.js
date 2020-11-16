@@ -40,12 +40,12 @@ const ProviderStore = ({ navigation }) => {
 
   return (
     <Layout style={{ flex: 1 }}>
-      <View style={styles.storeHeader}>
-        <View style={styles.titleContainer}>
+      <Layout style={styles.storeHeader}>
+        <Layout style={styles.titleContainer}>
           <Text category="h3" style={styles.storeTitle}>
             {storeName}
           </Text>
-        </View>
+        </Layout>
         <TouchableOpacity
           style={styles.addItemIconContainer}
           onPress={() => navigation.navigate("AddItem", { addStoreItem })}
@@ -56,7 +56,7 @@ const ProviderStore = ({ navigation }) => {
             name="plus-circle-outline"
           />
         </TouchableOpacity>
-      </View>
+      </Layout>
       <StoreItemList
         editStoreItem={editStoreItem}
         style={styles.itemList}

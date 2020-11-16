@@ -6,7 +6,6 @@ const EditItem = ({ navigation }) => {
   const itemData = navigation.state.params.itemData;
 
   const handleSubmitForm = (newItemdata) => {
-    console.log("newItem", newItemdata);
     const editedItem = { ...newItemdata, Images: [...itemData.Images] };
     onEdit(editedItem.key, editedItem);
     navigation.goBack();
