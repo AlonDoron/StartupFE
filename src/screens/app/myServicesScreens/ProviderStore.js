@@ -30,11 +30,8 @@ const ProviderStore = ({ navigation }) => {
       (item) => item.key == itemKey
     );
 
-    console.log("Before update: ", tempStoreItems[itemToEditIndex]);
-
     tempStoreItems[itemToEditIndex] = newItemData;
 
-    console.log("After update: ", tempStoreItems[itemToEditIndex]);
     setStoreItems(tempStoreItems);
   };
 
