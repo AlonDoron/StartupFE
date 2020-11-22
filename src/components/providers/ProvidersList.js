@@ -8,11 +8,22 @@ const ProvidersList = (props) => {
   const [providers, setProviders] = useState([]);
 
   const getProvidersAsync = async () => {
-    const location = await LocationHandler.getCurrentLocation();
+    const isLocationEnabled = await LocationHandler.getIsLocationEnabled();
+
+    const latLonData = {
+      Latitude: mapsConfig.INITIAL_REGION.latitude,
+      Longitude: mapsConfig.INITIAL_REGION.longitude,
+    };
+
+    if (isLocationEnabled) {
+      const location = await LocationHandler.getCurrentLocation();
+      latLonData.Latitude = location.coords.latitude;
+      latLonData.Longitude = location.coords.longitude;
+    }
 
     const locationData = {
-      Latitude: location.coords.latitude,
-      Longitude: location.coords.longitude,
+      Latitude: latLonData.Latitude,
+      Longitude: latLonData.Longitude,
       Radius: locationConfig.RADIUS,
       MeasureUnit: locationConfig.MEASURE_UNIT,
     };

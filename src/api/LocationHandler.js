@@ -1,6 +1,12 @@
 import * as Location from "expo-location";
 import { Alert } from "react-native";
 
+const getIsLocationEnabled = async () => {
+  let granted = await Location.hasServicesEnabledAsync();
+
+  return granted;
+};
+
 const getCurrentLocation = async () => {
   const locationOptions = {
     Accuracy: Location.Accuracy.BestForNavigation,
@@ -12,13 +18,6 @@ const getCurrentLocation = async () => {
     if (granted) {
       // TODO: SHOW PERMISSION WINDOW ON IOS
       let currPos = await Location.getCurrentPositionAsync(locationOptions);
-      Alert.alert(
-        "Latitude: " +
-          currPos.coords.latitude +
-          " \nLongitude: " +
-          currPos.coords.longitude
-      );
-
       return currPos;
     } else {
       Alert.alert("ENABLE LOCATION PERMISSIONS IN YOUR PHONE SETTINGS!!!");
@@ -33,5 +32,6 @@ const getCurrentLocation = async () => {
 };
 
 export default {
+  getIsLocationEnabled,
   getCurrentLocation,
 };
