@@ -3,19 +3,20 @@ import { Marker } from "react-native-maps";
 import { mapsConfig, locationConfig } from "config";
 import { getProviders } from "api/wrappers/appService";
 
-const getProvidersAsync = (setProviders) => {
-  const locationData = {
-    Latitude: mapsConfig.INITIAL_REGION.latitude,
-    Longitude: mapsConfig.INITIAL_REGION.longitude,
-    Radius: locationConfig.RADIUS,
-    MeasureUnit: locationConfig.MEASURE_UNIT,
-  };
-
-  getProviders(locationData).then((providers) => setProviders(providers));
-};
-
 const ProvidersList = (props) => {
   const [providers, setProviders] = useState([]);
+
+  const getProvidersAsync = async (setProviders) => {
+    const locationData = {
+      Latitude: mapsConfig.INITIAL_REGION.latitude,
+      Longitude: mapsConfig.INITIAL_REGION.longitude,
+      Radius: locationConfig.RADIUS,
+      MeasureUnit: locationConfig.MEASURE_UNIT,
+    };
+
+    const providers = await getProviders(locationData);
+    setProviders(providers);
+  };
 
   useEffect(() => {
     getProvidersAsync(setProviders);
