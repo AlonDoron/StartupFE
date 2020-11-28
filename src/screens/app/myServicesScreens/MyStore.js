@@ -6,7 +6,7 @@ import _mockStoreitems from "./_mockData/_mockStoreItems";
 import i18n from "i18n";
 import { ScrollView } from "react-native";
 
-const ProviderStore = ({ navigation }) => {
+const MyStore = ({ navigation }) => {
   const storeName = navigation.state.params.storeName;
   const [storeItems, setStoreItems] = useState([]);
 
@@ -99,4 +99,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProviderStore;
+export default MyStore;

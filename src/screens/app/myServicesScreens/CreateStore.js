@@ -4,7 +4,7 @@ import { Layout } from "@ui-kitten/components";
 import { CreateStoreForm } from "forms";
 const CreateStore = (props) => {
   const handleSubmit = (values) => {
-    props.navigation.navigate("ProviderStore", {
+    props.navigation.navigate("MyStore", {
       storeName: values.storeName,
     });
   };

@@ -3,7 +3,7 @@ import { createStackNavigator } from "react-navigation-stack";
 import { MyServices } from "screens/app";
 import {
   CreateStore,
-  ProviderStore,
+  MyStore,
   StoreItem,
   AddItem,
   EditItem,
@@ -19,8 +19,8 @@ const ServicesStack = createStackNavigator(
     CreateStore: {
       screen: CreateStore,
     },
-    ProviderStore: {
-      screen: ProviderStore,
+    MyStore: {
+      screen: MyStore,
     },
     StoreItem: {
       screen: StoreItem,
