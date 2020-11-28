@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { Text, Layout, Icon, Button } from "@ui-kitten/components";
-import { StoreItemList } from "components/store";
+import { StoreItemsList } from "components/store";
 import _mockStoreitems from "./_mockData/_mockStoreItems";
 import i18n from "i18n";
-import { ScrollView } from "react-native";
 
 const MyStore = ({ navigation }) => {
   const storeName = navigation.state.params.storeName;
@@ -14,16 +13,16 @@ const MyStore = ({ navigation }) => {
     setStoreItems(_mockStoreitems);
   }, []);
 
-  const addStoreItem = (newItem) => {
+  const handelAddStoreItem = (newItem) => {
     setStoreItems((prevItems) => [...prevItems, newItem]);
   };
 
-  const deleteStoreItem = (itemKey) => {
+  const handelDeleteStoreItem = (itemKey) => {
     let updatedStoreItems = storeItems.filter((item) => item.key !== itemKey);
     setStoreItems(updatedStoreItems);
   };
 
-  const editStoreItem = (itemKey, newItemData) => {
+  const handelEditStoreItem = (itemKey, newItemData) => {
     console.log(newItemData);
     let tempStoreItems = [...storeItems];
     const itemToEditIndex = tempStoreItems.findIndex(
@@ -45,7 +44,9 @@ const MyStore = ({ navigation }) => {
         </Layout>
         <TouchableOpacity
           style={styles.addItemIconContainer}
-          onPress={() => navigation.navigate("AddItem", { addStoreItem })}
+          onPress={() =>
+            navigation.navigate("AddItem", { addStoreItem: handelAddStoreItem })
+          }
         >
           <Icon
             style={styles.addItemIcon}
@@ -54,12 +55,12 @@ const MyStore = ({ navigation }) => {
           />
         </TouchableOpacity>
       </Layout>
-      <StoreItemList
-        editStoreItem={editStoreItem}
+      <StoreItemsList
+        editStoreItem={handelEditStoreItem}
         style={styles.itemList}
         storeItems={storeItems}
         navigation={navigation}
-        onDelete={deleteStoreItem}
+        onDelete={handelDeleteStoreItem}
       />
     </Layout>
   );

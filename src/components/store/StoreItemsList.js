@@ -2,7 +2,8 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { List, Divider, Layout } from "@ui-kitten/components";
 import StoreListItem from "./StoreListItem";
-const StoreItemList = (props) => {
+
+const StoreItemsList = (props) => {
   return (
     <Layout style={{ flex: 1, width: "100%" }}>
       <List
@@ -30,4 +31,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default StoreItemList;
+export default StoreItemsList;
