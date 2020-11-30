@@ -6,6 +6,7 @@ import LocationHandler from "api/LocationHandler";
 
 const ProvidersList = (props) => {
   const [providers, setProviders] = useState([]);
+  const [selfLocation, setSelfLocation] = useState({});
 
   const getProvidersAsync = async () => {
     const isLocationEnabled = await LocationHandler.getIsLocationEnabled();
@@ -20,6 +21,8 @@ const ProvidersList = (props) => {
       latLonData.Latitude = location.coords.latitude;
       latLonData.Longitude = location.coords.longitude;
     }
+
+    setSelfLocation(latLonData);
 
     const locationData = {
       Latitude: latLonData.Latitude,
@@ -60,6 +63,17 @@ const ProvidersList = (props) => {
             onPress={() => props.onProviderPress(provider)}
           />
         ))}
+      {selfLocation.Latitude && selfLocation.Longitude && (
+        <Marker
+          key="self"
+          coordinate={{
+            longitude: selfLocation.Longitude,
+            latitude: selfLocation.Latitude,
+          }}
+          title="Your Location"
+          pinColor={"#DAA520"}
+        />
+      )}
     </>
   );
 };
