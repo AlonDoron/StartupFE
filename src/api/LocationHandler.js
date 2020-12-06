@@ -15,18 +15,15 @@ const getCurrentLocation = async () => {
   try {
     let { granted } = await Location.getPermissionsAsync();
 
-    if (granted) {
-      // TODO: SHOW PERMISSION WINDOW ON IOS
-      let currPos = await Location.getCurrentPositionAsync(locationOptions);
-      return currPos;
-    } else {
-      Alert.alert("ENABLE LOCATION PERMISSIONS IN YOUR PHONE SETTINGS!!!");
-      return "Permission to access location was denied";
-    }
+    if (granted) return await Location.getCurrentPositionAsync(locationOptions);
+    else
+      Alert.alert(
+        "Please enable location permissions for cherry services in your settings."
+      );
   } catch (error) {
     let status = await Location.hasServicesEnabledAsync();
     if (!status) {
-      Alert.alert("WHY YOU DONT WANT TO TURN ON YOUR LOCATION?!");
+      Alert.alert("GPS signal lost.");
     }
   }
 };
