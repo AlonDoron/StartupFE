@@ -21,9 +21,13 @@ export const isUserExistsByToken = (token) => {
   return (dispatch) => {
     dispatch({ type: authTypes.FETCH_REQUEST });
 
-    return HttpClient.get(apiConfig.IDENTITY_PORT, "api/identity", {
-      userId: token,
-    })
+    return HttpClient.get(
+      apiConfig.IDENTITY_PORT,
+      "api/identity/isIdentityExists",
+      {
+        userId: token,
+      }
+    )
       .then((response) => {
         dispatch({ type: authTypes.FETCH_SUCCESS });
         dispatch(setIsUserExists(response));
