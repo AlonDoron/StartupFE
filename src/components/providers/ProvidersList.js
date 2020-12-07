@@ -11,15 +11,15 @@ const ProvidersList = (props) => {
   const getProvidersAsync = async () => {
     const isLocationEnabled = await LocationHandler.getIsLocationEnabled();
 
-    const latLonData = {
-      Latitude: mapsConfig.INITIAL_REGION.latitude,
-      Longitude: mapsConfig.INITIAL_REGION.longitude,
-    };
+    const latLonData = {};
 
     if (isLocationEnabled) {
       const location = await LocationHandler.getCurrentLocation();
       latLonData.Latitude = location.coords.latitude;
       latLonData.Longitude = location.coords.longitude;
+    } else {
+      latLonData.Latitude = mapsConfig.INITIAL_REGION.latitude;
+      latLonData.Longitude = mapsConfig.INITIAL_REGION.longitude;
     }
 
     setSelfLocation(latLonData);
