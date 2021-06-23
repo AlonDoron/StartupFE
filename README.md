@@ -7,4 +7,5 @@ The stack we used in the project:
 - redux
 - UI-Kitten
 - I18N
+- react-native-maps
 - and many more!
